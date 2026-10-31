@@ -3,7 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiz Night</title>
+<title>Quiz Night: free trivia for 1 to 4 players</title>
+<meta name="description" content="Free trivia game for 1 to 4 players. Flags, capitals, history, stadiums, skylines, music, a Kids Zone and more. No sign-up needed.">
+<link rel="canonical" href="https://quiz.emeraldcityapps.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%A4%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#ff5a3c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Emerald City Apps">
+<meta property="og:url" content="https://quiz.emeraldcityapps.com/">
+<meta property="og:title" content="Quiz Night: free trivia for 1 to 4 players">
+<meta property="og:description" content="Flags, capitals, history, skylines, music, a Kids Zone and more. Can you beat my score?">
+<meta property="og:image" content="https://quiz.emeraldcityapps.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quiz Night trivia game">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quiz Night: free trivia for 1 to 4 players">
+<meta name="twitter:description" content="Flags, capitals, history, skylines, music, a Kids Zone and more. Can you beat my score?">
+<meta name="twitter:image" content="https://quiz.emeraldcityapps.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
@@ -38,6 +56,8 @@ body{background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",ui-
 button,input{font:inherit;color:inherit}
 button{cursor:pointer}
 .wrap{max-width:880px;margin:0 auto;padding:20px 16px 48px}
+.sitefoot{max-width:880px;margin:0 auto;padding:16px 16px 28px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center}
+.sitefoot a{color:inherit}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
 .logo{font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;background:none;border:0;padding:0}
 .logo b{color:var(--accent)}
@@ -191,6 +211,7 @@ h2{font-size:26px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
 </head>
 <body>
 <div class="wrap" id="app"></div>
+<footer class="sitefoot">Quiz Night is a free game from <a href="https://emeraldcityapps.com" target="_blank" rel="noopener">Emerald City Apps</a> · <a href="https://emeraldcityapps.com" target="_blank" rel="noopener">More apps</a> · <a href="https://emeraldcityapps.com/privacy" target="_blank" rel="noopener">Privacy</a></footer>
 
 <script>
 /* =========================================================================
@@ -2224,12 +2245,22 @@ const CATS = [
   { id: 'k_spanish', parent: 'kids', kids: true, name: 'Spanish Words',     emoji: '🇪🇸', desc: 'Colours, numbers, animals and first words.' },
   { id: 'k_mix',     parent: 'kids', kids: true, name: 'Kids Mix',          emoji: '🎈', desc: 'A bit of everything for kids.' },
 ];
+// Quizzes built on real team and company logos are switched off for the public launch.
+// Set this to true to bring back Team Logos, Career Paths and Company Logos.
+const SHOW_LOGO_QUIZZES = false;
+const LOGO_QUIZZES = ['teamlogos', 'careers', 'brands'];
+if (!SHOW_LOGO_QUIZZES) {
+  for (let i = CATS.length - 1; i >= 0; i--) {
+    if (LOGO_QUIZZES.includes(CATS[i].id) || LOGO_QUIZZES.includes(CATS[i].parent)) CATS.splice(i, 1);
+  }
+}
 const CAT = Object.fromEntries(CATS.map(c => [c.id, c]));
 const HOME = CATS.filter(c => !c.parent && c.id !== 'kids');
 const BANK = { gk: GK, politics: POLITICS, hist_ancient: HIST_ANCIENT, hist_medieval: HIST_MEDIEVAL, hist_wars: HIST_WARS, hist_us: HIST_US, hist_modern: HIST_MODERN,
   hist_all: [...HIST_ANCIENT, ...HIST_MEDIEVAL, ...HIST_WARS, ...HIST_US, ...HIST_MODERN], k_disney: K_DISNEY, k_movies: K_MOVIES, k_gk: K_GK, k_animals: K_ANIMALS };
 const MIXES = { mixed: ['flags', 'capitals', 'politics', 'gk', 'outlines', 'hist_all', 'stadiums', 'brands', 'logos_all', 'stadiumpics', 'skylines', 'careers_all', 'sat', 'colleges', 'emoji', 'bands'],
   k_mix: ['k_disney', 'k_movies', 'k_gk', 'k_animals', 'k_flags'] };
+if (!SHOW_LOGO_QUIZZES) { MIXES.mixed = MIXES.mixed.filter(id => CAT[id]); CAT.mixed.logo = false; }
 const COLORS = ['#ff5a3c', '#0fa89a', '#7c5cff', '#e9a520'];
 const DIFFS = [{ v: 1, n: 'Easy', s: 'famous ones' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'every country' }];
 const FLAG_URL = iso => `https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/${iso}.svg`;
@@ -2543,7 +2574,9 @@ const sfx = {
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 let screen = 'home';
-let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, diff: 1, sil: 1 }, store.get('cfg', {}));
+let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, diff: 1, sil: 1 }, store.get('cfg', {}))
+if (!CAT[cfg.cat]) cfg.cat = 'flags';
+if (!CAT[cfg.group]) cfg.group = 'kids';;
 if (!CAT[cfg.cat] || CAT[cfg.cat].children) cfg.cat = 'flags';
 if (!CAT[cfg.group] || !CAT[cfg.group].children) cfg.group = 'kids';
 let game = null;   // { cfg, questions, idx, players:[{name,color,score,correct}], log:[] }
@@ -2857,6 +2890,7 @@ function renderResults() {
       </div>`).join('')}</div>
     <div class="row">
       <button class="btn" onclick="playAgain()">Play again</button>
+      <button class="btn ghost" id="sharebtn" onclick="shareScore()">Share my score</button>
       <button class="btn ghost" onclick="game=null;screen='setup';render()">Change settings</button>
       <button class="btn ghost" onclick="game=null;screen='home';render()">New category</button>
     </div>
@@ -2869,6 +2903,29 @@ function renderResults() {
   lockUntil = performance.now() + 900;
 }
 function playAgain() { if (performance.now() < lockUntil) return; game = null; startGame(); }
+
+/* ---------- Share ---------- */
+const SHARE_URL = 'https://quiz.emeraldcityapps.com';
+function shareText() {
+  const c = CAT[game.cfg.cat], ranked = game.players.slice().sort((a, b) => b.score - a.score);
+  if (game.players.length === 1) {
+    const me = game.players[0];
+    return `I scored ${me.score} points on Quiz Night (${c.name}): ${me.correct}/${game.cfg.rounds} right. Can you beat me?`;
+  }
+  const tie = ranked[1] && ranked[0].score === ranked[1].score;
+  return tie ? `It was a tie on Quiz Night (${c.name})! Think you can do better?`
+             : `${ranked[0].name} won our Quiz Night game (${c.name}) with ${ranked[0].score} points. Think you can do better?`;
+}
+async function shareScore() {
+  const btn = document.getElementById('sharebtn'), text = shareText();
+  if (navigator.share) {
+    try { await navigator.share({ title: 'Quiz Night', text, url: SHARE_URL }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  try { await navigator.clipboard.writeText(text + ' ' + SHARE_URL); if (btn) btn.textContent = 'Copied to clipboard'; }
+  catch { if (btn) btn.textContent = "Couldn't copy. Try again"; }
+  if (btn) setTimeout(() => { btn.textContent = 'Share my score'; }, 2500);
+}
 
 /* ---------- Keyboard ---------- */
 document.addEventListener('keydown', e => {
