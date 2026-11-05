@@ -203,6 +203,8 @@ h2{font-size:26px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
 .mc .mchead{grid-column:1/-1;font-size:14px;color:var(--muted);font-weight:600}
 .mc button{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:14px 12px;font-size:17px;font-weight:600}
 .mc button:hover{border-color:var(--accent)}
+.mc.always{margin-top:4px}
+.mc.always button{padding:18px 12px;font-size:18px}
 .quad{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:min(100%,460px);margin:4px auto 6px}
 .quad img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;box-shadow:0 0 0 1px var(--line)}
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px auto 14px;max-width:640px}
@@ -220,6 +222,14 @@ h2{font-size:26px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
 .board10 .slot.got{background:color-mix(in srgb,var(--good) 18%,var(--surface));animation:pop .25s ease-out}
 .board10 .slot.miss span{color:var(--muted);font-weight:500}
 @media (max-width:560px){.board10{gap:5px}.board10 .slot{padding:7px 9px;min-height:36px;font-size:14px;gap:6px}.t10title{font-size:19px}}
+.awardshead{margin:4px 0 10px;font-size:18px;font-weight:800;letter-spacing:-.01em}
+.awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-bottom:26px}
+.award{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:3px;animation:pop .35s ease-out both}
+.award:nth-child(2){animation-delay:.08s}.award:nth-child(3){animation-delay:.16s}.award:nth-child(4){animation-delay:.24s}.award:nth-child(5){animation-delay:.32s}.award:nth-child(6){animation-delay:.4s}
+.award .ae{font-size:28px;line-height:1}
+.award .at{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.award .aw{font-weight:800;font-size:17px;display:flex;align-items:center;gap:6px}
+.award .ad{font-size:13px;color:var(--muted)}
 .pixbox{display:flex;justify-content:center;margin:4px auto 6px}
 .pixbox canvas{max-width:100%;max-height:clamp(220px,46vw,380px);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 12px 28px -14px rgba(0,0,0,.45);background:var(--surface-2)}
 .pixsrc{display:none}
@@ -3295,7 +3305,7 @@ const sfx = {
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 let screen = 'home';
-let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, ctime: 60, ttime: 90, diff: 1, sil: 1, pix: 2 }, store.get('cfg', {}))
+let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, ctime: 60, ttime: 90, mc: 1, turns: 0, diff: 1, sil: 1, pix: 2 }, store.get('cfg', {}))
 if (!CAT[cfg.cat]) cfg.cat = 'flags';
 if (!CAT[cfg.group]) cfg.group = 'kids';;
 if (!CAT[cfg.cat] || CAT[cfg.cat].children) cfg.cat = 'flags';
@@ -3379,6 +3389,8 @@ function renderSetup() {
         ${size < cfg.rounds * cfg.count ? `<div class="hint" style="margin-top:8px">This quiz has ${size} different questions, so you'll get <b>${Math.floor(size / cfg.count)} each</b>. Nothing repeats within a game.</div>` : ''}</div>
       <div class="field"><span class="label">Seconds per question</span>${c.kids ? seg('ktime', [20, 30, 45, 60].map(v => ({ v, n: v + 's' }))) : c.clues ? seg('ctime', [30, 45, 60, 90].map(v => ({ v, n: v + 's' }))) : c.top10 ? seg('ttime', [60, 90, 120, 180].map(v => ({ v, n: v + 's' }))) : seg('time', [10, 15, 20, 30].map(v => ({ v, n: v + 's' })))}</div>
       ${c.geo ? `<div class="field"><span class="label">Difficulty${cfg.cat === 'mixed' ? ' (for the picture rounds)' : ''}</span>${seg('diff', ['flags', 'outlines', 'capitals', 'mixed'].includes(cfg.cat) ? DIFFS : [{ v: 1, n: 'Easy', s: 'the famous ones' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'everything' }])}</div>` : ''}
+      <div class="field"><span class="label">Multiple choice</span>${seg('mc', [{ v: 0, n: 'Off', s: 'typing only' }, { v: 1, n: 'Last 5 seconds', s: 'a rescue' }, { v: 2, n: 'Always', s: 'no typing' }])}${c.top10 ? '<div class="hint" style="margin-top:8px">Top 10 is always typed.</div>' : ''}</div>
+      ${cfg.count > 1 ? `<div class="field"><span class="label">Turns</span>${seg('turns', [{ v: 0, n: 'Alternate', s: 'take turns each question' }, { v: 1, n: 'Full rounds', s: 'one player at a time' }])}</div>` : ''}
       ${c.pix ? `<div class="field"><span class="label">Starting pixelation</span>${seg('pix', [{ v: 1, n: 'Light', s: 'easier' }, { v: 2, n: 'Medium', s: 'balanced' }, { v: 3, n: 'Heavy', s: 'harder' }])}</div>` : ''}
       ${c.drop ? dropHelp(c) : ''}
       ${c.logo ? `<div class="field"><span class="label">Team logos shown as</span>${seg('sil', [{ v: 1, n: 'Silhouette', s: 'harder' }, { v: 0, n: 'Full colour', s: 'easier' }])}</div>` : ''}
@@ -3387,7 +3399,7 @@ function renderSetup() {
         <button class="btn" onclick="startGame()">Start game →</button>
       </div>
     </div>
-    <p class="hint" style="margin-top:16px">Faster answers score more: <b>100</b> points for a correct answer plus up to <b>100</b> bonus for speed. ${MAX_TRIES} tries per question. In the last 5 seconds, four choices appear: a correct pick scores <b>50</b>.${c.kids ? ' Every question shows a hint with the first letter.' : ''}</p>`;
+    <p class="hint" style="margin-top:16px">Faster answers score more: <b>100</b> points for a correct answer plus up to <b>100</b> bonus for speed. ${MAX_TRIES} tries per question. ${cfg.mc === 1 ? 'In the last 5 seconds, four choices appear: a correct pick scores <b>50</b>.' : cfg.mc === 2 ? 'Every question is multiple choice. One wrong pick and the question is over.' : ''}${c.kids ? ' Every question shows a hint with the first letter.' : ''}</p>`;
 }
 
 /* ---------- Start ---------- */
@@ -3423,19 +3435,21 @@ async function startGame() {
 // Fetch pictures a question ahead (photo sites refuse a burst of dozens at once).
 function preload(i) { const q = game && game.questions[i]; if (!q) return; (q.imgs || [q.img || (q.iso && FLAG_URL(q.iso))]).forEach(src => { if (src) { const im = new Image(); im.src = src; } }); }
 function beginTurn() {
-  if (game.players.length > 1) { screen = 'handoff'; render(); }
+  if (game.players.length > 1 && (!game.cfg.turns || game.idx % game.cfg.rounds === 0)) { screen = 'handoff'; render(); }
   else { screen = 'question'; render(); }
 }
 
 /* ---------- Hand-off between players ---------- */
-const curPlayer = () => game.players[game.idx % game.players.length];
+// Alternate turns: player 1, 2, 1, 2… Full rounds: player 1 answers all of theirs, then player 2.
+const curPlayer = () => game.players[game.cfg.turns ? Math.floor(game.idx / game.cfg.rounds) : game.idx % game.players.length];
+const roundNo = () => (game.cfg.turns ? game.idx % game.cfg.rounds : Math.floor(game.idx / game.players.length)) + 1;
 function scoreboard(cur) {
   return `<div class="board">${game.players.map(p => `<div class="p ${p === cur ? 'cur' : ''}" style="${p === cur ? `border-color:${p.color}` : ''}">
     <div class="n"><span class="dot" style="background:${p.color}"></span>${esc(p.name)}</div><div class="s">${p.score}</div></div>`).join('')}</div>`;
 }
 function renderHandoff() {
-  const p = curPlayer(), round = Math.floor(game.idx / game.players.length) + 1;
-  app.innerHTML = topBar(`<span class="hint">Round ${round} of ${game.cfg.rounds}</span>`) + `
+  const p = curPlayer(), round = roundNo();
+  app.innerHTML = topBar(`<span class="hint">${game.cfg.turns ? `${game.cfg.rounds} questions in a row` : `Round ${round} of ${game.cfg.rounds}`}</span>`) + `
     <div class="handoff">
       <div class="hint">Pass the keyboard to</div>
       <div class="who" style="color:${p.color}">${esc(p.name)}</div>
@@ -3476,7 +3490,7 @@ function renderQuestion() {
     <div class="hud">
       ${multi ? `<span class="chip"><span class="av" style="background:${p.color}">${esc(p.name[0] || '?').toUpperCase()}</span>${esc(p.name)} · ${p.score}</span>` : `<span class="chip"><span class="av" style="background:${p.color}">★</span>${p.score} pts</span>`}
       <span class="grow"></span>
-      <span class="count">${multi ? `Round ${Math.floor(game.idx / game.players.length) + 1}/${game.cfg.rounds}` : `${game.idx + 1} / ${total}`}</span>
+      <span class="count">${multi ? `${game.cfg.turns ? 'Question' : 'Round'} ${roundNo()}/${game.cfg.rounds}` : `${game.idx + 1} / ${total}`}</span>
       <span class="secs" id="secs">${game.cfg.time}</span>
     </div>
     <div class="timer" id="timer"><i id="bar"></i></div>
@@ -3497,7 +3511,8 @@ function renderQuestion() {
         <button class="linkbtn" onclick="giveUp()">Pass <span class="kbd">Esc</span></button>
       </div>
     </div>`;
-  const input = document.getElementById('ans'); input.focus();
+  const input = document.getElementById('ans');
+  if (!(game.cfg.mc === 2 && q.kind !== 'top10' && showChoices(true))) input.focus();
   // Start the clock once the pictures have loaded, so a slow connection doesn't eat your time.
   const cur = game.cur;
   const go = () => { if (screen === 'question' && game && game.cur === cur && !cur.started) { cur.started = true; startTimer(); } };
@@ -3564,7 +3579,7 @@ function tick() {
   if (timer) { timer.classList.toggle('warn', frac < .5 && sec > 5); timer.classList.toggle('urgent', sec <= 5); }
   if (sec !== T.lastSec) { if (sec <= 5 && sec > 0 && T.lastSec !== null) sfx.tick(); T.lastSec = sec; }
   if (left <= 0) { finish(false, 'time'); return; }
-  if (left <= 5000 && !game.cur.mc && game.questions[game.idx].kind !== 'top10') showChoices();
+  if (game.cfg.mc === 1 && left <= 5000 && !game.cur.mc && game.questions[game.idx].kind !== 'top10') showChoices();
   if (game.cur.pix) drawPix(1 - frac);
   if (game.questions[game.idx].kind === 'clues') { const due = 1 + Math.floor((1 - frac) / 0.85 * 6); if (due > (game.cur.clue || 1)) showClue(Math.min(6, due)); }
   T.raf = requestAnimationFrame(tick);
@@ -3587,16 +3602,21 @@ function submitAnswer() {
   document.querySelectorAll('#tries span').forEach((s, i) => s.classList.toggle('used', i < game.cur.tries));
   document.getElementById('wrongs').textContent = game.cur.wrongs.join(', ');
 }
-function showChoices() {
+function showChoices(always) {
   const cur = game.cur; cur.mc = true;
   const box = document.getElementById('ansForm'); if (!box || cur.done) return;
-  cur.choices = choicesFor(game.questions[game.idx]); if (!cur.choices) return;
-  box.insertAdjacentHTML('afterend', `<div class="mc" id="mc"><div class="mchead">Stuck? Pick one for <b>50</b> points</div>${cur.choices.map((c, i) => `<button type="button" onclick="pickChoice(${i})">${esc(c)}</button>`).join('')}</div>`);
+  cur.choices = choicesFor(game.questions[game.idx]); if (!cur.choices) return false;
+  cur.mcAlways = !!always;
+  const head = always ? 'Pick the answer <span class="kbd">1</span>–<span class="kbd">4</span>' : 'Stuck? Pick one for <b>50</b> points';
+  box.insertAdjacentHTML('afterend', `<div class="mc${always ? ' always' : ''}" id="mc"><div class="mchead">${head}</div>${cur.choices.map((c, i) => `<button type="button" onclick="pickChoice(${i})">${esc(c)}</button>`).join('')}</div>`);
+  // multiple-choice-only games: no typing box
+  if (always) { box.style.display = 'none'; const t = document.getElementById('tries'); if (t) t.style.visibility = 'hidden'; }
+  return true;
 }
 function pickChoice(i) {
   const cur = game.cur; if (cur.done || !cur.choices) return;
   const c = cur.choices[i];
-  if (c === game.questions[game.idx].answerLabel) { cur.guess = c; cur.viaMC = true; finish(true); }
+  if (c === game.questions[game.idx].answerLabel) { cur.guess = c; cur.viaMC = !cur.mcAlways; finish(true); }
   else { cur.wrongs.push(c); finish(false, 'mc'); }
 }
 function guessTop10(val, input) {
@@ -3631,7 +3651,7 @@ function finish(ok, why) {
   if (q.kind === 'top10') ok = found > 0;
   const pts = !ok ? 0 : q.kind === 'top10' ? top10Points(found) : game.cur.viaMC ? 50 : q.kind === 'clues' ? 100 + 20 * (6 - (game.cur.clue || 1)) : 100 + Math.round(100 * left / T.dur);
   if (ok) { p.score += pts; p.correct++; sfx.right(); } else if (why === 'time') sfx.timeup(); else sfx.wrong();
-  game.log.push({ q, player: p, ok, pts, wrongs: game.cur.wrongs.slice(), secs: (T.dur - left) / 1000 });
+  game.log.push({ q, player: p, ok, pts, wrongs: game.cur.wrongs.slice(), secs: (T.dur - left) / 1000, rescue: !!game.cur.viaMC, clue: game.cur.clue || 1 });
   const extraFlag = q.kind === 'outline' ? `<img class="minif" style="margin:0" src="${FLAG_URL(q.iso)}" alt="">` : '';
   const head = q.kind === 'top10' ? (found === 10 ? 'All ten!' : `You found ${found} of 10.`) : ok ? 'Correct!' : why === 'time' ? "Time's up!" : why === 'pass' ? 'Passed.' : why === 'mc' ? 'Not that one.' : 'Out of tries.';
   const last = game.idx + 1 >= game.questions.length;
@@ -3671,6 +3691,48 @@ function confetti() {
   }
   document.body.appendChild(box); setTimeout(() => box.remove(), 4500);
 }
+// End-of-game awards, worked out from the game log. Only awards that actually happened are shown.
+function gameAwards() {
+  const L = game.log, P = game.players, solo = P.length === 1, out = [];
+  const who = p => `<span class="dot" style="background:${p.color}"></span>${esc(p.name)}`;
+  const label = q => q.kind === 'top10' ? q.title : q.answerLabel;
+  // Fastest correct answer (not counting multiple-choice rescues or Top 10 lists)
+  const fast = L.filter(l => l.ok && !l.rescue && l.q.kind !== 'top10').sort((a, b) => a.secs - b.secs)[0];
+  if (fast) out.push({ e: '⚡', t: 'Fastest answer', p: fast.player, d: `${label(fast.q)} in ${fast.secs.toFixed(1)}s` });
+  // Longest run of right answers in a row
+  let best = null;
+  for (const p of P) { let run = 0, top = 0; for (const l of L.filter(l => l.player === p)) { run = l.ok ? run + 1 : 0; top = Math.max(top, run); }
+    if (top >= 3 && (!best || top > best.n)) best = { p, n: top }; }
+  if (best) out.push({ e: '🔥', t: 'Hot streak', p: best.p, d: `${best.n} right in a row` });
+  // Perfect game
+  for (const p of P) { const mine = L.filter(l => l.player === p); if (mine.length >= 3 && mine.every(l => l.ok)) out.push({ e: '💯', t: 'Perfect game', p, d: `${mine.length} out of ${mine.length}` }); }
+  if (!solo) {
+    // Comeback: furthest climb from where they stood at half time
+    const half = Math.floor(L.length / 2), mid = new Map(P.map(p => [p, 0]));
+    L.slice(0, half).forEach(l => mid.set(l.player, mid.get(l.player) + l.pts));
+    const rank = (scores, p) => [...scores.values()].filter(v => v > scores.get(p)).length;
+    const fin = new Map(P.map(p => [p, p.score]));
+    const climb = P.map(p => ({ p, up: rank(mid, p) - rank(fin, p) })).sort((a, b) => b.up - a.up)[0];
+    if (half >= 2 && climb.up > 0) out.push({ e: '🧗', t: 'Comeback of the night', p: climb.p, d: `climbed ${climb.up} place${climb.up > 1 ? 's' : ''} in the second half` });
+    // Most accurate (only worth a trophy if it isn't simply the winner)
+    const acc = P.map(p => { const m = L.filter(l => l.player === p); return { p, a: m.length ? m.filter(l => l.ok).length / m.length : 0, m: m.length }; }).sort((a, b) => b.a - a.a);
+    const top = P.slice().sort((a, b) => b.score - a.score)[0];
+    if (acc[0].a > 0 && acc[0].p !== top && acc[0].a > acc[1].a) out.push({ e: '🎯', t: 'Sharpshooter', p: acc[0].p, d: `${Math.round(acc[0].a * 100)}% right, though not the fastest` });
+    // Biggest single question
+    const big = L.filter(l => l.ok).sort((a, b) => b.pts - a.pts)[0];
+    if (big && big.pts >= 150 && big.player !== (fast && fast.player)) out.push({ e: '💥', t: 'Biggest hit', p: big.player, d: `${big.pts} points on one question` });
+  }
+  // Saved by the bell: most multiple-choice rescues
+  const res = P.map(p => ({ p, n: L.filter(l => l.player === p && l.rescue && l.ok).length })).sort((a, b) => b.n - a.n)[0];
+  if (res.n >= 2) out.push({ e: '🛟', t: 'Saved by the bell', p: res.p, d: `${res.n} last-second rescues` });
+  // Six Clues: guessed on the very first clue
+  const sharp = L.find(l => l.ok && l.q.kind === 'clues' && l.clue === 1);
+  if (sharp) out.push({ e: '🕵️', t: 'Detective', p: sharp.player, d: `${sharp.q.answerLabel} on the first clue` });
+  // Slowpoke: the closest call, a right answer with under a second to spare
+  const close = L.filter(l => l.ok && !l.rescue && l.q.kind !== 'top10' && game.cfg.time - l.secs < 1.5).sort((a, b) => b.secs - a.secs)[0];
+  if (close) out.push({ e: '😅', t: 'Down to the wire', p: close.player, d: `${label(close.q)} with ${(game.cfg.time - close.secs).toFixed(1)}s left` });
+  return out.slice(0, 6).map(a => `<div class="award"><span class="ae">${a.e}</span><span class="at">${a.t}</span><span class="aw">${who(a.p)}</span><span class="ad">${esc(a.d)}</span></div>`).join('');
+}
 function renderResults() {
   const ranked = game.players.slice().sort((a, b) => b.score - a.score);
   const solo = game.players.length === 1, me = game.players[0];
@@ -3694,6 +3756,7 @@ function renderResults() {
         <span class="st">${p.correct}/${game.cfg.rounds} right<br>${avg(p)}</span>
         <span class="sc">${p.score}</span>
       </div>`).join('')}</div>
+    ${(() => { const aw = gameAwards(); return aw ? `<h3 class="awardshead">Awards</h3><div class="awards">${aw}</div>` : ''; })()}
     <div class="row">
       <button class="btn" onclick="playAgain()">Play again</button>
       <button class="btn ghost" id="sharebtn" onclick="shareScore()">Share my score</button>
@@ -3740,6 +3803,7 @@ document.addEventListener('keydown', e => {
     else if (screen === 'question' && game && game.cur.done) { e.preventDefault(); nextQ(); }
     else if (screen === 'results' && document.activeElement === document.body) { e.preventDefault(); playAgain(); }
   } else if (e.key === 'Escape' && screen === 'question') { e.preventDefault(); giveUp(); }
+  else if (screen === 'question' && game && game.cur.mcAlways && !game.cur.done && /^[1-4]$/.test(e.key)) { e.preventDefault(); pickChoice(+e.key - 1); }
 });
 
 render();
