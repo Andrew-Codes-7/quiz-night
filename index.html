@@ -203,6 +203,23 @@ h2{font-size:26px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
 .mc .mchead{grid-column:1/-1;font-size:14px;color:var(--muted);font-weight:600}
 .mc button{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:14px 12px;font-size:17px;font-weight:600}
 .mc button:hover{border-color:var(--accent)}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:min(100%,460px);margin:4px auto 6px}
+.quad img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;box-shadow:0 0 0 1px var(--line)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px auto 14px;max-width:640px}
+.chips span{background:var(--surface-2);border-radius:12px;padding:10px 14px;font-weight:700;font-size:clamp(15px,2.6vw,19px)}
+.clues{list-style:none;padding:0;margin:6px auto 8px;max-width:620px;text-align:left;display:flex;flex-direction:column;gap:6px}
+.clues li{background:var(--surface-2);border-radius:12px;padding:10px 14px;font-size:clamp(15px,2.4vw,18px);display:flex;gap:10px;animation:pop .25s ease-out}
+.clues li b{color:var(--accent);min-width:14px}
+.clues li.hid{display:none}
+.cluebar{display:flex;justify-content:space-between;align-items:center;gap:10px;max-width:620px;margin:0 auto 8px;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.reveal .extra{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.t10title{font-size:clamp(20px,3.8vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin:2px auto 8px;max-width:640px}
+.board10{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-width:620px;margin:8px auto}
+.board10 .slot{display:flex;gap:10px;align-items:center;background:var(--surface-2);border-radius:10px;padding:9px 12px;min-height:42px;text-align:left;font-weight:700}
+.board10 .slot b{color:var(--muted);min-width:18px;font-variant-numeric:tabular-nums}
+.board10 .slot.got{background:color-mix(in srgb,var(--good) 18%,var(--surface));animation:pop .25s ease-out}
+.board10 .slot.miss span{color:var(--muted);font-weight:500}
+@media (max-width:560px){.board10{gap:5px}.board10 .slot{padding:7px 9px;min-height:36px;font-size:14px;gap:6px}.t10title{font-size:19px}}
 .pixbox{display:flex;justify-content:center;margin:4px auto 6px}
 .pixbox canvas{max-width:100%;max-height:clamp(220px,46vw,380px);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 12px 28px -14px rgba(0,0,0,.45);background:var(--surface-2)}
 .pixsrc{display:none}
@@ -2513,6 +2530,295 @@ Toy Story 3|`,
 };
 const dropSlug = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/['’.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const DROP = Object.fromEntries(Object.entries(DROPINS).map(([k, txt]) => [k, txt.trim().split('\n').map(l => { const [title, al] = l.split('|'); return { title, aliases: al ? al.split(';') : [], src: `images/${k}/${dropSlug(title)}.jpg` }; })]));
+/* =========================================================================
+   DATA — Country in 4 Photos:  country | tier | 4 pictures | what each shows | credits  (free photos, Wikimedia Commons)
+   ========================================================================= */
+const QUADS = `
+Japan|1|images/countries/japan/mount-fuji.jpg~images/countries/japan/sushi.jpg~images/countries/japan/fushimi-inari-taisha.jpg~images/countries/japan/geisha.jpg|Mount Fuji~Sushi~Fushimi Inari-taisha~Geisha|Suicasmo · CC BY-SA 4.0~chidorian from Japan · CC BY-SA 2.0~Basile Morin · CC BY-SA 4.0~Japanexperterna · CC BY-SA 3.0
+Italy|1|images/countries/italy/leaning-tower-of-pisa.jpg~images/countries/italy/pizza-margherita.jpg~images/countries/italy/grand-canal.jpg~images/countries/italy/amalfi-coast.jpg|Leaning Tower of Pisa~Pizza Margherita~Grand Canal (Venice)~Amalfi Coast|Arne Müseler · CC BY-SA 3.0 de~Bex Walton from London, England · CC BY 2.0~Didier Descouens · CC BY-SA 4.0~Bruno Rijsman · CC BY-SA 2.0
+France|1|images/countries/france/eiffel-tower.jpg~images/countries/france/croissant.jpg~images/countries/france/mont-saint-michel.jpg~images/countries/france/chteau-de-chambord.jpg|Eiffel Tower~Croissant~Mont-Saint-Michel~Château de Chambord|Benh LIEU SONG · Public domain~Petr Kratochvil · CC0~Amaustan · CC BY-SA 4.0~Carsten Steger · CC BY-SA 4.0
+Mexico|1|images/countries/mexico/chichn-itz.jpg~images/countries/mexico/taco.jpg~images/countries/mexico/day-of-the-dead.jpg~images/countries/mexico/guanajuato-city.jpg|Chichén Itzá~Taco~Day of the Dead~Guanajuato City|Daniel Schwen · CC BY-SA 4.0~Larry Miller · CC BY-SA 2.0~Paolaricaurte · CC BY-SA 4.0~Carlos ZGZ · CC0
+India|1|images/countries/india/taj-mahal.jpg~images/countries/india/dosa.jpg~images/countries/india/gateway-of-india.jpg~images/countries/india/varanasi.jpg|Taj Mahal~Dosa (food)~Gateway of India~Varanasi|Yann; edited by Jim Carter · CC BY-SA 4.0~Vee Satayamas from Bangkok, Thailand · CC BY 2.0~A.Savin · FAL~Vyacheslav Argenberg · CC BY 4.0
+Egypt|1|images/countries/egypt/giza-pyramid-complex.jpg~images/countries/egypt/great-sphinx-of-giza.jpg~images/countries/egypt/abu-simbel.jpg~images/countries/egypt/koshary.jpg|Giza pyramid complex~Great Sphinx of Giza~Abu Simbel~Koshary|KennyOMG · CC BY-SA 4.0~Hesham Ebaid · CC0~youssef_alam · CC BY 3.0~Dina Said · CC BY-SA 4.0
+Brazil|1|images/countries/brazil/christ-the-redeemer.jpg~images/countries/brazil/feijoada.jpg~images/countries/brazil/sugarloaf-mountain.jpg~images/countries/brazil/copacabana-rio-de-janeiro.jpg|Christ the Redeemer (statue)~Feijoada~Sugarloaf Mountain~Copacabana, Rio de Janeiro|Arne Müseler · CC BY-SA 3.0 de~Adrião · CC BY 3.0~Arne Müseler · CC BY-SA 3.0 de~[www.flickr.com/photos/26912057@N02/ bisonlux] · CC BY 2.0
+China|1|images/countries/china/great-wall-of-china.jpg~images/countries/china/forbidden-city.jpg~images/countries/china/peking-duck.jpg~images/countries/china/terracotta-army.jpg|Great Wall of China~Forbidden City~Peking duck~Terracotta Army|Severin.stalder · CC BY-SA 3.0~Pixelflake · CC BY-SA 3.0~City Foodsters · CC BY 2.0~xiquinhosilva · CC BY 2.0
+United Kingdom|1|images/countries/united-kingdom/big-ben.jpg~images/countries/united-kingdom/fish-and-chips.jpg~images/countries/united-kingdom/stonehenge.jpg~images/countries/united-kingdom/red-telephone-box.jpg|Big Ben~Fish and chips~Stonehenge~Red telephone box|Christian David · CC BY-SA 4.0~Matthias Meckel · CC BY-SA 4.0~garethwiscombe · CC BY 2.0~Christoph Braun · CC0
+Spain|1|images/countries/spain/sagrada-famlia.jpg~images/countries/spain/paella.jpg~images/countries/spain/alhambra.jpg~images/countries/spain/flamenco.jpg|Sagrada Família~Paella~Alhambra~Flamenco|Canaan · CC BY-SA 4.0~Jan Harenburg · CC BY-SA 4.0~Jebulon · CC0~Unknown author · Attribution
+Greece|1|images/countries/greece/parthenon.jpg~images/countries/greece/oia-greece.jpg~images/countries/greece/gyros.jpg~images/countries/greece/meteora.jpg|Parthenon~Oia, Greece~Gyros~Meteora|Steve Swayne · CC BY 2.0~TomasEE · CC BY 3.0~Antonio Fajardo i López · CC BY-SA 3.0~Stathis floros · CC BY-SA 4.0
+Peru|2|images/countries/peru/machu-picchu.jpg~images/countries/peru/ceviche.jpg~images/countries/peru/vinicunca.jpg~images/countries/peru/nazca-lines.jpg|Machu Picchu~Ceviche~Vinicunca~Nazca Lines|Draceane · CC BY-SA 4.0~Picanteria karol · CC BY-SA 4.0~Diego Aldrin Abanto Ricce · CC BY-SA 4.0~Diego Delso · CC BY-SA 4.0
+Thailand|2|images/countries/thailand/wat-arun.jpg~images/countries/thailand/pad-thai.jpg~images/countries/thailand/damnoen-saduak-floating-market.jpg~images/countries/thailand/phi-phi-islands.jpg|Wat Arun~Pad thai~Damnoen Saduak Floating Market~Phi Phi Islands|Mastertongapollo · CC BY-SA 4.0~Takeaway · CC BY-SA 3.0~Roberto Faccenda from Canale CN, Italy · CC BY-SA 2.0~Luxure · CC BY 3.0 au
+Australia|1|images/countries/australia/sydney-opera-house.jpg~images/countries/australia/uluru.jpg~images/countries/australia/red-kangaroo.jpg~images/countries/australia/twelve-apostles.jpg|Sydney Opera House~Uluru~Red kangaroo~Twelve Apostles (Victoria)|BAVhah · CC BY-SA 4.0~Ek2030372672 · CC BY-SA 4.0~fir0002 flagstaffotos [at] gmail.com Canon 20D + Canon 70-20 · GFDL 1.2~Michael J Fromholtz · CC BY-SA 4.0
+Canada|1|images/countries/canada/moraine-lake.jpg~images/countries/canada/poutine.jpg~images/countries/canada/chteau-frontenac.jpg~images/countries/canada/banff-national-park.jpg|Moraine Lake~Poutine~Château Frontenac~Banff National Park|Gorgo · Public domain~Camelia.boban · CC BY-SA 4.0~Bernard Gagnon · CC BY-SA 4.0~Gorgo · Public domain
+Russia|2|images/countries/russia/saint-basil-s-cathedral.jpg~images/countries/russia/matryoshka-doll.jpg~images/countries/russia/lake-baikal.jpg~images/countries/russia/pelmeni.jpg|Saint Basil's Cathedral~Matryoshka doll~Lake Baikal~Pelmeni|Tsy1980 · CC BY-SA 4.0~No machine-readable author provided. Fanghong assumed (based · CC BY-SA 3.0~Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GS · Public domain~Eugene Kim @ Flickr · CC BY 2.0
+Turkey|2|images/countries/turkey/hagia-sophia.jpg~images/countries/turkey/cappadocia.jpg~images/countries/turkey/turkish-delight.jpg~images/countries/turkey/pamukkale.jpg|Hagia Sophia~Cappadocia~Turkish delight~Pamukkale|Adli Wahid · CC BY-SA 3.0~Arian Zwegers from Brussels, Belgium · CC BY 2.0~Quick fix · CC BY-SA 2.0~Biologg · CC BY-SA 4.0
+Morocco|2|images/countries/morocco/chefchaouen.jpg~images/countries/morocco/tajine.jpg~images/countries/morocco/jemaa-el-fnaa.jpg~images/countries/morocco/koutoubia-mosque.jpg|Chefchaouen~Tajine~Jemaa el-Fnaa~Koutoubia Mosque|Badr Rachadi · CC BY-SA 4.0~BBouchra00 · CC BY-SA 4.0~Boris Macek · CC BY-SA 3.0~Rol1000 · CC BY-SA 4.0
+Kenya|3|images/countries/kenya/maasai-mara.jpg~images/countries/kenya/maasai-people.jpg~images/countries/kenya/nairobi-national-park.jpg~images/countries/kenya/ugali.jpg|Maasai Mara~Maasai people~Nairobi National Park~Ugali|Danijel Mihajlovic · CC BY-SA 4.0~Unknown author · CC BY-SA 3.0~flightlog · CC BY 2.0~Paresh Jai from Nairobi, Kenya · CC BY 2.0
+Netherlands|2|images/countries/netherlands/kinderdijk.jpg~images/countries/netherlands/stroopwafel.jpg~images/countries/netherlands/keukenhof.jpg~images/countries/netherlands/canals-of-amsterdam.jpg|Kinderdijk~Stroopwafel~Keukenhof~Canals of Amsterdam|Lucas Hirschegger · CC BY-SA 3.0~Takeaway · CC BY-SA 3.0~Urdulife · CC BY-SA 4.0~Andrés Barrios · CC BY-SA 4.0
+Iceland|3|images/countries/iceland/jkulsrln.jpg~images/countries/iceland/hallgrmskirkja.jpg~images/countries/iceland/gullfoss.jpg~images/countries/iceland/icelandic-horse.jpg|Jökulsárlón~Hallgrímskirkja~Gullfoss~Icelandic horse|Molechaser · CC BY-SA 2.0~Steinninn · CC BY 4.0~Nickspix · CC BY-SA 4.0~Dagur Brynjólfsson · CC BY-SA 2.0
+South Korea|2|images/countries/south-korea/gyeongbokgung.jpg~images/countries/south-korea/kimchi.jpg~images/countries/south-korea/bibimbap.jpg~images/countries/south-korea/bukchon-hanok-village.jpg|Gyeongbokgung~Kimchi~Bibimbap~Bukchon Hanok Village|서울관광 아카이브 · KOGL Type 1~국립국어원 · CC BY-SA 2.0 kr~Sous Chef · CC BY 2.0~Bgag · CC0
+Vietnam|2|images/countries/vietnam/h-long-bay.jpg~images/countries/vietnam/ph.jpg~images/countries/vietnam/hoan-kiem-lake.jpg~images/countries/vietnam/o-di.jpg|Hạ Long Bay~Phở~Hoan Kiem Lake~Áo dài|Taewangkorea · CC BY-SA 4.0~SerraKnightz · CC BY 4.0~Cyril Doussin from London, United Kingdom · CC BY-SA 2.0~Phát Trương · CC BY-SA 2.0
+Argentina|2|images/countries/argentina/perito-moreno-glacier.jpg~images/countries/argentina/asado.jpg~images/countries/argentina/tango.jpg~images/countries/argentina/obelisco-de-buenos-aires.jpg|Perito Moreno Glacier~Asado~Tango~Obelisco de Buenos Aires|Fernando · CC BY-SA 4.0~Unknown author · Attribution~Coquimbo58 · CC BY-SA 4.0~Luis Santos · CC BY-SA 2.0
+Germany|1|images/countries/germany/neuschwanstein-castle.jpg~images/countries/germany/brandenburg-gate.jpg~images/countries/germany/pretzel.jpg~images/countries/germany/oktoberfest.jpg|Neuschwanstein Castle~Brandenburg Gate~Pretzel~Oktoberfest|Thomas Wolf, www.foto-tw.de · CC BY-SA 3.0 de~Thomas Wolf, www.foto-tw.de · CC BY-SA 3.0~Sundar1 · CC BY-SA 3.0~Heribert Pohl --- Thanks for half a million clicks! from Ger · CC BY-SA 2.0
+Ireland|2|images/countries/ireland/cliffs-of-moher.jpg~images/countries/ireland/irish-stew.jpg~images/countries/ireland/ha-penny-bridge.jpg~images/countries/ireland/blarney-castle.jpg|Cliffs of Moher~Irish stew~Ha'penny Bridge~Blarney Castle|Bjørn Christian Tørrissen · CC BY-SA 3.0~A Healthier Michigan from Detroit, United States · CC BY-SA 2.0~Unknown author · Public domain~Ryanhuntmuzik · CC BY-SA 4.0
+Cuba|3|images/countries/cuba/el-capitolio.jpg~images/countries/cuba/malecn-havana.jpg~images/countries/cuba/viales-valley.jpg~images/countries/cuba/havana-cathedral.jpg|El Capitolio~Malecón, Havana~Viñales Valley~Havana Cathedral|Nigel Pacquette · CC BY-SA 3.0~Lukas Mathis · CC BY-SA 2.0~Severin.stalder · CC BY-SA 3.0~akasenn · CC BY-SA 3.0
+Costa Rica|3|images/countries/costa-rica/arenal-volcano.jpg~images/countries/costa-rica/gallo-pinto.jpg~images/countries/costa-rica/monteverde-cloud-forest-reserve.jpg~images/countries/costa-rica/manuel-antonio-national-park.jpg|Arenal Volcano~Gallo pinto~Monteverde Cloud Forest Reserve~Manuel Antonio National Park|Rhododendrites · CC BY-SA 4.0~Gmasmcal · CC BY 4.0~Haakon S. Krohn · CC BY-SA 3.0~No machine-readable author provided. Jakes19 assumed (based  · Public domain
+Switzerland|2|images/countries/switzerland/matterhorn.jpg~images/countries/switzerland/fondue.jpg~images/countries/switzerland/chapel-bridge.jpg~images/countries/switzerland/lauterbrunnen.jpg|Matterhorn~Fondue~Chapel Bridge~Lauterbrunnen|Photo: chil, on Camptocamp.org Derivative work:Zacharie Gros · CC BY-SA 3.0~Juliano Mendes · CC BY 2.0~Simon Koopmann · CC BY-SA 2.5~Chensiyuan · CC BY-SA 4.0
+New Zealand|2|images/countries/new-zealand/milford-sound.jpg~images/countries/new-zealand/hobbiton-movie-set.jpg~images/countries/new-zealand/haka.jpg~images/countries/new-zealand/kiwi.jpg|Milford Sound~Hobbiton Movie Set~Haka~Kiwi (bird)|Maros M r a z (Maros) · CC BY-SA 3.0~Harsh.gavhane · CC BY-SA 4.0~Merrett, Joseph Jenner, 1816-1854. · Public domain~Maungatautari Ecological Island Trust · Public domain
+United States|1|images/countries/united-states/statue-of-liberty.jpg~images/countries/united-states/grand-canyon.jpg~images/countries/united-states/hamburger.jpg~images/countries/united-states/mount-rushmore.jpg|Statue of Liberty~Grand Canyon~Hamburger~Mount Rushmore|AskALotl · CC0~Lennart Sikkema · CC BY 3.0~Hongreddotbrewhouse · CC BY-SA 3.0~Thomas Wolf, www.foto-tw.de · CC BY-SA 3.0
+Portugal|3|images/countries/portugal/belm-tower.jpg~images/countries/portugal/pastel-de-nata.jpg~images/countries/portugal/douro.jpg~images/countries/portugal/pena-palace.jpg|Belém Tower~Pastel de nata~Douro~Pena Palace|Alvesgaspar · CC BY-SA 3.0~Mon Œil · CC BY 2.0~Vitor Oliveira from Torres Vedras, PORTUGAL · CC BY-SA 2.0~Singa Hitam · CC BY 2.0
+Indonesia|3|images/countries/indonesia/borobudur.jpg~images/countries/indonesia/nasi-goreng.jpg~images/countries/indonesia/tanah-lot.jpg~images/countries/indonesia/komodo-dragon.jpg|Borobudur~Nasi goreng~Tanah Lot~Komodo dragon|Heri nugroho · CC BY-SA 4.0~shankar s. from Dubai, united arab emirates · CC BY 2.0~Grayswoodsurrey · CC BY-SA 4.0~James Jolokia (james1203) · CC BY 4.0
+Jordan|3|images/countries/jordan/petra.jpg~images/countries/jordan/wadi-rum.jpg~images/countries/jordan/mansaf.jpg~images/countries/jordan/amman-citadel.jpg|Petra~Wadi Rum~Mansaf~Amman Citadel|Azurfrog · CC BY-SA 3.0~Daniel Case · CC BY-SA 3.0~Jktab · CC BY-SA 4.0~David Bjorgen · CC BY 2.5
+`.trim().split('\n').map(l => { const [country, tier, imgs, what, credits] = l.split('|'); return { country, tier: +tier, imgs: imgs.split('~'), what: what.split('~'), credits: credits.split('~') }; });
+
+/* DATA — Obscure Meals:  dish | country | tier | other countries that also count | picture | credit | source page */
+const MEALS = `
+Khachapuri|Georgia|2||images/meals/khachapuri.jpg|Vyacheslav Argenberg · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Old_Tbilisi,_Georgian_khachapuri,_Georgia.jpg
+Khinkali|Georgia|3||images/meals/khinkali.jpg|Sandra C from Canada · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Khinkali,_Restaurant_Aragvi.jpg
+Haggis|United Kingdom|1|Scotland|images/meals/haggis.jpg|Chris Brown · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Scotland_Haggis.jpg
+Hákarl|Iceland|3||images/meals/hkarl.jpg|Chris 73 · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Hakarl_near_Bjarnah%C3%B6fn_in_Iceland.JPG
+Poutine|Canada|1||images/meals/poutine.jpg|Camelia.boban · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Food_at_WIkimanian_2017_02.jpg
+Feijoada|Brazil|2||images/meals/feijoada.jpg|Adrião · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Feijoada_%C3%A0_transmontada.jpg
+Pão de queijo|Brazil|2||images/meals/po-de-queijo.jpg|Murilo manzini · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Cheesebread.jpg
+Bobotie|South Africa|3||images/meals/bobotie.jpg|Olga Ernst · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Bobotie,_South_African_dish.jpg
+Bunny chow|South Africa|3||images/meals/bunny-chow.jpg|Luke Comins · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Quarter_Mutton_Bunny_Chow.jpg
+Injera|Ethiopia|2|Eritrea|images/meals/injera.jpg|Artem.G · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Injera_with_eight_kinds_of_stew.jpg
+Plov|Uzbekistan|3||images/meals/plov.jpg|Jost Wagner · CC BY-SA 1.0|https://commons.wikimedia.org/wiki/File:Afghan_Palo.jpg
+Beshbarmak|Kazakhstan|3|Kyrgyzstan|images/meals/beshbarmak.jpg|Pannet · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:%D0%91%D0%B5%D1%88%D0%B1%D0%B0%D1%80%D0%BC%D0%B0%D0%BA_%D0%B8%D0%B7_%D0%B3%D0%BE%D0%B2%D1%8F%D0%B4%D0%B8%D0%BD%D1%8B_01.jpg
+Rendang|Indonesia|2|Malaysia|images/meals/rendang.jpg|Midori · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Rendang_daging_sapi_asli_Padang.JPG
+Philippine adobo|Philippines|2||images/meals/philippine-adobo.jpg|Joy D. Ganaden · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Adobo_DSCF4391.jpg
+Pupusa|El Salvador|2|Honduras|images/meals/pupusa.jpg|JMRAFFi · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Pupusas_El_Salvador_Centro_America.JPG
+Arepa|Venezuela|2|Colombia|images/meals/arepa.jpg|Steven Depolo from Grand Rapids, MI, USA · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Arepitas_Food_Macro.jpg
+Mole poblano|Mexico|1||images/meals/mole-poblano.jpg|AlejandroLinaresGarcia · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:ChickRedMole.JPG
+Moussaka|Greece|1||images/meals/moussaka.jpg|Robert Kindermann aka RobertK · CC BY-SA 2.5|https://commons.wikimedia.org/wiki/File:MussakasMeMelitsanesKePatates01.JPG
+Pastel de nata|Portugal|1||images/meals/pastel-de-nata.jpg|Mon Œil · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Pasteis_de_Belem.jpg
+Bigos|Poland|3||images/meals/bigos.jpg|Dr. Bernd Gross · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Bigos_(1).jpg
+Pelmeni|Russia|2||images/meals/pelmeni.jpg|Eugene Kim @ Flickr · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Pelmeni_Russian.jpg
+Goulash|Hungary|1||images/meals/goulash.jpg|Lily15 · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Gulyas080.jpg
+Smørrebrød|Denmark|2||images/meals/smrrebrd.jpg|User:Nillerdk · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Ida_Davidsen_udsnit_af_glasmontren.JPG
+Surströmming|Sweden|3||images/meals/surstrmming.jpg|Lapplaender · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Surstr%C3%B6mming.jpg
+Raclette|Switzerland|2|France|images/meals/raclette.jpg|Ka23 13 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Raclette_20040817_140816.jpg
+Okonomiyaki|Japan|2||images/meals/okonomiyaki.jpg|ume-y · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Okonomiyaki_001.jpg
+Fufu|Ghana|3|Nigeria;Ivory Coast;Cameroon|images/meals/fufu.jpg|daSupremo · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Wrapped_fufu.jpg
+Jollof rice|Nigeria|2|Ghana;Senegal|images/meals/jollof-rice.jpg|Noahalorwu · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Jollof_Rice_with_Stew.jpg
+Koshary|Egypt|2||images/meals/koshary.jpg|Dina Said · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Egyptian_food_Koshary.jpg
+Mansaf|Jordan|3||images/meals/mansaf.jpg|Jktab · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Mansaf,_the_traditional_dish_of_Jordan.jpg
+Kibbeh|Lebanon|3|Syria|images/meals/kibbeh.jpg|Bazel · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Kibbeh3.jpg
+Börek|Turkey|2||images/meals/brek.jpg|Unknown author · CC BY-SA 2.5|https://commons.wikimedia.org/wiki/File:Burek_trokut_1.png
+Ćevapi|Bosnia and Herzegovina|3|Serbia;Croatia|images/meals/evapi.jpg|Christian Paul from Vancouver, Canada · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Cevapi_s_kajmakom.jpg
+Bryndzové halušky|Slovakia|3||images/meals/bryndzov-haluky.jpg|Gregory finster · CC0|https://commons.wikimedia.org/wiki/File:Bryndzov%C3%A9_halu%C5%A1ky_so_slaninou.jpg
+Gallo pinto|Costa Rica|2|Nicaragua|images/meals/gallo-pinto.jpg|Gmasmcal · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Gallo_Pinto.jpg
+Lomo saltado|Peru|2||images/meals/lomo-saltado.jpg|Chasqui (Luis Tamayo) · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Lomo_Saltado_-_Lima,_Peru_Miraflores_(Tiendecita_Blanca).jpg
+Chivito|Uruguay|3||images/meals/chivito.jpg|Carlinosin at English Wikipedia · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Chivito1.jpg
+Lamington|Australia|2|New Zealand|images/meals/lamington.jpg|Zeitgeistlondon · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Mocha_Flake_amingtons.jpg
+Pavlova|New Zealand|2|Australia|images/meals/pavlova.jpg|Hazel Fowler · Public domain|https://commons.wikimedia.org/wiki/File:Pavlova_dessert.JPG
+Momo|Nepal|2|Tibet;China;Bhutan;India|images/meals/momo.jpg|Kushal Goyal · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Momo_nepal.jpg
+Bánh xèo|Vietnam|2||images/meals/bnh-xo.jpg|HungryHuy · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Banh_Xeo_with_fish_sauce_and_vegetables.jpg
+Nasi lemak|Malaysia|2|Singapore|images/meals/nasi-lemak.jpg|Meandkancil2020 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas,_di_Penang_Summer_Restaurant.jpg
+Tom yum|Thailand|1||images/meals/tom-yum.jpg|Takeaway · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Tom_yam_kung_maenam.jpg
+Poke|United States|2|Hawaii|images/meals/poke.jpg|Aquateamhungerforce · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Shoyu_and_onion_poke.jpg
+Baozi|China|1||images/meals/baozi.jpg|Popo le Chien · CC0|https://commons.wikimedia.org/wiki/File:Baozi_Chengdu.JPG
+Pierogi|Poland|1||images/meals/pierogi.jpg|Aw58 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Pierogi_z_mas%C5%82em_-_2023.03.31.jpg
+Biryani|India|1|Pakistan|images/meals/biryani.jpg|Mahi Tatavarty · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:%22Hyderabadi_Dum_Biryani%22.jpg
+Paella|Spain|1||images/meals/paella.jpg|Jan Harenburg · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:01_Paella_Valenciana_original.jpg
+Tteokbokki|South Korea|2|Korea|images/meals/tteokbokki.jpg|Popo le Chien · CC0|https://commons.wikimedia.org/wiki/File:Tteokbokki.JPG
+Stroopwafel|Netherlands|2||images/meals/stroopwafel.jpg|Takeaway · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Stroopwafels_01.jpg
+`.trim().split('\n').map(l => { const [dish, country, tier, also, img, credit, page] = l.split('|'); return { dish, country, tier: +tier, also: also ? also.split(';') : [], img, credit, page }; });
+
+/* DATA — Six Clues:  country | tier | six clues, hardest first */
+const CLUE_SETS = `
+Japan|1|Its people have some of the longest life expectancies in the world.~Its parliament is called the National Diet.~Its highest mountain is a volcano that last erupted in 1707.~It hosted the Summer Olympics in 1964 and 2021.~Its currency is the yen.~Its capital is Tokyo.
+Italy|1|It completely surrounds two other countries.~It has more UNESCO World Heritage Sites than almost any other country.~Its active volcanoes include Etna and Vesuvius.~Its flag has green, white and red vertical stripes.~It is shaped like a boot.~Its capital is Rome.
+France|1|Thanks to its overseas territories, it has more time zones than any other country.~Its national motto is "Liberty, Equality, Fraternity".~It is the most visited country in the world.~A famous cycling race crosses it every July.~It gave the Statue of Liberty to the United States.~Its capital is Paris.
+Brazil|1|It borders every country in South America except Chile and Ecuador.~Its capital is a planned city that opened in 1960.~Its official language is Portuguese.~It has won the men's World Cup five times.~Most of the Amazon rainforest is inside it.~Rio de Janeiro is one of its cities.
+Australia|1|Its capital was chosen as a compromise between its two biggest cities.~It is home to the world's largest coral reef system.~The emu and the kangaroo are on its coat of arms.~It is both a country and a continent.~Its most famous building is an opera house shaped like sails.~Its biggest city is Sydney.
+Canada|1|It has the longest coastline of any country.~It has two official languages.~Its national winter sport is ice hockey.~It is the second-largest country by area.~A maple leaf is on its flag.~Its capital is Ottawa.
+Mexico|1|Corn was first farmed there thousands of years ago.~The world's smallest dog breed is named after one of its states.~Its capital was built on the site of an Aztec city on a lake.~It has more Spanish speakers than any other country.~It celebrates the Day of the Dead.~It shares a long border with the United States, to its north.
+Egypt|1|It controls a canal linking the Mediterranean and the Red Sea.~Most of its people live within a few miles of one river.~It is in Africa, but its Sinai Peninsula is in Asia.~Its ancient rulers were called pharaohs.~The Great Sphinx is there.~Its capital is Cairo.
+India|1|It has 22 officially recognised languages.~Its national animal is the Bengal tiger.~It is called the world's largest democracy.~It became independent from Britain in 1947.~The Taj Mahal is there.~Its capital is New Delhi.
+China|1|Despite its size, the whole country uses a single time zone.~It invented paper, gunpowder, the compass and printing.~Giant pandas live in the wild only here.~It has the second-largest population in the world.~Its Great Wall is thousands of miles long.~Its capital is Beijing.
+United Kingdom|1|It is made up of four countries.~Its national anthem is "God Save the King".~It voted to leave the European Union in 2016.~Its flag is called the Union Jack.~Big Ben is there.~Its capital is London.
+Spain|1|It has two small cities on the north coast of Africa.~The world's oldest restaurant still in business is in its capital.~People throw tomatoes at a famous festival in one of its towns.~Paella comes from there.~Real Madrid and Barcelona are its football giants.~Its capital is Madrid.
+Greece|1|It has around 6,000 islands.~Its flag has nine blue and white stripes.~Democracy and theatre were born there.~The first modern Olympics were held there in 1896.~The Parthenon stands there.~Its capital is Athens.
+Russia|1|It spans eleven time zones.~It has the deepest lake in the world.~It sent the first person into space.~Its parliament is called the Duma.~It is the largest country in the world.~Its capital is Moscow.
+Germany|1|It has nine neighbouring countries.~Some stretches of its motorways have no speed limit.~The printing press was invented there.~It was split into East and West from 1949 to 1990.~It holds Oktoberfest every year.~Its capital is Berlin.
+Peru|2|It is the original home of the potato, with thousands of varieties.~Its national drink is the pisco sour.~Huge ancient drawings called the Nazca Lines are etched into its desert.~It shares Lake Titicaca with Bolivia.~Machu Picchu is there.~Its capital is Lima.
+Argentina|2|Its highest mountain, Aconcagua, is the tallest outside Asia.~Its barbecues are called asados.~The tango was born there.~Pope Francis was born there.~Lionel Messi and Diego Maradona come from there.~Its capital is Buenos Aires.
+South Korea|2|Its alphabet, Hangul, was invented by a king in the 1400s.~It hosted the 1988 Summer Olympics and the 2018 Winter Olympics.~Samsung and Hyundai are from there.~Kimchi is its national dish.~K-pop and BTS come from there.~Its capital is Seoul.
+Thailand|2|It is the only country in Southeast Asia never colonised by a European power.~It used to be called Siam.~The elephant is its national animal.~Pad thai and tom yum come from there.~Phuket is one of its islands.~Its capital is Bangkok.
+Turkey|2|Its biggest city sits on two continents.~Saint Nicholas, the original Santa Claus, was born there.~Tulips were grown there long before they became famous in the Netherlands.~Hot-air balloons float over Cappadocia there.~Its capital is Ankara.~Its biggest city is Istanbul.
+Morocco|2|It has the world's oldest university still running, founded in 859.~Its flag is red with a green star.~Its blue-painted town is Chefchaouen.~Its cooking is famous for the tagine.~Its biggest city is Casablanca.~Marrakesh is one of its cities.
+Kenya|3|Its runners are famous for winning distance races.~Its national language is Swahili.~The equator runs through it.~Barack Obama's father came from there.~The Maasai Mara reserve is there.~Its capital is Nairobi.
+Netherlands|2|About a quarter of it lies below sea level.~It has more bicycles than people.~Its royal family's colour is orange.~It is famous for tulips and windmills.~Van Gogh and Rembrandt came from there.~Its capital is Amsterdam.
+Iceland|3|It has no army.~Almost all of its electricity comes from renewable sources.~It sits on the Mid-Atlantic Ridge between two tectonic plates.~It has a famous geothermal spa called the Blue Lagoon.~Its capital is the northernmost capital of any independent country.~Its capital is Reykjavík.
+Ireland|2|It has no native snakes.~Its national symbol is a harp.~Guinness is brewed there.~Its national day, March 17, is celebrated around the world.~It is called the Emerald Isle.~Its capital is Dublin.
+Switzerland|2|It has four national languages.~It is not a member of the European Union.~Its flag is square.~Its army gave its name to a red pocket knife.~It is known for chocolate, cheese and watches.~Its capital is Bern.
+Norway|2|Its national day is May 17.~The Nobel Peace Prize is awarded in its capital.~It has won more Winter Olympic medals than any other country.~Its coast is cut by deep inlets called fjords.~Vikings set out from there.~Its capital is Oslo.
+Sweden|2|Alfred Nobel, who invented dynamite, was born there.~Volvo and Spotify come from there.~ABBA came from there.~IKEA was founded there.~It is the largest Nordic country by area.~Its capital is Stockholm.
+Vietnam|2|It is shaped like a long letter S.~It is one of the world's biggest coffee producers.~Hạ Long Bay is there.~Its national dish is phở.~A long war there involving the United States ended in 1975.~Its capital is Hanoi.
+Cuba|2|It is the largest island in the Caribbean.~Its streets are famous for 1950s American cars.~It is known for cigars and rum.~Fidel Castro led it for nearly 50 years.~It lies about 90 miles south of Florida.~Its capital is Havana.
+Jamaica|2|Its national dish is ackee and saltfish.~Its bobsled team inspired the movie Cool Runnings.~Reggae was born there.~Usain Bolt is from there.~Bob Marley came from there.~Its capital is Kingston.
+Costa Rica|3|It abolished its army in 1948.~About a quarter of its land is protected as parks or reserves.~Its national dish is gallo pinto.~Its famous saying is "pura vida".~It lies between Nicaragua and Panama.~Its capital is San José.
+New Zealand|2|It was the first country where women won the right to vote, in 1893.~Its only native land mammals are bats.~Its rugby team performs the haka.~The Lord of the Rings films were shot there.~Its people are nicknamed Kiwis.~Its capital is Wellington.
+Portugal|3|Its alliance with England, from 1373, is the oldest still in force.~It produces about half of the world's cork.~Its explorers include Vasco da Gama and Ferdinand Magellan.~Custard tarts called pastéis de nata come from there.~Cristiano Ronaldo is from there.~Its capital is Lisbon.
+United States|1|It has the oldest written national constitution still in use.~Its national bird is the bald eagle.~Its flag has 13 stripes.~It landed the first people on the Moon.~It is made up of 50 states.~Its capital is Washington, D.C.
+Saudi Arabia|3|It has no permanent rivers.~It is home to Islam's two holiest cities.~It has some of the world's biggest oil reserves.~Its flag is green, with Arabic writing and a sword.~Cristiano Ronaldo plays for a club there.~Its capital is Riyadh.
+South Africa|2|It has three capital cities.~It has 12 official languages.~Nelson Mandela became its president in 1994.~Table Mountain overlooks one of its cities.~It hosted the 2010 World Cup.~Cape Town and Johannesburg are its cities.
+Nigeria|3|It has more people than any other country in Africa.~Its film industry is nicknamed Nollywood.~Jollof rice is a favourite dish there.~Its biggest city is Lagos.~Its capital is Abuja.~It is in West Africa, and it is named after the Niger River.
+Philippines|3|It is made up of more than 7,600 islands.~It was named after a Spanish king.~Jeepneys are a popular way to get around.~Its national hero is José Rizal.~Boxer Manny Pacquiao is from there.~Its capital is Manila.
+Indonesia|3|It has the world's largest Muslim population.~It is made up of more than 17,000 islands.~Komodo dragons live there in the wild.~It is moving its capital to a new city on Borneo.~Bali is one of its islands.~Its biggest city is Jakarta.
+Chile|3|The Atacama, the driest non-polar desert on Earth, is there.~Easter Island and its giant stone heads belong to it.~It is about 2,600 miles long but never more than about 220 miles wide.~It is the world's biggest copper producer.~It runs down the western side of the Andes.~Its capital is Santiago.
+Colombia|3|It is the only South American country with both Pacific and Caribbean coasts.~It produces more emeralds than any other country.~Its coffee is famous around the world.~Shakira is from there.~Medellín and Cartagena are among its cities.~Its capital is Bogotá.
+`.trim().split('\n').map(l => { const [country, tier, clues] = l.split('|'); return { country, tier: +tier, clues: clues.split('~') }; });
+
+/* DATA — Company HQs:  city (metro area) | also accepted | tier | three companies headquartered there */
+const HQS = `
+Seattle|Seattle area;Redmond|1|Amazon;Microsoft;Starbucks
+San Francisco Bay Area|San Francisco;SF;Bay Area;Silicon Valley;San Jose;Cupertino;Santa Clara;Mountain View|1|Apple;Nvidia;Alphabet (Google)
+New York City|New York;NYC|1|JPMorgan Chase;Goldman Sachs;Verizon
+Atlanta||1|The Home Depot;UPS;Coca-Cola
+Chicago||1|McDonald's;United Airlines;Abbott Laboratories
+Houston||1|ExxonMobil;ConocoPhillips;Phillips 66
+Detroit|Dearborn|1|General Motors;Ford;Stellantis North America
+Tokyo||1|Sony;SoftBank;Mitsubishi
+Paris||1|LVMH;L'Oréal;TotalEnergies
+London||1|Shell;HSBC;Unilever
+Omaha||2|Berkshire Hathaway;Union Pacific;Mutual of Omaha
+Bentonville|Northwest Arkansas;Arkansas;Springdale|2|Walmart;Tyson Foods;J.B. Hunt
+Minneapolis|Minneapolis-Saint Paul;Twin Cities;St Paul;Saint Paul|2|UnitedHealth Group;Target;Best Buy
+Dallas|Dallas-Fort Worth;DFW;Fort Worth|2|AT&T;American Airlines;Southwest Airlines
+Charlotte||2|Bank of America;Honeywell;Lowe's
+Cincinnati||2|Procter & Gamble;Kroger;Fifth Third Bank
+Los Angeles|LA;Burbank|2|The Walt Disney Company;Mattel;Snap (Snapchat)
+Portland|Portland Oregon;Beaverton|2|Nike;Columbia Sportswear;Daimler Truck North America
+Boston||2|Fidelity Investments;Liberty Mutual;State Street
+Las Vegas|Vegas|2|MGM Resorts;Las Vegas Sands;Wynn Resorts
+Austin||2|Tesla;Dell;Whole Foods Market
+Miami||2|Carnival Cruise Line;Lennar;Ryder
+Seoul||2|Samsung;Hyundai;LG
+Munich||2|BMW;Siemens;Allianz
+Amsterdam||2|Heineken;ING;Booking.com
+Toronto||2|Royal Bank of Canada;TD Bank;Brookfield
+Stockholm||2|Spotify;H&M;Ericsson
+St. Louis|Saint Louis|3|Centene;Emerson Electric;Anheuser-Busch
+Pittsburgh||3|PNC Bank;Kraft Heinz;U.S. Steel
+Memphis||3|FedEx;AutoZone;International Paper
+Nashville||3|HCA Healthcare;Dollar General;Tractor Supply
+Denver||3|Newmont;DaVita;Western Union
+Columbus|Columbus Ohio|3|Cardinal Health;Nationwide;Bath & Body Works
+Milwaukee||3|Northwestern Mutual;Harley-Davidson;Rockwell Automation
+Stuttgart||3|Mercedes-Benz;Porsche;Bosch
+Zurich|Zürich|3|UBS;Zurich Insurance;ABB
+Basel||3|Novartis;Roche;Syngenta
+Shenzhen||3|Tencent;Huawei;BYD
+Mumbai|Bombay|3|Reliance Industries;Tata Group;HDFC Bank
+Copenhagen||3|Maersk;Carlsberg;Novo Nordisk
+Mexico City|CDMX|3|América Móvil;Grupo Bimbo;Televisa
+`.trim().split('\n').map(l => { const [city, al, tier, cos] = l.split('|'); return { city, aliases: al ? al.split(';') : [], tier: +tier, cos: cos.split(';') }; });
+
+/* DATA — Actor from 4 Titles:  person | also accepted | tier | four movies or shows they were in */
+const ACTORS = `
+Tom Hanks||1|Forrest Gump;Cast Away;Toy Story (voice of Woody);Saving Private Ryan
+Leonardo DiCaprio|Leo|1|Titanic;Inception;The Revenant;The Wolf of Wall Street
+Meryl Streep||1|The Devil Wears Prada;Mamma Mia!;Sophie's Choice;The Iron Lady
+Denzel Washington|Denzel|1|Training Day;Glory;Remember the Titans;The Equalizer
+Will Smith||1|Men in Black;Independence Day;Bad Boys;The Fresh Prince of Bel-Air
+Julia Roberts||1|Pretty Woman;Erin Brockovich;Notting Hill;Ocean's Eleven
+Tom Cruise||1|Top Gun;Mission: Impossible;Jerry Maguire;Risky Business
+Brad Pitt||1|Fight Club;Ocean's Eleven;Moneyball;Once Upon a Time in Hollywood
+Jennifer Aniston||1|Friends;The Morning Show;Horrible Bosses;Marley & Me
+Sandra Bullock||1|Speed;Gravity;The Blind Side;Miss Congeniality
+Morgan Freeman||1|The Shawshank Redemption;Driving Miss Daisy;Bruce Almighty;Million Dollar Baby
+Samuel L. Jackson|Samuel Jackson|1|Pulp Fiction;Snakes on a Plane;Django Unchained;The Avengers
+Robert Downey Jr.|Robert Downey;RDJ|1|Iron Man;Sherlock Holmes;Tropic Thunder;Oppenheimer
+Scarlett Johansson||1|Lost in Translation;Black Widow;Marriage Story;Lucy
+Dwayne Johnson|The Rock|1|Jumanji: Welcome to the Jungle;Moana (voice of Maui);Fast Five;San Andreas
+Keanu Reeves||1|The Matrix;John Wick;Speed;Bill & Ted's Excellent Adventure
+Johnny Depp||1|Pirates of the Caribbean;Edward Scissorhands;Charlie and the Chocolate Factory;21 Jump Street (TV)
+Harrison Ford||1|Star Wars;Raiders of the Lost Ark;Blade Runner;The Fugitive
+Jim Carrey||1|Ace Ventura: Pet Detective;The Mask;The Truman Show;Dumb and Dumber
+Adam Sandler||1|Happy Gilmore;Billy Madison;Grown Ups;Uncut Gems
+Robin Williams||1|Mrs. Doubtfire;Good Will Hunting;Aladdin (voice of the Genie);Dead Poets Society
+Margot Robbie||1|Barbie;The Wolf of Wall Street;I, Tonya;Suicide Squad
+Emma Stone||1|La La Land;Easy A;The Help;Poor Things
+Ryan Gosling||1|The Notebook;La La Land;Drive;Barbie
+Jennifer Lawrence|J-Law|1|The Hunger Games;Silver Linings Playbook;X-Men: First Class;Don't Look Up
+Matt Damon||1|Good Will Hunting;The Bourne Identity;The Martian;Ocean's Eleven
+Bryan Cranston||2|Breaking Bad;Malcolm in the Middle;Trumbo;Argo
+Pedro Pascal||2|The Last of Us;The Mandalorian;Narcos;Game of Thrones
+Zendaya||1|Euphoria;Dune;Spider-Man: Homecoming;Challengers
+Timothée Chalamet|Timothee Chalamet|2|Dune;Call Me by Your Name;Wonka;A Complete Unknown
+Steve Carell||1|The Office;The 40-Year-Old Virgin;Despicable Me (voice of Gru);Foxcatcher
+Jennifer Lopez|J.Lo;JLo|2|Selena;Hustlers;Maid in Manhattan;Out of Sight
+Hugh Jackman||1|X-Men;The Greatest Showman;Les Misérables;Prisoners
+Chris Hemsworth||2|Thor;Extraction;Rush;Avengers: Endgame
+Chris Pratt||2|Parks and Recreation;Guardians of the Galaxy;Jurassic World;The Lego Movie (voice of Emmet)
+Anne Hathaway||1|The Princess Diaries;The Devil Wears Prada;Les Misérables;Interstellar
+Natalie Portman||2|Black Swan;Star Wars: Episode I;Léon: The Professional;Thor
+Kate Winslet||2|Titanic;The Reader;Mare of Easttown;Eternal Sunshine of the Spotless Mind
+Angelina Jolie||1|Maleficent;Lara Croft: Tomb Raider;Mr. & Mrs. Smith;Girl, Interrupted
+George Clooney||1|ER;Ocean's Eleven;Up in the Air;O Brother, Where Art Thou?
+Nicole Kidman||2|Moulin Rouge!;Big Little Lies;The Hours;Eyes Wide Shut
+Al Pacino||2|The Godfather;Scarface;Heat;Scent of a Woman
+Robert De Niro||2|Taxi Driver;Goodfellas;Meet the Parents;Raging Bull
+Jack Nicholson||2|The Shining;One Flew Over the Cuckoo's Nest;A Few Good Men;As Good as It Gets
+Arnold Schwarzenegger|Arnold|1|The Terminator;Predator;Kindergarten Cop;Total Recall
+Sylvester Stallone|Sly Stallone|1|Rocky;First Blood;Creed;The Expendables
+Eddie Murphy||1|Beverly Hills Cop;Coming to America;Shrek (voice of Donkey);The Nutty Professor
+Will Ferrell||1|Elf;Anchorman;Talladega Nights;Step Brothers
+Melissa McCarthy||2|Bridesmaids;Gilmore Girls;Mike & Molly;Spy
+Viola Davis||2|The Help;Fences;How to Get Away with Murder;The Woman King
+Sofía Vergara|Sofia Vergara|2|Modern Family;Chef;Hot Pursuit;Griselda
+Jason Bateman||2|Arrested Development;Ozark;Horrible Bosses;Juno
+Kevin Hart||1|Ride Along;Central Intelligence;Jumanji: Welcome to the Jungle;The Upside
+Tom Holland||2|Spider-Man: Homecoming;Uncharted;The Impossible;Cherry
+Jenna Ortega||2|Wednesday;Scream (2022);Beetlejuice Beetlejuice;Jane the Virgin
+Millie Bobby Brown||2|Stranger Things;Enola Holmes;Godzilla: King of the Monsters;Damsel
+Jeff Goldblum||2|Jurassic Park;The Fly;Independence Day;Wicked
+Bill Murray||2|Ghostbusters;Groundhog Day;Lost in Translation;Caddyshack
+Owen Wilson||2|Wedding Crashers;Cars (voice of Lightning McQueen);Night at the Museum;Loki
+Sarah Jessica Parker|SJP|2|Sex and the City;Hocus Pocus;The Family Stone;Divorce
+Courteney Cox||2|Friends;Scream;Cougar Town;Ace Ventura: Pet Detective
+Matthew McConaughey||2|Interstellar;Dallas Buyers Club;True Detective;Dazed and Confused
+Jamie Foxx||2|Ray;Django Unchained;Collateral;Baby Driver
+Halle Berry||2|Monster's Ball;X-Men;Die Another Day;Catwoman
+Mark Wahlberg||2|Ted;The Departed;Boogie Nights;Transformers: Age of Extinction
+Christian Bale||2|The Dark Knight;American Psycho;The Fighter;Ford v Ferrari
+Heath Ledger||3|The Dark Knight;10 Things I Hate About You;Brokeback Mountain;A Knight's Tale
+Cillian Murphy||2|Oppenheimer;Peaky Blinders;28 Days Later;Inception
+Jason Momoa||2|Aquaman;Game of Thrones;Dune;A Minecraft Movie
+Florence Pugh||3|Midsommar;Little Women;Black Widow;Oppenheimer
+Emma Watson||1|Harry Potter;Beauty and the Beast (2017);Little Women;The Perks of Being a Wallflower
+Daniel Radcliffe||1|Harry Potter;Now You See Me 2;Swiss Army Man;Weird: The Al Yankovic Story
+Ben Stiller||2|Meet the Parents;Zoolander;Night at the Museum;Tropic Thunder
+Cameron Diaz||2|There's Something About Mary;Charlie's Angels;The Mask;Shrek (voice of Fiona)
+Ryan Reynolds||1|Deadpool;The Proposal;Free Guy;Van Wilder
+Ben Affleck||2|Good Will Hunting;Argo;Gone Girl;Armageddon
+Reese Witherspoon||2|Legally Blonde;Walk the Line;Big Little Lies;Sweet Home Alabama
+Tom Hardy||3|Mad Max: Fury Road;Venom;Inception;Peaky Blinders
+`.trim().split('\n').map(l => { const [name, al, tier, titles] = l.split('|'); return { name, aliases: al ? al.split(';') : [], tier: +tier, titles: titles.split(';') }; });
+/* DATA — Top 10:  list | tier | ranked? (1 = numbered in order) | ten answers, each with its also-accepted spellings after ';' */
+const TOP10 = `
+The 10 largest countries by area|1|1|Russia~Canada~United States;USA;US;America~China~Brazil~Australia~India~Argentina~Kazakhstan~Algeria
+The 10 countries with the most people (UN estimate, 2025)|1|1|India~China~United States;USA;US;America~Indonesia~Pakistan~Nigeria~Brazil~Bangladesh~Russia~Ethiopia
+The 10 biggest U.S. cities by population (2020 census)|1|1|New York;New York City;NYC~Los Angeles;LA~Chicago~Houston~Phoenix~Philadelphia;Philly~San Antonio~San Diego~Dallas~San Jose
+The 10 tallest mountains on Earth|3|1|Mount Everest;Everest~K2~Kangchenjunga~Lhotse~Makalu~Cho Oyu~Dhaulagiri~Manaslu~Nanga Parbat~Annapurna
+The 10 longest rivers in the world|2|1|Nile~Amazon~Yangtze;Chang Jiang~Mississippi;Mississippi-Missouri;Missouri~Yenisei~Yellow River;Huang He~Ob;Ob-Irtysh;Irtysh~Paraná;Parana~Congo~Amur
+The 10 largest U.S. states by area|1|1|Alaska~Texas~California~Montana~New Mexico~Arizona~Nevada~Colorado~Oregon~Wyoming
+The 10 U.S. states with the most people|1|1|California~Texas~Florida~New York~Pennsylvania~Illinois~Ohio~Georgia~North Carolina~Michigan
+The 10 largest countries in Africa by area|3|1|Algeria~DR Congo;Democratic Republic of the Congo;Congo;DRC~Sudan~Libya~Chad~Niger~Angola~Mali~South Africa~Ethiopia
+The first 10 elements of the periodic table|2|1|Hydrogen~Helium~Lithium~Beryllium~Boron~Carbon~Nitrogen~Oxygen~Fluorine~Neon
+The first 10 U.S. presidents|2|1|George Washington;Washington~John Adams;Adams~Thomas Jefferson;Jefferson~James Madison;Madison~James Monroe;Monroe~John Quincy Adams;Adams;Quincy Adams~Andrew Jackson;Jackson~Martin Van Buren;Van Buren~William Henry Harrison;Harrison;Henry Harrison~John Tyler;Tyler
+The 10 European countries with the most people (not counting Turkey)|2|1|Russia~Germany~United Kingdom;UK;Britain;Great Britain;England~France~Italy~Spain~Poland~Ukraine~Romania~Netherlands;Holland
+The 10 largest lakes in the world|3|1|Caspian Sea;Caspian~Lake Superior;Superior~Lake Victoria;Victoria~Lake Huron;Huron~Lake Michigan;Michigan~Lake Tanganyika;Tanganyika~Lake Baikal;Baikal~Great Bear Lake;Great Bear~Lake Malawi;Malawi;Lake Nyasa;Nyasa~Great Slave Lake;Great Slave
+Canada's 10 provinces|2|0|Ontario~Quebec;Québec~British Columbia;BC~Alberta~Manitoba~Saskatchewan~Nova Scotia~New Brunswick~Newfoundland and Labrador;Newfoundland;Labrador~Prince Edward Island;PEI
+The 10 largest islands in the world|3|1|Greenland~New Guinea~Borneo~Madagascar~Baffin Island;Baffin~Sumatra~Honshu~Victoria Island~Great Britain;Britain~Ellesmere Island;Ellesmere
+The 10 most common last names in the U.S. (2010 census)|2|1|Smith~Johnson~Williams~Brown~Jones~Garcia~Miller~Davis~Rodriguez~Martinez
+The 10 most populous countries in South America|3|1|Brazil~Colombia~Argentina~Peru~Venezuela~Chile~Ecuador~Bolivia~Paraguay~Uruguay
+The 7 continents and 3 biggest oceans|1|0|Africa~Antarctica~Asia~Australia;Oceania~Europe~North America~South America~Pacific;Pacific Ocean~Atlantic;Atlantic Ocean~Indian;Indian Ocean
+The 8 planets, plus the Sun and the Moon|1|0|Mercury~Venus~Earth~Mars~Jupiter~Saturn~Uranus~Neptune~Sun;The Sun~Moon;The Moon
+`.trim().split('\n').map(l => { const [title, tier, ranked, items] = l.split('|'); return { title, tier: +tier, ranked: ranked === '1', items: items.split('~').map(x => x.split(';')) }; });
+const COUNTRY_BY_NAME = Object.fromEntries(COUNTRIES.map(c => [c.name, c]));
+
 const CATS = [
   { id: 'flags',    name: 'Flags',               emoji: '🏳️', desc: 'Name the country from its flag.', geo: true },
   { id: 'outlines', name: 'Country Shapes',      emoji: '🗺️', desc: 'Name the country from its outline.', geo: true },
@@ -2530,6 +2836,12 @@ const CATS = [
     children: ['careers_nfl', 'careers_nba', 'careers_mlb', 'careers_nhl', 'careers_soccer', 'careers_all'] },
   { id: 'sat',      name: 'Cities from Space',   emoji: '🛰️', desc: 'Name the city from a satellite view. No labels, no mercy.', geo: true },
   { id: 'colleges', name: 'College Towns',       emoji: '🎓', desc: 'Name the Division I college in each town.', geo: true },
+  { id: 'quad',     name: 'Country in 4 Photos', emoji: '📷', desc: 'Four photos from one country: a landmark, a dish, a landscape and more.', geo: true },
+  { id: 'clues',    name: 'Six Clues',           emoji: '🕵️', desc: 'Clues about a country appear one at a time. Guess with fewer clues for more points.', geo: true, clues: true },
+  { id: 'meals',    name: 'Obscure Meals',       emoji: '🍲', desc: 'Which country is this dish from?', geo: true },
+  { id: 'hqs',      name: 'Company HQs',         emoji: '💼', desc: 'Name the city where all three companies have their headquarters.', geo: true },
+  { id: 'actors',   name: 'Actor from 4 Titles', emoji: '🎭', desc: 'Name the person who starred in all four movies or shows.', geo: true },
+  { id: 'top10',    name: 'Top 10',              emoji: '🔟', desc: 'Name as many of the ten as you can. Three wrong guesses and you\'re out.', geo: true, top10: true },
   { id: 'pixel',    name: 'Pixelated',           emoji: '👾', desc: 'The picture starts as big blocks and sharpens as the clock runs. Answer early for more points.',
     children: ['pix_flags', 'pix_states', 'pix_breeds', 'pix_cars', 'pix_skylines', 'pix_logos', 'pix_disney', 'pix_movies', 'pix_mix'] },
   { id: 'states',   name: 'State Flags',         emoji: '🇺🇸', desc: 'Name the U.S. state from its flag.', geo: true },
@@ -2601,7 +2913,7 @@ const CAT = Object.fromEntries(CATS.map(c => [c.id, c]));
 const HOME = CATS.filter(c => !c.parent && c.id !== 'kids');
 const BANK = { gk: GK, politics: POLITICS, hist_ancient: HIST_ANCIENT, hist_medieval: HIST_MEDIEVAL, hist_wars: HIST_WARS, hist_us: HIST_US, hist_modern: HIST_MODERN,
   hist_all: [...HIST_ANCIENT, ...HIST_MEDIEVAL, ...HIST_WARS, ...HIST_US, ...HIST_MODERN], k_disney: K_DISNEY, k_movies: K_MOVIES, k_gk: K_GK, k_animals: K_ANIMALS };
-const MIXES = { mixed: ['flags', 'capitals', 'politics', 'gk', 'outlines', 'hist_all', 'stadiums', 'brands', 'logos_all', 'stadiumpics', 'skylines', 'careers_all', 'sat', 'colleges', 'emoji', 'bands', 'states', 'cars', 'breeds_all'],
+const MIXES = { mixed: ['flags', 'capitals', 'politics', 'gk', 'outlines', 'hist_all', 'stadiums', 'brands', 'logos_all', 'stadiumpics', 'skylines', 'careers_all', 'sat', 'colleges', 'emoji', 'bands', 'states', 'cars', 'breeds_all', 'quad', 'meals', 'hqs', 'actors'],
   pix_mix: ['pix_flags', 'pix_states', 'pix_breeds', 'pix_cars', 'pix_skylines', 'pix_logos', 'pix_disney', 'pix_movies'],
   k_mix: ['k_disney', 'k_movies', 'k_gk', 'k_animals', 'k_flags'] };
 if (!SHOW_LOGO_QUIZZES) { MIXES.mixed = MIXES.mixed.filter(id => CAT[id]); MIXES.pix_mix = MIXES.pix_mix.filter(id => CAT[id]); CAT.mixed.logo = false; }
@@ -2777,6 +3089,35 @@ function wordQ(w, cat) {
   return { ...base, prompt: `What does "${w.es}" mean in English?`, answers: [...en, ...en.map(x => x.replace(/^to /, ''))], answerLabel: w.en };
 }
 const lastName = n => n.replace(/,? Jr\.?$/, '').split(' ').pop();
+const countryAnswers = name => { const c = COUNTRY_BY_NAME[name]; return c ? [c.name, ...c.aliases] : [name]; };
+const otherCountries = name => COUNTRIES.filter(c => c.name !== name).flatMap(c => [c.name, ...c.aliases]);
+function quadQ(r) {
+  return { cat: 'quad', kind: 'quad', id: 'quad:' + r.country, imgs: r.imgs, img: r.imgs[0], thumb: 'ph', tier: r.tier, tag: 'Country in 4 photos', prompt: 'Which country are these photos from?',
+    extra: 'Pictured: ' + r.what.join(', ') + '.',
+    creditHtml: 'Photos: ' + r.credits.map(esc).join(' · ') + ' · Wikimedia Commons',
+    answers: countryAnswers(r.country), answerLabel: r.country, distractors: otherCountries(r.country), pool: () => QUADS.filter(o => o !== r).map(o => o.country) };
+}
+function mealQ(r) {
+  return { cat: 'meals', kind: 'photo', id: 'meal:' + r.dish, img: r.img, credit: r.credit, page: r.page, thumb: 'ph', tier: r.tier, tag: 'Obscure meals', prompt: 'Which country is this dish from?',
+    extra: `It's ${r.dish}.`, answers: [...countryAnswers(r.country), ...r.also.flatMap(countryAnswers)], answerLabel: r.country,
+    distractors: otherCountries(r.country).filter(n => !r.also.includes(n)), pool: () => [...new Set(MEALS.filter(o => o.country !== r.country && !r.also.includes(o.country)).map(o => o.country))] };
+}
+function cluesQ(r) {
+  return { cat: 'clues', kind: 'clues', id: 'clues:' + r.country, clues: r.clues, tier: r.tier, tag: 'Six clues', prompt: 'Which country is this?',
+    answers: countryAnswers(r.country), answerLabel: r.country, distractors: otherCountries(r.country), pool: () => CLUE_SETS.filter(o => o !== r).map(o => o.country) };
+}
+function hqQ(r) {
+  return { cat: 'hqs', kind: 'chips', id: 'hq:' + r.city, chips: r.cos, tier: r.tier, tag: 'Company HQs', prompt: 'Which city is home to the headquarters of all three?',
+    answers: [r.city, ...r.aliases], answerLabel: r.city, distractors: HQS.filter(o => o !== r).map(o => o.city), pool: () => HQS.filter(o => o !== r).map(o => o.city) };
+}
+function actorQ(r) {
+  return { cat: 'actors', kind: 'chips', id: 'actor:' + r.name, chips: r.titles, tier: r.tier, tag: 'Actor from 4 titles', prompt: 'Who starred in all four?',
+    answers: [r.name, lastName(r.name), ...r.aliases], answerLabel: r.name, distractors: ACTORS.filter(o => o !== r).map(o => o.name), pool: () => ACTORS.filter(o => o !== r).map(o => o.name) };
+}
+function top10Q(r) {
+  return { cat: 'top10', kind: 'top10', id: 'top10:' + r.title, tier: r.tier, ranked: r.ranked, items: r.items, tag: 'Top 10', title: r.title, prompt: 'Name as many as you can.',
+    answers: r.items.flat(), answerLabel: r.title, distractors: [] };
+}
 function photoQ(r, list, cat, tag, prompt) {
   return { cat, kind: 'photo', img: r.img, credit: r.credit, page: r.page, thumb: 'ph', tier: r.tier, tag, prompt,
     answers: [r.name, ...r.aliases], answerLabel: r.name, distractors: list.filter(o => o !== r).flatMap(o => [o.name, ...o.aliases]), pool: () => list.filter(o => o !== r).map(o => o.name) };
@@ -2883,6 +3224,12 @@ function buildFor(cat, cfg, shapes) {
     case 'emoji': qs = byTier(EMOJI_SONGS.map(emojiQ), diff); break;
     case 'bands': qs = byTier(BANDS.map(bandQ), diff); break;
     case 'states': qs = byTier(STATE_FLAGS.map(r => photoQ(r, STATE_FLAGS, 'states', 'State flags', 'Which U.S. state does this flag belong to?')), diff); break;
+    case 'quad': qs = byTier(QUADS.map(quadQ), diff); break;
+    case 'top10': qs = byTier(TOP10.map(top10Q), diff); break;
+    case 'meals': qs = byTier(MEALS.map(mealQ), diff); break;
+    case 'clues': qs = byTier(CLUE_SETS.map(cluesQ), diff); break;
+    case 'hqs': qs = byTier(HQS.map(hqQ), diff); break;
+    case 'actors': qs = byTier(ACTORS.map(actorQ), diff); break;
     case 'cars': qs = byTier(CARS.map(r => photoQ(r, CARS, 'cars', 'Name the car', 'Which car is this?')), diff); break;
     case 'breeds_dogs': qs = byTier(DOGS.map(r => photoQ(r, DOGS, 'breeds', 'Dog breeds', 'Which dog breed is this?')), diff); break;
     case 'breeds_cats': qs = byTier(CATBREEDS.map(r => photoQ(r, CATBREEDS, 'breeds', 'Cat breeds', 'Which cat breed is this?')), diff); break;
@@ -2948,7 +3295,7 @@ const sfx = {
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 let screen = 'home';
-let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, diff: 1, sil: 1, pix: 2 }, store.get('cfg', {}))
+let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, ctime: 60, ttime: 90, diff: 1, sil: 1, pix: 2 }, store.get('cfg', {}))
 if (!CAT[cfg.cat]) cfg.cat = 'flags';
 if (!CAT[cfg.group]) cfg.group = 'kids';;
 if (!CAT[cfg.cat] || CAT[cfg.cat].children) cfg.cat = 'flags';
@@ -3030,7 +3377,7 @@ function renderSetup() {
         `<label class="pname"><span class="dot" style="background:${COLORS[i]}"></span><input data-pn="${i}" value="${esc(cfg.names[i])}" maxlength="16" onfocus="this.select()" aria-label="Player ${i + 1} name"></label>`).join('')}</div></div>
       <div class="field"><span class="label">Questions each</span>${seg('rounds', [5, 10, 15, 20].map(v => ({ v, n: v })))}
         ${size < cfg.rounds * cfg.count ? `<div class="hint" style="margin-top:8px">This quiz has ${size} different questions, so you'll get <b>${Math.floor(size / cfg.count)} each</b>. Nothing repeats within a game.</div>` : ''}</div>
-      <div class="field"><span class="label">Seconds per question</span>${c.kids ? seg('ktime', [20, 30, 45, 60].map(v => ({ v, n: v + 's' }))) : seg('time', [10, 15, 20, 30].map(v => ({ v, n: v + 's' })))}</div>
+      <div class="field"><span class="label">Seconds per question</span>${c.kids ? seg('ktime', [20, 30, 45, 60].map(v => ({ v, n: v + 's' }))) : c.clues ? seg('ctime', [30, 45, 60, 90].map(v => ({ v, n: v + 's' }))) : c.top10 ? seg('ttime', [60, 90, 120, 180].map(v => ({ v, n: v + 's' }))) : seg('time', [10, 15, 20, 30].map(v => ({ v, n: v + 's' })))}</div>
       ${c.geo ? `<div class="field"><span class="label">Difficulty${cfg.cat === 'mixed' ? ' (for the picture rounds)' : ''}</span>${seg('diff', ['flags', 'outlines', 'capitals', 'mixed'].includes(cfg.cat) ? DIFFS : [{ v: 1, n: 'Easy', s: 'the famous ones' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'everything' }])}</div>` : ''}
       ${c.pix ? `<div class="field"><span class="label">Starting pixelation</span>${seg('pix', [{ v: 1, n: 'Light', s: 'easier' }, { v: 2, n: 'Medium', s: 'balanced' }, { v: 3, n: 'Heavy', s: 'harder' }])}</div>` : ''}
       ${c.drop ? dropHelp(c) : ''}
@@ -3068,7 +3415,7 @@ async function startGame() {
   const rounds = Math.min(cfg.rounds, Math.floor(questions.length / players.length));
   if (rounds < 1) { screen = 'setup'; render(); return; }
   questions.length = rounds * players.length;
-  game = { cfg: { ...cfg, rounds, time: CAT[cfg.cat].kids ? cfg.ktime : cfg.time }, players, questions, idx: 0, log: [],
+  game = { cfg: { ...cfg, rounds, time: CAT[cfg.cat].kids ? cfg.ktime : CAT[cfg.cat].clues ? cfg.ctime : CAT[cfg.cat].top10 ? cfg.ttime : cfg.time }, players, questions, idx: 0, log: [],
     note: rounds < cfg.rounds ? `This quiz has ${questions.length} different questions to go around, so it's ${rounds}${players.length > 1 ? ' each' : ''} instead of ${cfg.rounds}. Nothing repeats.` : '' };
   preload(0); preload(1);
   beginTurn();
@@ -3110,6 +3457,12 @@ function promptHTML(q) {
   if (q.kind === 'career') return `<div class="path">${q.stops.map((st, i) => `${i ? '<span class="arr">→</span>' : ''}<div class="stop${q.imgs.length ? '' : ' txt'}">${q.imgs.length ? `<img src="${q.imgs[i]}" alt="">` : ''}<b>${esc(st.team)}</b><span>${esc(st.years)}</span></div>`).join('')}</div>${q.note ? `<div class="credit">${esc(q.note)}</div>` : ''}`;
   if (q.kind === 'sat') return `<div class="sat">${q.imgs.map(u => `<img src="${u}" alt="">`).join('')}</div><div class="credit" id="credit"></div>`;
   if (q.kind === 'emoji') return `<div class="emoji">${q.emoji}</div><div class="khint" style="margin:0 0 8px">by <b>${esc(q.artist)}</b></div>`;
+  if (q.kind === 'top10') return `<div class="t10title">${esc(q.title)}</div><div class="board10" id="board10">${q.items.map((it, i) => `<div class="slot" data-i="${i}">${q.ranked ? `<b>${i + 1}</b>` : '<b>•</b>'}<span></span></div>`).join('')}</div>
+    <div class="cluebar"><span id="t10info">0 of 10 found · <b>0</b> points</span><span>3 strikes and you're out</span></div>`;
+  if (q.kind === 'quad') return `<div class="quad">${q.imgs.map(u => `<img src="${u}" alt="">`).join('')}</div><div class="credit" id="credit"></div>`;
+  if (q.kind === 'chips') return `<div class="chips">${q.chips.map(c => `<span>${esc(c)}</span>`).join('')}</div>`;
+  if (q.kind === 'clues') return `<ol class="clues" id="clues">${q.clues.map((c, i) => `<li class="${i ? 'hid' : ''}"><b>${i + 1}</b>${esc(c)}</li>`).join('')}</ol>
+    <div class="cluebar"><span id="clueinfo">Clue 1 of 6 · worth <b>200</b></span><button class="linkbtn" type="button" onclick="showClue()">Show another clue</button></div>`;
   if (q.kind === 'pix') return `<div class="pixbox"><canvas id="pixc" width="640" height="420"></canvas><img id="pixsrc" class="pixsrc" src="${q.src}" alt=""></div><div class="credit" id="credit"></div>`;
   if (q.kind === 'members') return `<div class="members">${esc(q.members)}</div>`;
   if (q.kind === 'capital') return `<img class="minif" id="qimg" src="${FLAG_URL(q.iso)}" alt="">`;
@@ -3188,6 +3541,13 @@ function drawPix(elapsed) {
   o.drawImage(im, 0, 0, bw, bh);
   ctx.imageSmoothingEnabled = false; ctx.drawImage(off, 0, 0, bw, bh, dx, dy, dw, dh);
 }
+// Six Clues: a new clue appears on a timer (or on request). Each extra clue lowers the prize by 20.
+function showClue(n) {
+  const cur = game.cur; if (cur.done) return;
+  cur.clue = Math.min(6, n || (cur.clue || 1) + 1);
+  document.querySelectorAll('#clues li').forEach((li, i) => li.classList.toggle('hid', i >= cur.clue));
+  const info = document.getElementById('clueinfo'); if (info) info.innerHTML = `Clue ${cur.clue} of 6 · worth <b>${100 + 20 * (6 - cur.clue)}</b>`;
+}
 function startTimer() {
   stopTimer();
   T = { running: true, start: performance.now(), dur: game.cfg.time * 1000, lastSec: null };
@@ -3204,8 +3564,9 @@ function tick() {
   if (timer) { timer.classList.toggle('warn', frac < .5 && sec > 5); timer.classList.toggle('urgent', sec <= 5); }
   if (sec !== T.lastSec) { if (sec <= 5 && sec > 0 && T.lastSec !== null) sfx.tick(); T.lastSec = sec; }
   if (left <= 0) { finish(false, 'time'); return; }
-  if (left <= 5000 && !game.cur.mc) showChoices();
+  if (left <= 5000 && !game.cur.mc && game.questions[game.idx].kind !== 'top10') showChoices();
   if (game.cur.pix) drawPix(1 - frac);
+  if (game.questions[game.idx].kind === 'clues') { const due = 1 + Math.floor((1 - frac) / 0.85 * 6); if (due > (game.cur.clue || 1)) showClue(Math.min(6, due)); }
   T.raf = requestAnimationFrame(tick);
   // backup in case animation frames pause (hidden tab)
   clearTimeout(T.to); T.to = setTimeout(() => { if (T.running) tick(); }, 250);
@@ -3215,6 +3576,7 @@ function submitAnswer() {
   const val = input.value.trim(); if (!val) return;
   if (!game.cur.started) { game.cur.started = true; startTimer(); }
   const q = game.questions[game.idx];
+  if (q.kind === 'top10') return guessTop10(val, input);
   if (judge(val, q.answers, q.distractors)) { game.cur.guess = val; finish(true); return; }
   game.cur.tries++; game.cur.wrongs.push(val);
   if (game.cur.tries >= MAX_TRIES) { finish(false, 'tries'); return; }
@@ -3237,22 +3599,46 @@ function pickChoice(i) {
   if (c === game.questions[game.idx].answerLabel) { cur.guess = c; cur.viaMC = true; finish(true); }
   else { cur.wrongs.push(c); finish(false, 'mc'); }
 }
+function guessTop10(val, input) {
+  const cur = game.cur, q = game.questions[game.idx]; cur.found = cur.found || new Set();
+  const others = i => q.items.filter((_, j) => j !== i).flat();
+  // the first slot not yet found that the guess fits (two "Adams" fill two slots)
+  const i = q.items.findIndex((it, k) => !cur.found.has(k) && judge(val, it, others(k)));
+  input.value = '';
+  if (i >= 0) {
+    cur.found.add(i); sfx.right();
+    const slot = document.querySelector(`#board10 .slot[data-i="${i}"]`); slot.classList.add('got'); slot.querySelector('span').textContent = q.items[i][0];
+    document.getElementById('t10info').innerHTML = `${cur.found.size} of 10 found · <b>${top10Points(cur.found.size)}</b> points`;
+    if (cur.found.size === 10) finish(true);
+    return;
+  }
+  if (q.items.some((it, k) => cur.found.has(k) && judge(val, it, others(k)))) { input.placeholder = 'Already got that one!'; return; }
+  cur.tries++; cur.wrongs.push(val);
+  if (cur.tries >= MAX_TRIES) { finish(false, 'tries'); return; }
+  sfx.wrong();
+  const form = document.getElementById('ansForm'); form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake');
+  document.querySelectorAll('#tries span').forEach((s, k) => s.classList.toggle('used', k < cur.tries));
+  document.getElementById('wrongs').textContent = cur.wrongs.join(', ');
+}
+const top10Points = n => n * 20 + (n === 10 ? 50 : 0);
 function giveUp() { if (game && !game.cur.done) finish(false, 'pass'); }
 function finish(ok, why) {
   if (game.cur.done) return;
   game.cur.done = true;
   const left = timeLeft(); stopTimer();
   const q = game.questions[game.idx], p = curPlayer();
-  const pts = !ok ? 0 : game.cur.viaMC ? 50 : 100 + Math.round(100 * left / T.dur);
+  const found = game.cur.found ? game.cur.found.size : 0;
+  if (q.kind === 'top10') ok = found > 0;
+  const pts = !ok ? 0 : q.kind === 'top10' ? top10Points(found) : game.cur.viaMC ? 50 : q.kind === 'clues' ? 100 + 20 * (6 - (game.cur.clue || 1)) : 100 + Math.round(100 * left / T.dur);
   if (ok) { p.score += pts; p.correct++; sfx.right(); } else if (why === 'time') sfx.timeup(); else sfx.wrong();
   game.log.push({ q, player: p, ok, pts, wrongs: game.cur.wrongs.slice(), secs: (T.dur - left) / 1000 });
   const extraFlag = q.kind === 'outline' ? `<img class="minif" style="margin:0" src="${FLAG_URL(q.iso)}" alt="">` : '';
-  const head = ok ? 'Correct!' : why === 'time' ? "Time's up!" : why === 'pass' ? 'Passed.' : why === 'mc' ? 'Not that one.' : 'Out of tries.';
+  const head = q.kind === 'top10' ? (found === 10 ? 'All ten!' : `You found ${found} of 10.`) : ok ? 'Correct!' : why === 'time' ? "Time's up!" : why === 'pass' ? 'Passed.' : why === 'mc' ? 'Not that one.' : 'Out of tries.';
   const last = game.idx + 1 >= game.questions.length;
   document.getElementById('area').innerHTML = `
     <div class="reveal ${ok ? 'ok' : 'no'}">
       <span class="big">${ok ? '✅' : '❌'}</span>${extraFlag}
-      <div class="msg"><b>${head}</b>${ok && norm(game.cur.guess) === norm(q.answerLabel) ? '' : `The answer is <b style="display:inline;font-size:inherit">${esc(q.answerLabel)}</b>`}</div>
+      <div class="msg"><b>${head}</b>${q.kind === 'top10' ? (found < 10 ? 'The ones you missed are shown in grey.' : '') : ok && norm(game.cur.guess) === norm(q.answerLabel) ? '' : `The answer is <b style="display:inline;font-size:inherit">${esc(q.answerLabel)}</b>`}${q.extra ? ` <span class="extra">${esc(q.extra)}</span>` : ''}</div>
       ${ok ? `<span class="pts">+${pts}</span>` : ''}
       <button class="btn" id="nextBtn" onclick="nextQ()">${last ? 'See results' : 'Next'} →</button>
     </div>
@@ -3261,6 +3647,8 @@ function finish(ok, why) {
   markSeen(q);
   const cr = document.getElementById('credit'); if (cr && q.creditHtml) cr.innerHTML = q.creditHtml; else if (cr && q.credit) cr.innerHTML = `Photo: ${esc(q.credit)} · <a href="${esc(q.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>`;
   if (game.cur.pix) drawPix(null);
+  document.querySelectorAll('#clues li').forEach(li => li.classList.remove('hid'));
+  document.querySelectorAll('#board10 .slot:not(.got)').forEach(sl => { sl.classList.add('miss'); sl.querySelector('span').textContent = q.items[+sl.dataset.i][0]; });
   const lg = document.querySelector('.qlogo.sil'); if (lg) { lg.classList.remove('sil'); lg.classList.add('shown'); } // reveal the real logo
   lockUntil = performance.now() + 500;
 }
@@ -3314,7 +3702,7 @@ function renderResults() {
     </div>
     ${missed.length ? `<details class="review" ${solo ? 'open' : ''}><summary>Answers you missed (${missed.length})</summary>
       ${missed.map(l => `<div class="rv">${l.q.img ? `<img class="${l.q.thumb}" src="${l.q.img}" alt="">` : l.q.iso ? `<img src="${FLAG_URL(l.q.iso)}" alt="">` : ''}
-        <span class="q">${l.q.kind === 'flag' ? 'Flag' : l.q.kind === 'outline' ? 'Shape' : l.q.kind === 'logo' ? 'Logo' : l.q.kind === 'photo' ? 'Photo' : l.q.kind === 'sat' ? 'Satellite view' : l.q.kind === 'career' ? 'Career path' : l.q.kind === 'emoji' ? l.q.emoji : l.q.kind === 'pix' ? 'Pixelated' : l.q.kind === 'members' ? esc(l.q.members) : esc(l.q.prompt)}${solo ? '' : ` <span class="hint">· ${esc(l.player.name)}</span>`}
+        <span class="q">${l.q.kind === 'flag' ? 'Flag' : l.q.kind === 'outline' ? 'Shape' : l.q.kind === 'logo' ? 'Logo' : l.q.kind === 'photo' ? 'Photo' : l.q.kind === 'sat' ? 'Satellite view' : l.q.kind === 'career' ? 'Career path' : l.q.kind === 'emoji' ? l.q.emoji : l.q.kind === 'top10' ? esc(l.q.title) : l.q.kind === 'quad' ? '4 photos' : l.q.kind === 'clues' ? 'Six clues' : l.q.kind === 'chips' ? esc(l.q.chips.join(' · ')) : l.q.kind === 'pix' ? 'Pixelated' : l.q.kind === 'members' ? esc(l.q.members) : esc(l.q.prompt)}${solo ? '' : ` <span class="hint">· ${esc(l.player.name)}</span>`}
         ${l.wrongs.length ? `<div class="g">${l.wrongs.map(esc).join(', ')}</div>` : ''}</span>
         <span class="a">${esc(l.q.answerLabel)}</span></div>`).join('')}</details>` : ''}`;
   if (solo ? me.correct >= game.questions.length * .7 : true) { confetti(); sfx.win(); }

@@ -7,7 +7,8 @@ A free trivia game for 1 to 4 players: set up players, pick a category, and race
 ## Features
 
 - 1 to 4 players taking turns, with rounds and a countdown timer
-- Categories including Flags, Country Shapes, Capitals, World History, Stadiums, City Skylines, Cities from Space, Music, Spanish and General Knowledge
+- Categories including Flags, Country Shapes, Capitals, State Flags, World History, Stadiums, City Skylines, Cities from Space, Career Paths, Music, Spanish, General Knowledge, Dog & Cat Breeds, Name the Car, Country in 4 Photos, Six Clues, Obscure Meals, Company HQs, Actor from 4 Titles and Top 10
+- A Pixelated category where the picture sharpens as the clock runs
 - A Kids Zone with longer timers and a hint on every question
 - Best scores remembered between games, and a "Share my score" button
 
