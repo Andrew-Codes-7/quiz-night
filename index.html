@@ -3,7 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quiz Night</title>
+<title>Quiz Night: free trivia for 1 to 4 players</title>
+<meta name="description" content="Free trivia game for 1 to 4 players. Flags, capitals, history, stadiums, skylines, music, a Kids Zone and more. No sign-up needed.">
+<link rel="canonical" href="https://quiz.emeraldcityapps.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%A4%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#ff5a3c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Emerald City Apps">
+<meta property="og:url" content="https://quiz.emeraldcityapps.com/">
+<meta property="og:title" content="Quiz Night: free trivia for 1 to 4 players">
+<meta property="og:description" content="Flags, capitals, history, skylines, music, a Kids Zone and more. Can you beat my score?">
+<meta property="og:image" content="https://quiz.emeraldcityapps.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quiz Night trivia game">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quiz Night: free trivia for 1 to 4 players">
+<meta name="twitter:description" content="Flags, capitals, history, skylines, music, a Kids Zone and more. Can you beat my score?">
+<meta name="twitter:image" content="https://quiz.emeraldcityapps.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
@@ -38,6 +56,8 @@ body{background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",ui-
 button,input{font:inherit;color:inherit}
 button{cursor:pointer}
 .wrap{max-width:880px;margin:0 auto;padding:20px 16px 48px}
+.sitefoot{max-width:880px;margin:0 auto;padding:16px 16px 28px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center}
+.sitefoot a{color:inherit}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
 .logo{font-weight:800;font-size:22px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;background:none;border:0;padding:0}
 .logo b{color:var(--accent)}
@@ -162,6 +182,30 @@ h2{font-size:26px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
 .qlogo.mono{filter:var(--mono);height:clamp(130px,26vw,190px)}
 .qlogo.shown{background:var(--logo-bg);border-radius:18px;padding:10px}
 .rv img.mono{filter:var(--mono)}
+.photo{display:block;margin:4px auto 6px;max-width:100%;max-height:clamp(200px,44vw,360px);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 12px 28px -14px rgba(0,0,0,.45)}
+.credit{font-size:12px;color:var(--muted);min-height:16px;margin-bottom:6px}
+.credit a{color:inherit}
+.note{background:var(--surface-2);border-radius:12px;padding:8px 14px;font-size:14px;color:var(--muted);margin:0 auto 12px;display:table}
+.rv img.ph{height:30px;width:46px;object-fit:cover}
+.path{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 4px;margin:8px 0 10px}
+.stop{display:flex;flex-direction:column;align-items:center;gap:3px;max-width:118px;text-align:center}
+.stop b{font-size:12px;line-height:1.2;font-weight:600}
+.stop span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stop.txt{background:var(--surface-2);border-radius:12px;padding:9px 12px;max-width:150px}
+.stop.txt b{font-size:15px;font-weight:800}
+.path img{height:clamp(46px,10.5vw,82px);width:clamp(46px,10.5vw,82px);object-fit:contain;background:var(--logo-bg);border-radius:10px;padding:3px}
+.path .arr{font-size:22px;color:var(--muted);font-weight:800}
+.sat{display:grid;grid-template-columns:repeat(4,1fr);width:min(100%,540px);margin:4px auto 6px;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--line),0 12px 28px -14px rgba(0,0,0,.45);background:#0b1020}
+.sat img{width:100%;aspect-ratio:1;display:block}
+.emoji{font-size:clamp(46px,12vw,84px);line-height:1.25;margin:4px 0 8px;letter-spacing:.06em}
+.members{font-size:clamp(22px,4.8vw,36px);font-weight:800;letter-spacing:-.01em;margin:14px auto 12px;max-width:640px;line-height:1.3;color:var(--accent)}
+.mc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;animation:pop .25s ease-out}
+.mc .mchead{grid-column:1/-1;font-size:14px;color:var(--muted);font-weight:600}
+.mc button{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:14px 12px;font-size:17px;font-weight:600}
+.mc button:hover{border-color:var(--accent)}
+.pixbox{display:flex;justify-content:center;margin:4px auto 6px}
+.pixbox canvas{max-width:100%;max-height:clamp(220px,46vw,380px);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 12px 28px -14px rgba(0,0,0,.45);background:var(--surface-2)}
+.pixsrc{display:none}
 .rv img.tl{height:28px;box-shadow:none;background:var(--logo-bg);border-radius:4px}
 @media (max-width:560px){
   .stage{padding:16px}
@@ -175,6 +219,7 @@ h2{font-size:26px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
 </head>
 <body>
 <div class="wrap" id="app"></div>
+<footer class="sitefoot">Quiz Night is a free game from <a href="https://emeraldcityapps.com" target="_blank" rel="noopener">Emerald City Apps</a> · <a href="https://emeraldcityapps.com" target="_blank" rel="noopener">More apps</a> · <a href="https://emeraldcityapps.com/privacy" target="_blank" rel="noopener">Privacy</a></footer>
 
 <script>
 /* =========================================================================
@@ -1283,6 +1328,1191 @@ const K_ANIMALS = [
   ['Which striped insect buzzes and can sting?', 'Bee', 'Wasp', 'A bee', 'A wasp'],
 ];
 
+/* =========================================================================
+   DATA — photo rounds (free photos from Wikimedia Commons; the credit is shown after each answer)
+   name | tier | also accepted | photo | credit | source page
+   ========================================================================= */
+const photoRows = txt => txt.trim().split('\n').map(l => { const [name, tier, al, img, credit, page] = l.split('|'); return { name, tier: +tier, aliases: al ? al.split(';') : [], img, credit, page }; });
+const VENUES = photoRows(`
+MetLife Stadium|1|New York Giants;Giants;New York Jets;Jets;Meadowlands|https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Metlife_stadium_%28Aerial_view%29.jpg/960px-Metlife_stadium_%28Aerial_view%29.jpg|Anthony Quintano from Hillsborough, NJ, United States · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Metlife_stadium_(Aerial_view).jpg
+Lambeau Field|1|Green Bay Packers;Packers|https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Lambeau_Field_-_Green_Bay_Packers_Football_Stadium_-_Wisconsin.jpg/960px-Lambeau_Field_-_Green_Bay_Packers_Football_Stadium_-_Wisconsin.jpg|Tony Webster · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Lambeau_Field_-_Green_Bay_Packers_Football_Stadium_-_Wisconsin.jpg
+AT&T Stadium|1|Dallas Cowboys;Cowboys;Cowboys Stadium;Jerry World;ATT Stadium;AT and T Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg/960px-Arlington_June_2020_4_%28AT%26T_Stadium%29.jpg|Michael Barera · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Arlington_June_2020_4_(AT%26T_Stadium).jpg
+Empower Field at Mile High|2|Denver Broncos;Broncos;Mile High;Mile High Stadium;Empower Field|https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Empower_Field_at_Mile_High_20241001.jpg/960px-Empower_Field_at_Mile_High_20241001.jpg|Pdubs.94 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Empower_Field_at_Mile_High_20241001.jpg
+Bank of America Stadium|2|Carolina Panthers;Panthers|https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Aerial_view_of_Bank_of_America_Stadium_in_Charlotte.jpg/960px-Aerial_view_of_Bank_of_America_Stadium_in_Charlotte.jpg|Quintin Soloviev · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Aerial_view_of_Bank_of_America_Stadium_in_Charlotte.jpg
+Arrowhead Stadium|1|Kansas City Chiefs;Chiefs|https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg/960px-Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg|Ichabod · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Aerial_view_of_Arrowhead_Stadium_08-31-2013.jpg
+Caesars Superdome|1|Superdome;New Orleans Saints;Saints;Louisiana Superdome|https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/DHS_Agencies_Support_Super_Bowl_LIX_Security_February_2025_-_108.jpg/960px-DHS_Agencies_Support_Super_Bowl_LIX_Security_February_2025_-_108.jpg|DHSgov · Public domain|https://commons.wikimedia.org/wiki/File:DHS_Agencies_Support_Super_Bowl_LIX_Security_February_2025_-_108.jpg
+Mercedes-Benz Stadium|1|Atlanta Falcons;Falcons;Mercedes Benz;Mercedes;Atlanta United|https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Mercedes_Benz_Stadium_time_lapse_capture_2017-08-13.jpg/960px-Mercedes_Benz_Stadium_time_lapse_capture_2017-08-13.jpg|Atlanta Falcons · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Mercedes_Benz_Stadium_time_lapse_capture_2017-08-13.jpg
+NRG Stadium|2|Houston Texans;Texans;Reliant Stadium;Reliant|https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Reliant_Stadium_Aerial.JPG/960px-Reliant_Stadium_Aerial.JPG|LoneStarMike · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Reliant_Stadium_Aerial.JPG
+SoFi Stadium|1|Los Angeles Rams;Rams;Los Angeles Chargers;Chargers|https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/SoFi_Stadium_2023.jpg/960px-SoFi_Stadium_2023.jpg|Troutfarm27 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:SoFi_Stadium_2023.jpg
+M&T Bank Stadium|2|Baltimore Ravens;Ravens;M and T Bank;MT Bank Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/M%26T_Bank_Stadium_in_Baltimore.jpg/960px-M%26T_Bank_Stadium_in_Baltimore.jpg|Quintin Soloviev · CC BY 4.0|https://commons.wikimedia.org/wiki/File:M%26T_Bank_Stadium_in_Baltimore.jpg
+Lincoln Financial Field|2|Philadelphia Eagles;Eagles;The Linc;Linc|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Lincoln_Financial_Field%2C_Philadelphia%2C_Pennsylvania%2C_United_States.jpg/960px-Lincoln_Financial_Field%2C_Philadelphia%2C_Pennsylvania%2C_United_States.jpg|Dough4872 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Lincoln_Financial_Field,_Philadelphia,_Pennsylvania,_United_States.jpg
+Lumen Field|2|Seattle Seahawks;Seahawks;CenturyLink Field;Seattle Sounders|https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/2026_FIFA_World_Cup_-_Belgium_v._Egypt_in_Seattle_-_04.jpg/960px-2026_FIFA_World_Cup_-_Belgium_v._Egypt_in_Seattle_-_04.jpg|SounderBruce · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2026_FIFA_World_Cup_-_Belgium_v._Egypt_in_Seattle_-_04.jpg
+Levi's Stadium|2|San Francisco 49ers;49ers;Niners;Levis|https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg/960px-Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_%2824398261729%29.jpg|U.S. Customs and Border Protection · Public domain|https://commons.wikimedia.org/wiki/File:Levi%27s_Stadium_in_February_2016_prior_to_Super_Bowl_50_(24398261729).jpg
+Acrisure Stadium|2|Pittsburgh Steelers;Steelers;Heinz Field|https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Acrisure_Stadium_2024.jpg/960px-Acrisure_Stadium_2024.jpg|Cramerwiki · CC0|https://commons.wikimedia.org/wiki/File:Acrisure_Stadium_2024.jpg
+Huntington Bank Field|2|Cleveland Browns;Browns;FirstEnergy Stadium;Cleveland Browns Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/FirstEnergy_Stadium_50_yardline_panorama.png/960px-FirstEnergy_Stadium_50_yardline_panorama.png|Cards84664 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:FirstEnergy_Stadium_50_yardline_panorama.png
+Northwest Stadium|2|Washington Commanders;Commanders;FedExField;FedEx Field|https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Commanders_vs_Giants_%2853345178211%29.jpg/960px-Commanders_vs_Giants_%2853345178211%29.jpg|Maryland GovPics · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Commanders_vs_Giants_(53345178211).jpg
+U.S. Bank Stadium|2|Minnesota Vikings;Vikings;US Bank|https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/U.S._Bank_Stadium_%28cropped%29.jpg/960px-U.S._Bank_Stadium_%28cropped%29.jpg|Lectrician2 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:U.S._Bank_Stadium_(cropped).jpg
+Raymond James Stadium|2|Tampa Bay Buccaneers;Buccaneers;Bucs;Raymond James;Ray Jay|https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Raymond_James_Stadium_Aerial_%282%29.jpg/960px-Raymond_James_Stadium_Aerial_%282%29.jpg|Devin Morris · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Raymond_James_Stadium_Aerial_(2).jpg
+Soldier Field|1|Chicago Bears;Bears|https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Soldier_Field_S.jpg/960px-Soldier_Field_S.jpg|Sea Cow · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Soldier_Field_S.jpg
+Gillette Stadium|2|New England Patriots;Patriots;Pats|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Gillette_Stadium_%28Top_View%29.jpg/960px-Gillette_Stadium_%28Top_View%29.jpg|Art N. · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Gillette_Stadium_(Top_View).jpg
+Hard Rock Stadium|2|Miami Dolphins;Dolphins;Hard Rock|https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Hard_Rock_Stadium_Prior_to_first_NFL_game.jpg/960px-Hard_Rock_Stadium_Prior_to_first_NFL_game.jpg|Eisenthesky Productions · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Hard_Rock_Stadium_Prior_to_first_NFL_game.jpg
+Allegiant Stadium|1|Las Vegas Raiders;Raiders|https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/CBP_Super_Bowl_58_%2853525700301%29.jpg/960px-CBP_Super_Bowl_58_%2853525700301%29.jpg|CBP Photography · Public domain|https://commons.wikimedia.org/wiki/File:CBP_Super_Bowl_58_(53525700301).jpg
+State Farm Stadium|2|Arizona Cardinals;Cardinals;State Farm|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/State_Farm_Stadium_2022.jpg/960px-State_Farm_Stadium_2022.jpg|Troutfarm27 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:State_Farm_Stadium_2022.jpg
+Lucas Oil Stadium|2|Indianapolis Colts;Colts;Lucas Oil|https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Aerial_view_of_Indianapolis%2C_Indiana%2C_with_a_focus_on_Lucas_Oil_Stadium%2C_highsm.40934.jpg/960px-Aerial_view_of_Indianapolis%2C_Indiana%2C_with_a_focus_on_Lucas_Oil_Stadium%2C_highsm.40934.jpg|Carol M. Highsmith · Public domain|https://commons.wikimedia.org/wiki/File:Aerial_view_of_Indianapolis,_Indiana,_with_a_focus_on_Lucas_Oil_Stadium,_highsm.40934.jpg
+Ford Field|2|Detroit Lions;Lions|https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Aerial_View_of_Downtown_Detroit_-_Ford_Field_and_Comerica_Park.jpg/960px-Aerial_View_of_Downtown_Detroit_-_Ford_Field_and_Comerica_Park.jpg|Barbara Eckstein · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Aerial_View_of_Downtown_Detroit_-_Ford_Field_and_Comerica_Park.jpg
+Paycor Stadium|2|Cincinnati Bengals;Bengals;Paul Brown Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Paul_Brown_Stadium_interior_2017.jpg/960px-Paul_Brown_Stadium_interior_2017.jpg|JonRidinger · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Paul_Brown_Stadium_interior_2017.jpg
+EverBank Stadium|2|Jacksonville Jaguars;Jaguars;Jags;TIAA Bank Field|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/EverBank_Stadium_aerial_view.jpg/960px-EverBank_Stadium_aerial_view.jpg|Quintin Soloviev · CC BY 4.0|https://commons.wikimedia.org/wiki/File:EverBank_Stadium_aerial_view.jpg
+Wembley Stadium|1|Wembley|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/London_Wembley.jpg/960px-London_Wembley.jpg|Arne Müseler · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:London_Wembley.jpg
+Camp Nou|1|Nou Camp;Barcelona;FC Barcelona;Barca;Spotify Camp Nou|https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Camp_Nou_aerial.jpg/960px-Camp_Nou_aerial.jpg|Oh-Barcelona.com from Barcelona, Spain · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Camp_Nou_aerial.jpg
+Santiago Bernabéu|2|Bernabeu;Real Madrid;Estadio Santiago Bernabeu;Santiago Bernabeu Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Estadio_Santiago_Bernab%C3%A9u_Madrid.jpg/960px-Estadio_Santiago_Bernab%C3%A9u_Madrid.jpg|Zoser · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Estadio_Santiago_Bernab%C3%A9u_Madrid.jpg
+Old Trafford|1|Manchester United;Man United;Man Utd|https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/2023_07_31_arne_mueseler_00060-Verbessert-RR_%2853106651455%29.jpg/960px-2023_07_31_arne_mueseler_00060-Verbessert-RR_%2853106651455%29.jpg|Arne Müseler from Salzburg, AT · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:2023_07_31_arne_mueseler_00060-Verbessert-RR_(53106651455).jpg
+Anfield|2|Liverpool;Liverpool FC|https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Liverpool_anfield_road_stadium.jpg/960px-Liverpool_anfield_road_stadium.jpg|Arne Müseler · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Liverpool_anfield_road_stadium.jpg
+Maracanã|2|Maracana Stadium;Estadio do Maracana|https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Maracana_2022.jpg/960px-Maracana_2022.jpg|Arne Müseler · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Maracana_2022.jpg
+Allianz Arena|2|Bayern Munich;Bayern;Allianz|https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Allianz_Arena_2008-02-09.jpg/960px-Allianz_Arena_2008-02-09.jpg|2015 Michael 2015 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Allianz_Arena_2008-02-09.jpg
+San Siro|3|AC Milan;Inter Milan;Milan;Inter;Giuseppe Meazza;Stadio Giuseppe Meazza|https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Stadio_Meazza_2021_3.jpg/960px-Stadio_Meazza_2021_3.jpg|Prelvini · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Stadio_Meazza_2021_3.jpg
+Estadio Azteca|3|Azteca;Aztec Stadium;Club America|https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Vista_a%C3%A9rea_del_Estadio_Azteca_-_2026_-_02.jpg/960px-Vista_a%C3%A9rea_del_Estadio_Azteca_-_2026_-_02.jpg|ProtoplasmaKid · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_del_Estadio_Azteca_-_2026_-_02.jpg
+Melbourne Cricket Ground|2|MCG;The G|https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/2017_AFL_Grand_Final_panorama_during_national_anthem.jpg/960px-2017_AFL_Grand_Final_panorama_during_national_anthem.jpg|Flickerd · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2017_AFL_Grand_Final_panorama_during_national_anthem.jpg
+Fenway Park|1|Boston Red Sox;Red Sox;Fenway|https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/131023-F-PR861-033_Hanscom_participates_in_World_Series_pregame_events.jpg/960px-131023-F-PR861-033_Hanscom_participates_in_World_Series_pregame_events.jpg|Rick Berry · Public domain|https://commons.wikimedia.org/wiki/File:131023-F-PR861-033_Hanscom_participates_in_World_Series_pregame_events.jpg
+Wrigley Field|1|Chicago Cubs;Cubs;Wrigley|https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Wrigley_Field_in_line_with_sign.jpg/960px-Wrigley_Field_in_line_with_sign.jpg|Sea Cow · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Wrigley_Field_in_line_with_sign.jpg
+Yankee Stadium|1|New York Yankees;Yankees;Yankees Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Yankee_Stadium_overhead_2010.jpg/960px-Yankee_Stadium_overhead_2010.jpg|vtravelled.com · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Yankee_Stadium_overhead_2010.jpg
+Dodger Stadium|1|Los Angeles Dodgers;Dodgers;Dodgers Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Dodger_Stadium_and_Chavez_Ravine_far_view%2C_Chicago_Cubs_at_Los_Angeles_Dodgers%2C_%28April_12%2C_2025%29.jpg/960px-Dodger_Stadium_and_Chavez_Ravine_far_view%2C_Chicago_Cubs_at_Los_Angeles_Dodgers%2C_%28April_12%2C_2025%29.jpg|Spatms · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Dodger_Stadium_and_Chavez_Ravine_far_view,_Chicago_Cubs_at_Los_Angeles_Dodgers,_(April_12,_2025).jpg
+Madison Square Garden|1|MSG;The Garden;New York Knicks;Knicks;New York Rangers|https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Madison_Square_Garden_%28MSG%29_-_Full_%2848124330357%29.jpg/960px-Madison_Square_Garden_%28MSG%29_-_Full_%2848124330357%29.jpg|Ajay Suresh from New York, NY, USA · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Madison_Square_Garden_(MSG)_-_Full_(48124330357).jpg
+Rose Bowl|1|The Rose Bowl;UCLA|https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/2018.06.17_Over_the_Rose_Bowl%2C_Pasadena%2C_CA_USA_0039_%2842855669451%29_%28cropped%29.jpg/960px-2018.06.17_Over_the_Rose_Bowl%2C_Pasadena%2C_CA_USA_0039_%2842855669451%29_%28cropped%29.jpg|Ted Eytan · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:2018.06.17_Over_the_Rose_Bowl,_Pasadena,_CA_USA_0039_(42855669451)_(cropped).jpg
+Michigan Stadium|2|The Big House;Big House;Michigan Wolverines;Michigan;Wolverines|https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Michigan_Stadium_Aerial.jpg/960px-Michigan_Stadium_Aerial.jpg|Lectrician2 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Michigan_Stadium_Aerial.jpg
+Tottenham Hotspur Stadium|2|Tottenham;Spurs;Tottenham Stadium;Tottenham Hotspur|https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/London_Tottenham_Hotspur_Stadium.jpg/960px-London_Tottenham_Hotspur_Stadium.jpg|Arne Müseler · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:London_Tottenham_Hotspur_Stadium.jpg
+Emirates Stadium|2|Arsenal;The Emirates;Emirates|https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/London_Emirates_Stadium_arsenal.jpg/960px-London_Emirates_Stadium_arsenal.jpg|Arne Müseler · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:London_Emirates_Stadium_arsenal.jpg
+Signal Iduna Park|3|Westfalenstadion;Borussia Dortmund;Dortmund;BVB|https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Signal_iduna_park_stadium_dortmund_4.jpg/960px-Signal_iduna_park_stadium_dortmund_4.jpg|Arne Müseler / www.arne-mueseler.com · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Signal_iduna_park_stadium_dortmund_4.jpg
+Bird's Nest|1|Beijing National Stadium;Birds Nest;The Birds Nest;Beijing Olympic Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Beijing_China_Beijing-National-Stadium-01.jpg/960px-Beijing_China_Beijing-National-Stadium-01.jpg|CEphoto, Uwe Aranas · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Beijing_China_Beijing-National-Stadium-01.jpg
+Oracle Park|2|San Francisco Giants;Giants;AT&T Park;Pac Bell Park|https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Oracle_Park_2021.jpg/960px-Oracle_Park_2021.jpg|Chris6d · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Oracle_Park_2021.jpg
+Stade de France|3||https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/France-Islande_Stade_de_France_03.jpg/960px-France-Islande_Stade_de_France_03.jpg|Zakarie Faibis · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:France-Islande_Stade_de_France_03.jpg
+Colosseum|1|Coliseum;The Colosseum;Roman Colosseum|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/960px-Colosseo_2020.jpg|FeaturedPics · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Colosseo_2020.jpg
+Nissan Stadium|2|Tennessee Titans;Titans;LP Field|https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Aerial_view_of_Nissan_Stadium_%28Tennessee_Titans%29.jpg/960px-Aerial_view_of_Nissan_Stadium_%28Tennessee_Titans%29.jpg|Quintin Soloviev · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Aerial_view_of_Nissan_Stadium_(Tennessee_Titans).jpg
+Highmark Stadium|2|Buffalo Bills;Bills;Ralph Wilson Stadium;New Era Field;Rich Stadium|https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Highmark_Stadium_-_Ralph_Wilson_Stadium_from_above_in_2022.jpg/960px-Highmark_Stadium_-_Ralph_Wilson_Stadium_from_above_in_2022.jpg|Quintin Soloviev · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Highmark_Stadium_-_Ralph_Wilson_Stadium_from_above_in_2022.jpg
+`);
+const SKYLINES = photoRows(`
+New York|1|New York;NYC;Manhattan|https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg/960px-View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg|Dllu · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:View_of_Empire_State_Building_from_Rockefeller_Center_New_York_City_dllu.jpg
+Chicago|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Skyline_de_Chicago_desde_el_centro%2C_Illinois%2C_Estados_Unidos%2C_2012-10-20%2C_DD_06.jpg/960px-Skyline_de_Chicago_desde_el_centro%2C_Illinois%2C_Estados_Unidos%2C_2012-10-20%2C_DD_06.jpg|Diego Delso · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Skyline_de_Chicago_desde_el_centro,_Illinois,_Estados_Unidos,_2012-10-20,_DD_06.jpg
+Los Angeles|1|LA|https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Los_Angeles_skyline_2022.jpg/960px-Los_Angeles_skyline_2022.jpg|dconvertini · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Los_Angeles_skyline_2022.jpg
+San Francisco|1|SF;San Fran;Frisco|https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/San_Francisco_from_Pier_7_September_2013_panorama_edit.jpg/960px-San_Francisco_from_Pier_7_September_2013_panorama_edit.jpg|King of Hearts · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:San_Francisco_from_Pier_7_September_2013_panorama_edit.jpg
+Seattle|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Seattle_I-5_skyline_dllu.jpg/960px-Seattle_I-5_skyline_dllu.jpg|Dllu · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Seattle_I-5_skyline_dllu.jpg
+Miami|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Miami%2C_Florida_skyline.jpg/960px-Miami%2C_Florida_skyline.jpg|Wilfredor · CC0|https://commons.wikimedia.org/wiki/File:Miami,_Florida_skyline.jpg
+Las Vegas|1|Vegas|https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Las_Vegas_%28Nevada%2C_USA%29%2C_The_Strip_--_2012_--_6232.jpg/960px-Las_Vegas_%28Nevada%2C_USA%29%2C_The_Strip_--_2012_--_6232.jpg|Dietmar Rabich · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Las_Vegas_(Nevada,_USA),_The_Strip_--_2012_--_6232.jpg
+Boston|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Skyline_of_Downtown_Boston_20240702.jpg/960px-Skyline_of_Downtown_Boston_20240702.jpg|Nkon21 · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Skyline_of_Downtown_Boston_20240702.jpg
+Philadelphia|2|Philly|https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Philadelphia_from_South_Street_Bridge_July_2016_panorama_2.jpg/960px-Philadelphia_from_South_Street_Bridge_July_2016_panorama_2.jpg|King of Hearts · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Philadelphia_from_South_Street_Bridge_July_2016_panorama_2.jpg
+Dallas|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Dallas_Skyline_at_Dusk.jpg/960px-Dallas_Skyline_at_Dusk.jpg|Matthew T Rader · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Dallas_Skyline_at_Dusk.jpg
+Houston|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Buildings-city-houston-skyline-1870617.jpg/960px-Buildings-city-houston-skyline-1870617.jpg|Jason Villanueva · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Buildings-city-houston-skyline-1870617.jpg
+Atlanta|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Atlanta_skyline_from_Jackson_Street_Bridge_2020.jpg/960px-Atlanta_skyline_from_Jackson_Street_Bridge_2020.jpg|Marc Merlin · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Atlanta_skyline_from_Jackson_Street_Bridge_2020.jpg
+Pittsburgh|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Pittsburgh_skyline_night.jpg/960px-Pittsburgh_skyline_night.jpg|Suiseiseki · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Pittsburgh_skyline_night.jpg
+Denver|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Nighttime_Denver_Skyline.jpg/960px-Nighttime_Denver_Skyline.jpg|Nolabob · CC0|https://commons.wikimedia.org/wiki/File:Nighttime_Denver_Skyline.jpg
+Nashville|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Nashville_skyline_2009.jpg/960px-Nashville_skyline_2009.jpg|Kaldari · Public domain|https://commons.wikimedia.org/wiki/File:Nashville_skyline_2009.jpg
+Detroit|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Detroit_Skyline_%28123143197%29.jpeg/960px-Detroit_Skyline_%28123143197%29.jpeg|Michael Tighe · CC0|https://commons.wikimedia.org/wiki/File:Detroit_Skyline_(123143197).jpeg
+St. Louis|1|Saint Louis|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/St_Louis_night_expblend.jpg/960px-St_Louis_night_expblend.jpg|Daniel Schwen · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:St_Louis_night_expblend.jpg
+New Orleans|2|NOLA|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/New_Orleans_skyline-02.jpg/960px-New_Orleans_skyline-02.jpg|thepipe26 · CC BY 2.0|https://commons.wikimedia.org/wiki/File:New_Orleans_skyline-02.jpg
+San Diego|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Wedding_Skyline_San_Diego_2013.jpg/960px-Wedding_Skyline_San_Diego_2013.jpg|Tuxyso · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Wedding_Skyline_San_Diego_2013.jpg
+Toronto|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Toronto_skyline_viewed_from_Trillium_Park.jpg/960px-Toronto_skyline_viewed_from_Trillium_Park.jpg|Maksim Sokolov (maxergon.com) · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Toronto_skyline_viewed_from_Trillium_Park.jpg
+Vancouver|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Skyline_of_Vancouver%2C_BC.jpg/960px-Skyline_of_Vancouver%2C_BC.jpg|Quintin Soloviev · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Skyline_of_Vancouver,_BC.jpg
+London|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg/960px-City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg|User:Colin and Kim Hansen · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:City_of_London_skyline_from_London_City_Hall_-_Sept_2015_-_Crop_Aligned.jpg
+Paris|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Paris_Night.jpg/960px-Paris_Night.jpg|Benh LIEU SONG · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Paris_Night.jpg
+Dubai|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Dubai_Skyline_2016.jpg/960px-Dubai_Skyline_2016.jpg|Tonenight · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Dubai_Skyline_2016.jpg
+Hong Kong|1|HK|https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg/960px-Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg|Diliff · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Hong_Kong_Skyline_Restitch_-_Dec_2007.jpg
+Shanghai|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Pudong_Shanghai_November_2017_panorama.jpg/960px-Pudong_Shanghai_November_2017_panorama.jpg|King of Hearts · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Pudong_Shanghai_November_2017_panorama.jpg
+Tokyo|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Tokyo_Tower%2C_Minato_City.jpg/960px-Tokyo_Tower%2C_Minato_City.jpg|David Kernan · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Tokyo_Tower,_Minato_City.jpg
+Singapore|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Skyline_of_the_Central_Business_District_of_Singapore_with_Esplanade_Bridge_in_the_evening.jpg/960px-Skyline_of_the_Central_Business_District_of_Singapore_with_Esplanade_Bridge_in_the_evening.jpg|Basile Morin · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Skyline_of_the_Central_Business_District_of_Singapore_with_Esplanade_Bridge_in_the_evening.jpg
+Sydney|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Skyline_of_Sydney_CBD%2C_Sydney_Harbour_Bridge%2C_2023.jpg/960px-Skyline_of_Sydney_CBD%2C_Sydney_Harbour_Bridge%2C_2023.jpg|Chris Olszewski · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Skyline_of_Sydney_CBD,_Sydney_Harbour_Bridge,_2023.jpg
+Melbourne|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Melbourne_CBD_skyline%2C_south_view_20230221_1.jpg/960px-Melbourne_CBD_skyline%2C_south_view_20230221_1.jpg|DXR · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Melbourne_CBD_skyline,_south_view_20230221_1.jpg
+Rio de Janeiro|1|Rio|https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Rio_de_Janeiro_skyline_and_Sugarloaf_Mountain_at_sunset%2C_Brazil_3.jpg/960px-Rio_de_Janeiro_skyline_and_Sugarloaf_Mountain_at_sunset%2C_Brazil_3.jpg|Wilfredor · CC0|https://commons.wikimedia.org/wiki/File:Rio_de_Janeiro_skyline_and_Sugarloaf_Mountain_at_sunset,_Brazil_3.jpg
+Moscow|1||https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Moscow_Skyline.jpg/960px-Moscow_Skyline.jpg|Mia Primavera · CC0|https://commons.wikimedia.org/wiki/File:Moscow_Skyline.jpg
+Istanbul|2|Constantinople|https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Istanbul_skyline_03.jpg/960px-Istanbul_skyline_03.jpg|SegLig · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Istanbul_skyline_03.jpg
+Kuala Lumpur|2|KL|https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Kuala_Lumpur_Malaysia_Skyline-of-Kuala-Lumpur-Sentral-01.jpg/960px-Kuala_Lumpur_Malaysia_Skyline-of-Kuala-Lumpur-Sentral-01.jpg|CEphoto, Uwe Aranas · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Kuala_Lumpur_Malaysia_Skyline-of-Kuala-Lumpur-Sentral-01.jpg
+Seoul|2||https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Han_River_Seoul_skyline_Pixabay_1214950.jpg/960px-Han_River_Seoul_skyline_Pixabay_1214950.jpg|USAGI_POST · CC0|https://commons.wikimedia.org/wiki/File:Han_River_Seoul_skyline_Pixabay_1214950.jpg
+Frankfurt|3|Frankfurt am Main|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Skyline_Frankfurt_am_Main_2015.jpg/960px-Skyline_Frankfurt_am_Main_2015.jpg|Christian Wolf (www.c-w-design.de) · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Skyline_Frankfurt_am_Main_2015.jpg
+Panama City|3|Panama;Ciudad de Panama|https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Panama_City_Skyline_1.jpg/960px-Panama_City_Skyline_1.jpg|Dr. Thomas Liptak · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Panama_City_Skyline_1.jpg
+Mexico City|3|CDMX;Ciudad de Mexico|https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Mexico_City_Reforma_skyline_%28cropped%29.jpg/960px-Mexico_City_Reforma_skyline_%28cropped%29.jpg|Jonathan Salvador · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Mexico_City_Reforma_skyline_(cropped).jpg
+Doha|3||https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Doha_Skyline_01.jpg/960px-Doha_Skyline_01.jpg|Zairon · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Doha_Skyline_01.jpg
+Bangkok|3||https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Bangkok_skytrain_sunset.jpg/960px-Bangkok_skytrain_sunset.jpg|User:Diliff · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Bangkok_skytrain_sunset.jpg
+Mumbai|3|Bombay|https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Mumbai_03-2016_09_skyline_of_Lotus_Colony.jpg/960px-Mumbai_03-2016_09_skyline_of_Lotus_Colony.jpg|A.Savin · FAL|https://commons.wikimedia.org/wiki/File:Mumbai_03-2016_09_skyline_of_Lotus_Colony.jpg
+Rome|1|Roma|https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Rome_skyline_panorama.jpg/960px-Rome_skyline_panorama.jpg|Nicholas Hartmann · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Rome_skyline_panorama.jpg
+Cairo|3||https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Cairo_skyline%2C_Panoramic_view%2C_Egypt.jpg/960px-Cairo_skyline%2C_Panoramic_view%2C_Egypt.jpg|Vyacheslav Argenberg · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Cairo_skyline,_Panoramic_view,_Egypt.jpg
+`);
+
+/* =========================================================================
+   DATA — Spanish:  english | spanish | tier | in the kids' quiz? | other English answers | other Spanish answers
+   ========================================================================= */
+const WORDS = `
+dog|perro|1|1||
+cat|gato|1|1||
+house|casa|1|1|home|hogar
+water|agua|1|1||
+red|rojo|1|1||roja
+blue|azul|1|1||
+green|verde|1|1||
+yellow|amarillo|1|1||amarilla
+white|blanco|1|1||blanca
+black|negro|1|1||negra
+one|uno|1|1||un;una
+two|dos|1|1||
+three|tres|1|1||
+four|cuatro|1|1||
+five|cinco|1|1||
+six|seis|1|1||
+seven|siete|1|1||
+eight|ocho|1|1||
+nine|nueve|1|1||
+ten|diez|1|1||
+mother|madre|1|1|mom;mum;mama|mamá
+father|padre|1|1|dad;papa|papá
+friend|amigo|1|1||amiga
+book|libro|1|1||
+school|escuela|1|1||colegio
+sun|sol|1|1||
+moon|luna|1|1||
+milk|leche|1|1||
+apple|manzana|1|1||
+bread|pan|1|1||
+hello|hola|1|1|hi|
+goodbye|adiós|1|1|bye|chao
+thank you|gracias|1|1|thanks|
+please|por favor|1|1||
+big|grande|1|1|large|
+small|pequeño|1|1|little|pequeña;chico;chiquito
+horse|caballo|1|1||
+cow|vaca|1|1||
+bird|pájaro|1|1||ave
+fish|pez|1|1||pescado
+hand|mano|1|1||
+head|cabeza|1|1||
+eye|ojo|1|1||
+boy|niño|1|1|child;kid|chico;muchacho
+girl|niña|1|1||chica;muchacha
+happy|feliz|1|1||contento;alegre
+beach|playa|1|1||
+tree|árbol|1|1||
+flower|flor|1|1||
+star|estrella|1|1||
+chicken|pollo|1|1||gallina
+egg|huevo|1|1||
+cheese|queso|1|1||
+baby|bebé|1|1||
+door|puerta|1|1||
+chair|silla|1|1||
+table|mesa|1|1||
+ball|pelota|1|1||balón;bola
+night|noche|1|1||
+day|día|1|1||
+kitchen|cocina|2|0||
+window|ventana|2|0||
+street|calle|2|0||
+city|ciudad|2|0||
+work|trabajo|2|0|job|
+money|dinero|2|0||plata
+week|semana|2|0||
+month|mes|2|0||
+year|año|2|0||
+today|hoy|2|0||
+tomorrow|mañana|2|0|morning|
+yesterday|ayer|2|0||
+breakfast|desayuno|2|0||
+lunch|almuerzo|2|0||comida
+dinner|cena|2|0|supper|
+beer|cerveza|2|0||
+wine|vino|2|0||
+shrimp|camarón|2|0|prawn|camarones;gamba
+rice|arroz|2|0||
+beans|frijoles|2|0|bean|frijol;habichuelas
+spoon|cuchara|2|0||
+fork|tenedor|2|0||
+knife|cuchillo|2|0||
+shirt|camisa|2|0||
+shoes|zapatos|2|0|shoe|zapato
+hat|sombrero|2|0||gorro
+car|carro|2|0||coche;auto;automóvil
+airplane|avión|2|0|plane;aeroplane|
+brother|hermano|2|0||
+sister|hermana|2|0||
+husband|esposo|2|0||marido
+wife|esposa|2|0||mujer
+hot|caliente|2|0||
+cold|frío|2|0||fría
+cheap|barato|2|0|inexpensive|barata
+expensive|caro|2|0||cara;costoso
+early|temprano|2|0||
+always|siempre|2|0||
+never|nunca|2|0||jamás
+church|iglesia|2|0||
+bridge|puente|2|0||
+rain|lluvia|2|0||
+wind|viento|2|0||
+bathroom|baño|2|0|toilet;restroom|
+bed|cama|2|0||
+key|llave|2|0||
+heart|corazón|2|0||
+store|tienda|2|0|shop|
+lawyer|abogado|3|0|attorney|abogada
+mayor|alcalde|3|0||alcaldesa
+neighbor|vecino|3|0|neighbour|vecina
+to forget|olvidar|3|0|forget|olvidarse
+although|aunque|3|0|though;even though|
+however|sin embargo|3|0|nevertheless|no obstante
+perhaps|quizás|3|0|maybe|quizá;tal vez;acaso
+enough|suficiente|3|0||bastante
+pillow|almohada|3|0||
+towel|toalla|3|0||
+ceiling|techo|3|0|roof|
+wallet|billetera|3|0||cartera
+luggage|equipaje|3|0|baggage|
+mortgage|hipoteca|3|0||
+taxes|impuestos|3|0|tax|impuesto
+owner|dueño|3|0||dueña;propietario
+embarrassed|avergonzado|3|0|ashamed|avergonzada;apenado
+pregnant|embarazada|3|0||
+soap|jabón|3|0||
+carpet|alfombra|3|0|rug|
+library|biblioteca|3|0||
+bookstore|librería|3|0|bookshop|
+success|éxito|3|0||
+exit|salida|3|0|way out|
+squirrel|ardilla|3|0||
+butterfly|mariposa|3|0||
+hummingbird|colibrí|3|0||
+turtle|tortuga|3|0|tortoise|
+shark|tiburón|3|0||
+sand|arena|3|0||
+sunset|atardecer|3|0||puesta del sol;ocaso
+developer|desarrollador|3|0||desarrolladora
+`.trim().split('\n').map(l => { const [en, es, tier, kid, enAlt, esAlt] = l.split('|'); return { en, es, tier: +tier, kid: kid === '1', enAlt: enAlt ? enAlt.split(';') : [], esAlt: esAlt ? esAlt.split(';') : [] }; });
+
+/* =========================================================================
+   DATA — career paths:  league | player | also accepted | teams in order (logo keys) | tier | note | years at each team
+   Careers are shown up to the 2025 season.
+   ========================================================================= */
+const CAREERS = `
+nfl|Brett Favre||atl>gb>nyj>min|1||1991>1992-2007>2008>2009-2010
+nfl|Terrell Owens|T.O.;TO|sf>phi>dal>buf>cin|2||1996-2003>2004-2005>2006-2008>2009>2010
+nfl|Randy Moss||min>lv>ne>min>ten>sf|1||1998-2004>2005-2006>2007-2010>2010>2010>2012
+nfl|Deion Sanders|Deion;Prime Time|atl>sf>dal>wsh>bal|1||1989-1993>1994>1995-1999>2000>2004-2005
+nfl|Jerry Rice||sf>lv>sea|1||1985-2000>2001-2004>2004
+nfl|Kurt Warner||lar>nyg>ari|2||1998-2003>2004>2005-2009
+nfl|Adrian Peterson||min>no>ari>wsh>det>ten>sea|2||2007-2016>2017>2017>2018-2019>2020>2021>2021
+nfl|Marshawn Lynch|Beast Mode|buf>sea>lv>sea|2||2007-2010>2010-2015>2017-2018>2019
+nfl|Russell Wilson||sea>den>pit>nyg|1||2012-2021>2022-2023>2024>2025
+nfl|Aaron Rodgers||gb>nyj>pit|1||2005-2022>2023-2024>2025-
+nfl|Cam Newton||car>ne>car|2||2011-2019>2020>2021
+nfl|Ryan Fitzpatrick|Fitzmagic|lar>cin>buf>ten>hou>nyj>tb>mia>wsh|2||2005-2006>2007-2008>2009-2012>2013>2014>2015-2016>2017-2018>2019-2020>2021
+nfl|Odell Beckham Jr.|Odell Beckham;Beckham;OBJ|nyg>cle>lar>bal>mia|2||2014-2018>2019-2021>2021>2023>2024
+nfl|Drew Bledsoe||ne>buf>dal|3||1993-2001>2002-2004>2005-2006
+nfl|Donovan McNabb||phi>wsh>min|3||1999-2009>2010>2011
+nfl|Michael Vick|Mike Vick|atl>phi>nyj>pit|2||2001-2006>2009-2013>2014>2015
+nfl|Reggie White||phi>gb>car|3||1985-1992>1993-1998>2000
+nfl|Von Miller||den>lar>buf>wsh|2||2011-2021>2021>2022-2024>2025
+nfl|Julio Jones||atl>ten>tb>phi|2||2011-2020>2021>2022>2023
+nfl|Ndamukong Suh||det>mia>lar>tb>phi|3||2010-2014>2015-2017>2018>2019-2021>2022
+nfl|Carson Wentz||phi>ind>wsh>lar>kc>min|2||2016-2020>2021>2022>2023>2024>2025
+nfl|Baker Mayfield||cle>car>lar>tb|1||2018-2021>2022>2022>2023-
+nfl|Kirk Cousins||wsh>min>atl|2||2012-2017>2018-2023>2024-2025
+nfl|Stefon Diggs||min>buf>hou>ne|2||2015-2019>2020-2023>2024>2025
+nfl|Davante Adams||gb>lv>nyj>lar|2||2014-2021>2022-2024>2024>2025
+nfl|Sam Darnold||nyj>car>sf>min>sea|2||2018-2020>2021-2022>2023>2024>2025
+nfl|Antonio Brown|AB|pit>ne>tb|2||2010-2018>2019>2020-2021
+nba|LeBron James|LeBron;King James|cle>mia>cle>lal|1||2003-2010>2010-2014>2014-2018>2018-
+nba|Kevin Durant|KD|okc>gs>bkn>phx>hou|1|Began with the Seattle SuperSonics, who became the Thunder|2007-2016>2016-2019>2019-2023>2023-2025>2025-
+nba|Shaquille O'Neal|Shaq;Shaquille ONeal|orl>lal>mia>phx>cle>bos|1||1992-1996>1996-2004>2004-2008>2008-2009>2009-2010>2010-2011
+nba|Kawhi Leonard|Kawhi|sa>tor>lac|1||2011-2018>2018-2019>2019-
+nba|Charles Barkley||phi>phx>hou|2||1984-1992>1992-1996>1996-2000
+nba|Allen Iverson|AI|phi>den>det>mem>phi|2||1996-2006>2006-2008>2008-2009>2009>2009-2010
+nba|Vince Carter||tor>bkn>orl>phx>dal>mem>sac>atl|2||1998-2004>2004-2009>2009-2010>2010-2011>2011-2014>2014-2017>2017-2018>2018-2020
+nba|Carmelo Anthony|Melo;Carmelo|den>ny>okc>hou>por>lal|2||2003-2011>2011-2017>2017-2018>2018>2019-2021>2021-2022
+nba|Chris Paul|CP3|no>lac>hou>okc>phx>gs>sa>lac|2||2005-2011>2011-2017>2017-2019>2019-2020>2020-2023>2023-2024>2024-2025>2025-
+nba|Dwyane Wade|D-Wade;Dwayne Wade|mia>chi>cle>mia|1||2003-2016>2016-2017>2017-2018>2018-2019
+nba|Kevin Garnett|KG|min>bos>bkn>min|2||1995-2007>2007-2013>2013-2015>2015-2016
+nba|Paul Pierce||bos>bkn>wsh>lac|3||1998-2013>2013-2014>2014-2015>2015-2017
+nba|Jason Kidd||dal>phx>bkn>dal>ny|3||1994-1996>1996-2001>2001-2008>2008-2012>2012-2013
+nba|Steve Nash||phx>dal>phx>lal|2||1996-1998>1998-2004>2004-2012>2012-2015
+nba|Tracy McGrady|T-Mac;TMac|tor>orl>hou>ny>det>atl>sa|3||1997-2000>2000-2004>2004-2010>2010>2010-2011>2011-2012>2013
+nba|Dennis Rodman||det>sa>chi>lal>dal|2||1986-1993>1993-1995>1995-1998>1999>2000
+nba|Scottie Pippen||chi>hou>por>chi|2||1987-1998>1998-1999>1999-2003>2003-2004
+nba|Kyrie Irving|Kyrie|cle>bos>bkn>dal|1||2011-2017>2017-2019>2019-2023>2023-
+nba|Russell Westbrook|Russ|okc>hou>wsh>lal>lac>den>sac|2||2008-2019>2019-2020>2020-2021>2021-2023>2023-2024>2024-2025>2025-
+nba|Jimmy Butler||chi>min>phi>mia>gs|2||2011-2017>2017-2018>2018-2019>2019-2025>2025-
+nba|Dwight Howard||orl>lal>hou>atl>cha>wsh>lal>phi>lal|3||2004-2012>2012-2013>2013-2016>2016-2017>2017-2018>2018-2019>2019-2020>2020-2021>2021-2022
+mlb|Babe Ruth|The Babe|bos>nyy>atl|1|His last team, the Braves, played in Boston then|1914-1919>1920-1934>1935
+mlb|Nolan Ryan||nym>laa>hou>tex|2||1966-1971>1972-1979>1980-1988>1989-1993
+mlb|Alex Rodriguez|A-Rod;ARod|sea>tex>nyy|1||1994-2000>2001-2003>2004-2016
+mlb|Ken Griffey Jr.|Ken Griffey;Griffey|sea>cin>chw>sea|1||1989-1999>2000-2008>2008>2009-2010
+mlb|Roger Clemens||bos>tor>nyy>hou>nyy|2||1984-1996>1997-1998>1999-2003>2004-2006>2007
+mlb|Manny Ramirez|Manny|cle>bos>lad>chw>tb|2||1993-2000>2001-2008>2008-2010>2010>2011
+mlb|Albert Pujols||stl>laa>lad>stl|2||2001-2011>2012-2021>2021>2022
+mlb|Max Scherzer||ari>det>wsh>lad>nym>tex>tor|2||2008-2009>2010-2014>2015-2021>2021>2022-2023>2023-2024>2025
+mlb|Justin Verlander||det>hou>nym>hou>sf|2||2005-2017>2017-2022>2023>2023-2024>2025
+mlb|Juan Soto||wsh>sd>nyy>nym|1||2018-2022>2022-2023>2024>2025-
+mlb|Greg Maddux||chc>atl>chc>lad>sd>lad|3||1986-1992>1993-2003>2004-2006>2006>2007-2008>2008
+mlb|Ichiro Suzuki|Ichiro|sea>nyy>mia>sea|2||2001-2012>2012-2014>2015-2017>2018-2019
+mlb|Zack Greinke||kc>mil>laa>lad>ari>hou>kc|3||2004-2010>2011-2012>2012>2013-2015>2016-2019>2019-2021>2022-2023
+mlb|Manny Machado||bal>lad>sd|2||2012-2018>2018>2019-
+mlb|Reggie Jackson|Mr. October|ath>bal>nyy>laa>ath|2||1967-1975>1976>1977-1981>1982-1986>1987
+mlb|CC Sabathia|C.C. Sabathia|cle>mil>nyy|3||2001-2008>2008>2009-2019
+mlb|Mike Piazza||lad>mia>nym>sd>ath|3||1992-1998>1998>1998-2005>2006>2007
+nhl|Wayne Gretzky|The Great One|edm>la>stl>nyr|1||1979-1988>1988-1996>1996>1996-1999
+nhl|Jaromir Jagr||pit>wsh>nyr>phi>dal>bos>nj>fla>cgy|2||1990-2001>2001-2004>2004-2008>2011-2012>2013>2013>2013-2015>2015-2017>2017-2018
+nhl|Mark Messier||edm>nyr>van>nyr|2||1979-1991>1991-1997>1997-2000>2000-2004
+nhl|Zdeno Chara||nyi>ott>bos>wsh>nyi|3||1997-2001>2001-2006>2006-2020>2020-2021>2021-2022
+nhl|Joe Thornton|Jumbo Joe|bos>sj>tor>fla|3||1997-2005>2005-2020>2020-2021>2021-2022
+nhl|Patrick Kane||chi>nyr>det|2||2007-2023>2023>2023-
+nhl|Marc-André Fleury|Marc Andre Fleury|pit>vgk>chi>min|2||2003-2017>2017-2021>2021-2022>2022-2025
+nhl|Erik Karlsson||ott>sj>pit|3||2009-2018>2018-2023>2023-
+nhl|Jarome Iginla||cgy>pit>bos>col>la|3||1996-2013>2013>2013-2014>2014-2017>2017
+nhl|Roberto Luongo||nyi>fla>van>fla|3||1999-2000>2000-2006>2006-2014>2014-2019
+nhl|Brett Hull||cgy>stl>dal>det|3|A final few games in Phoenix are left out|1986-1988>1988-1998>1998-2001>2001-2004
+soccer|Lionel Messi|Leo Messi|83>160>20232|1||2004-2021>2021-2023>2023-
+soccer|Cristiano Ronaldo|CR7|2250>360>86>111>360>817|1||2002-2003>2003-2009>2009-2018>2018-2021>2021-2022>2023-
+soccer|Neymar|Neymar Jr|2674>83>160>929>2674|1||2009-2013>2013-2017>2017-2023>2023-2025>2025-
+soccer|Zlatan Ibrahimović|Zlatan;Zlatan Ibrahimovic|139>111>110>83>103>160>360>187>103|2|He started at Malmö|2001-2004>2004-2006>2006-2009>2009-2011>2010-2012>2012-2016>2016-2018>2018-2019>2020-2023
+soccer|David Beckham|Becks|360>86>187>103>160|1||1992-2003>2003-2007>2007-2012>2009-2010>2013
+soccer|Thierry Henry||174>111>359>83>190|2||1994-1999>1999>1999-2007>2007-2010>2010-2014
+soccer|Kylian Mbappé|Kylian Mbappe|174>160>86|1||2015-2018>2017-2024>2024-
+soccer|Luis Suárez|Luis Suarez|139>364>83>1068>20232|2|Only his best-known clubs are shown|2007-2011>2011-2014>2014-2020>2020-2022>2024-
+soccer|Mohamed Salah|Mo Salah|363>109>104>364|2|He started at Basel|2014-2016>2015>2015-2017>2017-
+soccer|Wayne Rooney||368>360>368>193|2||2002-2004>2004-2017>2017-2018>2018-2019
+soccer|Kaká|Kaka|103>86>103>12011|3|He started at São Paulo|2003-2009>2009-2013>2013-2014>2015-2017
+soccer|Ronaldinho||160>83>103|2|His Brazilian clubs are left out|2001-2003>2003-2008>2008-2011
+soccer|Andrea Pirlo||110>103>111>17606|3|He started at Brescia|1998-2001>2001-2011>2011-2015>2015-2017
+soccer|Frank Lampard||363>382>17606|3|He started at West Ham|2001-2014>2014-2015>2015-2016
+soccer|Ángel Di María|Angel Di Maria;Di Maria|86>360>160>111|3|His spells at Benfica are left out|2010-2014>2014-2015>2015-2022>2022-2023
+soccer|Sergio Ramos||243>86>160>243|2||2004-2005>2005-2021>2021-2023>2023-2024
+soccer|Eden Hazard||166>363>86|2||2007-2012>2012-2019>2019-2023
+soccer|Antoine Griezmann||89>1068>83>1068|2||2009-2014>2014-2019>2019-2021>2021-
+soccer|Gareth Bale||367>86>18966|2|He started at Southampton|2007-2013>2013-2022>2022
+soccer|Robert Lewandowski||124>132>83|2|He started in Poland|2010-2014>2014-2022>2022-
+`.trim().split('\n').map(l => { const [lg, name, al, path, tier, note, years] = l.split('|'); return { lg, name, aliases: al ? al.split(';') : [], path: path.split('>'), tier: +tier, note, years: years.split('>').map(y => y.replace('-', '–')) }; });
+// Clubs in career paths that aren't in the logo quiz.
+const CLUB_NAMES = { 2250: 'Sporting CP', 817: 'Al Nassr', 929: 'Al Hilal', 2674: 'Santos', 139: 'Ajax', 174: 'Monaco', 190: 'New York Red Bulls', 109: 'Fiorentina', 193: 'D.C. United', 12011: 'Orlando City', 17606: 'New York City FC', 166: 'Lille', 89: 'Real Sociedad', 18966: 'LAFC' };
+const TEAM_BY_KEY = Object.fromEntries(TEAMS.map(t => [t.lg + ':' + t.key, t]));
+
+/* =========================================================================
+   DATA — college towns (all NCAA Division I):  city | school shown as the answer | also accepted | tier
+   ========================================================================= */
+const COLLEGES = `
+Tuscaloosa, Alabama|Alabama|University of Alabama;Bama;Crimson Tide;Roll Tide|1
+Ann Arbor, Michigan|Michigan|University of Michigan;Wolverines;UMich|1
+South Bend, Indiana|Notre Dame|University of Notre Dame;Fighting Irish|1
+Durham, North Carolina|Duke|Duke University;Blue Devils;North Carolina Central;NCCU|1
+Chapel Hill, North Carolina|North Carolina|UNC;University of North Carolina;Tar Heels;Carolina|1
+Athens, Georgia|Georgia|University of Georgia;UGA;Georgia Bulldogs|1
+Baton Rouge, Louisiana|LSU|Louisiana State;Louisiana State University;Southern;Southern University|1
+Norman, Oklahoma|Oklahoma|University of Oklahoma;OU;Sooners|1
+Lincoln, Nebraska|Nebraska|University of Nebraska;Cornhuskers;Huskers|1
+Eugene, Oregon|Oregon|University of Oregon;Oregon Ducks|1
+Columbus, Ohio|Ohio State|The Ohio State University;Ohio State University;OSU;Buckeyes|1
+Gainesville, Florida|Florida|University of Florida;UF;Gators|1
+Knoxville, Tennessee|Tennessee|University of Tennessee;Volunteers;Vols|1
+Tallahassee, Florida|Florida State|FSU;Florida State University;Seminoles;Florida A&M;FAMU|1
+Austin, Texas|Texas|University of Texas;Longhorns;UT Austin;UT|1
+College Station, Texas|Texas A&M|Texas A and M;A&M;Aggies;TAMU|1
+Los Angeles, California|UCLA or USC|UCLA;USC;Southern California;University of Southern California;Loyola Marymount;LMU|1
+Madison, Wisconsin|Wisconsin|University of Wisconsin;Badgers|1
+East Lansing, Michigan|Michigan State|MSU;Michigan State University;Spartans|1
+State College, Pennsylvania|Penn State|Pennsylvania State;Penn State University;Nittany Lions;PSU|1
+Lexington, Kentucky|Kentucky|University of Kentucky;UK;Kentucky Wildcats|1
+Lawrence, Kansas|Kansas|University of Kansas;KU;Jayhawks|1
+New Haven, Connecticut|Yale|Yale University|1
+Cambridge, Massachusetts|Harvard|Harvard University|1
+Lubbock, Texas|Texas Tech|Texas Tech University;Red Raiders|2
+Waco, Texas|Baylor|Baylor University|2
+Fort Worth, Texas|TCU|Texas Christian;Texas Christian University;Horned Frogs|2
+Dallas, Texas|SMU|Southern Methodist;Southern Methodist University|2
+Provo, Utah|BYU|Brigham Young;Brigham Young University|2
+Boulder, Colorado|Colorado|University of Colorado;CU;Buffaloes;Buffs|2
+Iowa City, Iowa|Iowa|University of Iowa;Hawkeyes|2
+Ames, Iowa|Iowa State|Iowa State University;Cyclones|2
+Morgantown, West Virginia|West Virginia|WVU;West Virginia University;Mountaineers|2
+Blacksburg, Virginia|Virginia Tech|VT;Hokies|2
+Charlottesville, Virginia|Virginia|UVA;University of Virginia;Cavaliers|2
+Columbia, South Carolina|South Carolina|University of South Carolina;Gamecocks|2
+Columbia, Missouri|Missouri|Mizzou;University of Missouri|2
+Fayetteville, Arkansas|Arkansas|University of Arkansas;Razorbacks|2
+Oxford, Mississippi|Ole Miss|Mississippi;University of Mississippi|2
+Starkville, Mississippi|Mississippi State|Miss State;Mississippi State University|2
+Bloomington, Indiana|Indiana|Indiana University;IU;Hoosiers|2
+West Lafayette, Indiana|Purdue|Purdue University;Boilermakers|2
+Champaign, Illinois|Illinois|University of Illinois;Illini;Fighting Illini|2
+Evanston, Illinois|Northwestern|Northwestern University|2
+Minneapolis, Minnesota|Minnesota|University of Minnesota;Gophers;Golden Gophers|2
+Manhattan, Kansas|Kansas State|K-State;Kansas State University|2
+Stillwater, Oklahoma|Oklahoma State|Oklahoma State University;OSU|2
+Storrs, Connecticut|UConn|Connecticut;University of Connecticut|2
+Spokane, Washington|Gonzaga|Gonzaga University;Zags|2
+Berkeley, California|Cal|California;UC Berkeley;University of California;Golden Bears|2
+Tucson, Arizona|Arizona|University of Arizona|2
+Tempe, Arizona|Arizona State|ASU;Arizona State University;Sun Devils|2
+Salt Lake City, Utah|Utah|University of Utah;Utes|2
+Seattle, Washington|Washington|UW;University of Washington;Seattle U;Seattle University|2
+Atlanta, Georgia|Georgia Tech|Georgia Institute of Technology;Yellow Jackets;Georgia State|2
+Coral Gables, Florida|Miami|University of Miami;Miami Hurricanes;The U|2
+Winston-Salem, North Carolina|Wake Forest|Wake Forest University;Demon Deacons;Wake|2
+Raleigh, North Carolina|NC State|North Carolina State;N.C. State;Wolfpack|2
+Nashville, Tennessee|Vanderbilt|Vandy;Vanderbilt University;Belmont;Lipscomb;Tennessee State|2
+Ithaca, New York|Cornell|Cornell University|2
+Hanover, New Hampshire|Dartmouth|Dartmouth College|2
+Providence, Rhode Island|Brown|Brown University;Providence;Providence College|2
+Annapolis, Maryland|Navy|Naval Academy;US Naval Academy;Midshipmen|2
+West Point, New York|Army|Military Academy;US Military Academy;Black Knights|2
+College Park, Maryland|Maryland|University of Maryland;Terps;Terrapins|2
+Piscataway, New Jersey|Rutgers|Rutgers University;Scarlet Knights|2
+Chestnut Hill, Massachusetts|Boston College|BC|2
+Philadelphia, Pennsylvania|Temple, Penn or Drexel|Temple;Penn;University of Pennsylvania;UPenn;Drexel;La Salle;Saint Joseph's;St Joes|2
+Corvallis, Oregon|Oregon State|Oregon State University;Beavers|3
+Pullman, Washington|Washington State|WSU;Wazzu;Washington State University|3
+Laramie, Wyoming|Wyoming|University of Wyoming|3
+Missoula, Montana|Montana|University of Montana;Grizzlies|3
+Bozeman, Montana|Montana State|Montana State University|3
+Fort Collins, Colorado|Colorado State|CSU;Colorado State University|3
+Albuquerque, New Mexico|New Mexico|UNM;University of New Mexico;Lobos|3
+Las Cruces, New Mexico|New Mexico State|NMSU|3
+Reno, Nevada|Nevada|University of Nevada;Wolf Pack|3
+Logan, Utah|Utah State|Utah State University|3
+Moscow, Idaho|Idaho|University of Idaho;Vandals|3
+Omaha, Nebraska|Creighton|Creighton University;Omaha;Nebraska Omaha|3
+Milwaukee, Wisconsin|Marquette|Marquette University;Milwaukee;UW Milwaukee;Wisconsin Milwaukee|3
+New Orleans, Louisiana|Tulane|Tulane University;Green Wave;New Orleans;UNO|3
+Greenville, North Carolina|East Carolina|ECU;East Carolina University|3
+Boone, North Carolina|Appalachian State|App State|3
+Oxford, Ohio|Miami (Ohio)|Miami;Miami University;Miami of Ohio;Miami Ohio;RedHawks|3
+Athens, Ohio|Ohio|Ohio University;Bobcats|3
+Kalamazoo, Michigan|Western Michigan|WMU;Western Michigan University|3
+Muncie, Indiana|Ball State|Ball State University|3
+DeKalb, Illinois|Northern Illinois|NIU|3
+Hattiesburg, Mississippi|Southern Miss|Southern Mississippi;USM|3
+Murfreesboro, Tennessee|Middle Tennessee|MTSU;Middle Tennessee State|3
+Bowling Green, Kentucky|Western Kentucky|WKU|3
+Huntington, West Virginia|Marshall|Marshall University|3
+Jonesboro, Arkansas|Arkansas State|A-State|3
+San Marcos, Texas|Texas State|Texas State University|3
+Denton, Texas|North Texas|UNT;University of North Texas|3
+Amherst, Massachusetts|UMass|Massachusetts;University of Massachusetts|3
+Orono, Maine|Maine|University of Maine|3
+Burlington, Vermont|Vermont|University of Vermont;UVM|3
+Newark, Delaware|Delaware|University of Delaware;Blue Hens|3
+Malibu, California|Pepperdine|Pepperdine University|3
+Hamilton, New York|Colgate|Colgate University|3
+`.trim().split('\n').map(l => { const [city, name, al, tier] = l.split('|'); return { city, name, aliases: al ? al.split(';') : [], tier: +tier }; });
+
+/* =========================================================================
+   DATA — cities from space:  city | latitude | longitude | zoom | tier | also accepted
+   Imagery: Sentinel-2 cloudless by EOX (s2maps.eu), CC BY 4.0
+   ========================================================================= */
+const SAT = `
+New York|40.73|-73.98|11|1|NYC;New York City;Manhattan
+San Francisco|37.77|-122.42|11|1|SF;San Fran
+Chicago|41.86|-87.66|11|2|
+Miami|25.78|-80.19|11|1|Miami Beach
+Venice|45.44|12.33|13|1|Venezia
+Dubai|25.13|55.17|11|1|
+Rio de Janeiro|-22.93|-43.2|11|1|Rio
+Sydney|-33.86|151.21|11|1|
+Hong Kong|22.3|114.17|11|2|HK
+Singapore|1.33|103.83|10|2|
+Istanbul|41.03|29.0|11|2|Constantinople
+Paris|48.857|2.35|12|2|
+London|51.5|-0.1|11|2|
+Washington, D.C.|38.89|-77.03|12|2|Washington;DC;Washington DC
+Barcelona|41.39|2.17|12|2|
+Amsterdam|52.37|4.9|12|2|
+Cairo|30.05|31.23|11|2|
+Cape Town|-33.95|18.45|10|2|
+Vancouver|49.27|-123.12|11|2|
+Seattle|47.6|-122.33|11|2|
+Boston|42.35|-71.05|12|2|
+New Orleans|29.95|-90.07|11|2|NOLA
+Las Vegas|36.14|-115.17|11|2|Vegas
+Los Angeles|33.95|-118.3|10|2|LA
+Tokyo|35.62|139.8|10|2|
+Mumbai|19.0|72.85|11|3|Bombay
+Lisbon|38.7|-9.15|11|2|Lisboa
+Stockholm|59.33|18.07|11|3|
+Copenhagen|55.68|12.58|11|3|
+San Diego|32.71|-117.18|11|2|
+Detroit|42.33|-83.05|11|3|
+Toronto|43.65|-79.38|11|2|
+Montreal|45.52|-73.6|10|3|Montréal
+Buenos Aires|-34.6|-58.4|11|3|
+Rome|41.9|12.49|12|2|Roma
+Naples|40.82|14.3|10|2|Napoli
+Athens|37.96|23.72|11|3|
+Doha|25.32|51.53|11|3|
+Abu Dhabi|24.46|54.4|11|3|
+Shanghai|31.23|121.5|11|3|
+Honolulu|21.3|-157.84|11|2|Waikiki
+Saint Petersburg|59.93|30.3|11|3|St Petersburg;Leningrad
+Brasília|-15.79|-47.88|11|3|Brasilia
+Panama City|9.0|-79.55|11|3|Panama
+Havana|23.12|-82.37|12|3|La Habana
+Tampa|27.85|-82.55|10|3|Tampa Bay
+Salt Lake City|40.85|-112.0|10|3|SLC
+`.trim().split('\n').map(l => { const [name, lat, lon, z, tier, al] = l.split('|'); return { name, lat: +lat, lon: +lon, z: +z, tier: +tier, aliases: al ? al.split(';') : [] }; });
+const SAT_COLS = 4, SAT_ROWS = 3;
+function satTiles(c) {
+  const n = 2 ** c.z, fx = (c.lon + 180) / 360 * n, r = c.lat * Math.PI / 180, fy = (1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2 * n;
+  const x0 = Math.round(fx - SAT_COLS / 2), y0 = Math.round(fy - SAT_ROWS / 2), out = [];
+  for (let y = 0; y < SAT_ROWS; y++) for (let x = 0; x < SAT_COLS; x++) out.push(`https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/g/${c.z}/${y0 + y}/${((x0 + x) % n + n) % n}.jpg`);
+  return out;
+}
+
+/* =========================================================================
+   DATA — music
+   emoji songs:  emoji | song | artist | tier | also accepted
+   bands:        members | band | tier | also accepted
+   ========================================================================= */
+const EMOJI_SONGS = `
+🟣🌧️|Purple Rain|Prince|1|
+💃👑|Dancing Queen|ABBA|1|
+🚀👨|Rocket Man|Elton John|1|Rocketman
+🏨🌴☀️|Hotel California|Eagles|1|
+🟡🚢🌊|Yellow Submarine|The Beatles|1|
+👁️🐯|Eye of the Tiger|Survivor|1|
+☔|Umbrella|Rihanna|1|
+👶🦈|Baby Shark|Pinkfong|1|
+🎆|Firework|Katy Perry|1|Fireworks
+👎🩸|Bad Blood|Taylor Swift|2|
+⬜🌌|Blank Space|Taylor Swift|2|
+👃🧑‍🎤👻|Smells Like Teen Spirit|Nirvana|2|
+🪜➡️☁️😇|Stairway to Heaven|Led Zeppelin|1|
+➕🧱🧱|Another Brick in the Wall|Pink Floyd|2|Another Brick in the Wall Part 2
+🧟🕺🌕|Thriller|Michael Jackson|1|
+🟤👁️👧|Brown Eyed Girl|Van Morrison|2|
+🎹👨|Piano Man|Billy Joel|1|
+👋|Hello|Adele|2|
+👉☀️|Here Comes the Sun|The Beatles|2|
+⚫🐦|Blackbird|The Beatles|2|
+🐙🌷|Octopus's Garden|The Beatles|3|Octopus Garden
+💍🔥|Ring of Fire|Johnny Cash|1|
+🚶☀️|Walking on Sunshine|Katrina and the Waves|2|Walkin on Sunshine
+🌧️👨👨|It's Raining Men|The Weather Girls|2|Raining Men
+👧👧🎉|Girls Just Want to Have Fun|Cyndi Lauper|2|Girls Just Wanna Have Fun
+🏗️⚽|Wrecking Ball|Miley Cyrus|2|
+💎💎|Diamonds|Rihanna|2|Diamond
+🏆|We Are the Champions|Queen|1|
+👶🇺🇸|Born in the U.S.A.|Bruce Springsteen|1|Born in the USA
+💃🌑|Dancing in the Dark|Bruce Springsteen|2|
+⚫🕳️☀️|Black Hole Sun|Soundgarden|2|
+🥇⛏️|Gold Digger|Kanye West|2|
+🕯️💨|Candle in the Wind|Elton John|2|
+🤏💃|Tiny Dancer|Elton John|2|
+🐊🪨|Crocodile Rock|Elton John|2|
+🔵👞|Blue Suede Shoes|Elvis Presley|2|
+🐕|Hound Dog|Elvis Presley|2|
+⛓️🏠🪨|Jailhouse Rock|Elvis Presley|2|
+💔🏨|Heartbreak Hotel|Elvis Presley|2|
+✈️👤🌙|Fly Me to the Moon|Frank Sinatra|2|
+🍌🥞|Banana Pancakes|Jack Johnson|3|
+🍉🍬|Watermelon Sugar|Harry Styles|1|
+👎👨|Bad Guy|Billie Eilish|1|
+👴🏘️🛣️|Old Town Road|Lil Nas X|1|
+🙈💡|Blinding Lights|The Weeknd|2|
+⭐👦|Starboy|The Weeknd|2|Star Boy
+📄✈️|Paper Planes|M.I.A.|3|Paper Plane
+🕐🕑🕒|Clocks|Coldplay|2|Clock
+7️⃣🌍🪖|Seven Nation Army|The White Stripes|2|7 Nation Army
+🌑❤️|Total Eclipse of the Heart|Bonnie Tyler|2|
+🌃🤒|Night Fever|Bee Gees|3|
+⚡🎯|Thunderstruck|AC/DC|2|
+🛣️➡️🔥😈|Highway to Hell|AC/DC|1|
+🔙⚫|Back in Black|AC/DC|2|
+🎨⚫|Paint It Black|The Rolling Stones|2|
+🟤🍬|Brown Sugar|The Rolling Stones|3|
+💡🔥|Light My Fire|The Doors|2|
+🟣🌫️|Purple Haze|Jimi Hendrix|2|
+🔥🌧️|Fire and Rain|James Taylor|3|
+🌻|Sunflower|Post Malone|2|
+😀|Happy|Pharrell Williams|1|
+🏰⛰️|Castle on the Hill|Ed Sheeran|3|
+🍾💥⭐|Champagne Supernova|Oasis|3|
+🎂🌊|Cake by the Ocean|DNCE|3|
+🍽️🐺|Hungry Like the Wolf|Duran Duran|2|
+😢☁️😇|Tears in Heaven|Eric Clapton|2|
+😇|Halo|Beyoncé|2|
+🤪❤️|Crazy in Love|Beyoncé|1|
+🃏😐|Poker Face|Lady Gaga|1|
+☎️|Telephone|Lady Gaga|2|
+👎💕|Bad Romance|Lady Gaga|1|
+☠️|Toxic|Britney Spears|2|
+🧞🍾|Genie in a Bottle|Christina Aguilera|2|
+🧊🧊👶|Ice Ice Baby|Vanilla Ice|1|
+🚫👆|U Can't Touch This|MC Hammer|1|Can't Touch This;You Can't Touch This
+🍔🏝️|Cheeseburger in Paradise|Jimmy Buffett|2|
+🍑🧠|Georgia on My Mind|Ray Charles|2|
+9️⃣➡️5️⃣|9 to 5|Dolly Parton|1|Nine to Five
+🏝️🏝️🌊|Islands in the Stream|Dolly Parton and Kenny Rogers|2|
+👫⬇️📍|Friends in Low Places|Garth Brooks|2|
+🏠🙏|Livin' on a Prayer|Bon Jovi|1|Living on a Prayer
+🌈🔗|Rainbow Connection|Kermit the Frog|3|The Rainbow Connection
+👧🔥|Girl on Fire|Alicia Keys|2|This Girl Is on Fire
+🔥➡️🌧️|Set Fire to the Rain|Adele|2|
+🚗⚡|Fast Car|Tracy Chapman|2|
+💃🌙💡|Dancing in the Moonlight|Toploader|2|
+🚶🌙|Walking on the Moon|The Police|3|
+👨🌙|Man on the Moon|R.E.M.|3|
+👎🌙⬆️|Bad Moon Rising|Creedence Clearwater Revival|2|
+🏠⬆️☀️|House of the Rising Sun|The Animals|2|The House of the Rising Sun
+9️⃣9️⃣🔴🎈|99 Red Balloons|Nena|2|99 Luftballons;Ninety Nine Red Balloons
+🍒💣|Cherry Bomb|The Runaways|3|
+🍒🥧|Cherry Pie|Warrant|3|
+🍓🌾♾️|Strawberry Fields Forever|The Beatles|2|Strawberry Fields
+🍑🍑|Peaches|Justin Bieber|2|Peach
+🥛🥤|Milkshake|Kelis|2|
+🍭|Lollipop|Lil Wayne|2|
+🍬🛍️|Candy Shop|50 Cent|2|
+🐎🚫🏷️|A Horse with No Name|America|2|Horse with No Name
+🌑🐴|Dark Horse|Katy Perry|2|
+🦁💤🌃|The Lion Sleeps Tonight|The Tokens|1|Lion Sleeps Tonight
+👩🐺|She Wolf|Shakira|3|
+✈️👍🦅|Fly Like an Eagle|Steve Miller Band|3|
+🆓🐦|Free Bird|Lynyrd Skynyrd|1|Freebird
+3️⃣🤏🐦|Three Little Birds|Bob Marley|1|3 Little Birds
+🕊️😢|When Doves Cry|Prince|2|
+💃🐒|Dance Monkey|Tones and I|2|
+💋🌹|Kiss from a Rose|Seal|2|
+🌹📌|Every Rose Has Its Thorn|Poison|2|
+🌊👀|Ocean Eyes|Billie Eilish|2|
+🏞️💧⬇️|Waterfalls|TLC|2|Waterfall
+📍⬆️🌈|Somewhere Over the Rainbow|Judy Garland|1|Over the Rainbow
+⚡|Thunder|Imagine Dragons|2|
+☢️|Radioactive|Imagine Dragons|1|
+❄️👸✋|Let It Go|Idina Menzel|1|
+🔥⬇️🏠|Burning Down the House|Talking Heads|2|
+✊🚪😇|Knockin' on Heaven's Door|Bob Dylan|2|Knocking on Heaven's Door
+👍🪨🔄|Like a Rolling Stone|Bob Dylan|2|
+🌬️💨|Blowin' in the Wind|Bob Dylan|2|Blowing in the Wind
+🙅‍♀️💍|Single Ladies|Beyoncé|1|Single Ladies (Put a Ring on It);Put a Ring on It
+👑👑|Royals|Lorde|2|Royal
+🕶️🌃|Sunglasses at Night|Corey Hart|3|
+🟡🚕|Big Yellow Taxi|Joni Mitchell|2|
+🤪🚂|Crazy Train|Ozzy Osbourne|2|
+🕛🚂🍑|Midnight Train to Georgia|Gladys Knight & the Pips|2|
+🚗🪪|Drivers License|Olivia Rodrigo|1|Driver's License
+🤏🔴🚗|Little Red Corvette|Prince|2|
+🚲🏁|Bicycle Race|Queen|3|
+⭐👨|Starman|David Bowie|2|
+🔢⭐|Counting Stars|OneRepublic|2|
+💯⭐|All Star|Smash Mouth|1|
+🌍🌧️|Africa|Toto|1|
+🏙️🧠|Empire State of Mind|Jay-Z and Alicia Keys|2|
+🗽🗽|New York, New York|Frank Sinatra|1|Theme from New York New York
+🌴👧👧|California Gurls|Katy Perry|2|California Girls
+🌴💭|California Dreamin'|The Mamas & the Papas|2|California Dreaming
+🎰🎲|Viva Las Vegas|Elvis Presley|2|
+🇺🇸🥧|American Pie|Don McLean|1|
+🇺🇸👩|American Woman|The Guess Who|2|
+🇬🇧📞|London Calling|The Clash|2|
+💰💰💰|Money, Money, Money|ABBA|2|
+🧾🧾🧾|Bills, Bills, Bills|Destiny's Child|3|
+📞👤🤔|Call Me Maybe|Carly Rae Jepsen|1|
+🔥📞✨|Hotline Bling|Drake|2|
+✉️🍾|Message in a Bottle|The Police|2|
+📹🔪📻⭐|Video Killed the Radio Star|The Buggles|2|
+🎸😢|While My Guitar Gently Weeps|The Beatles|3|
+😖🍬🎻|Bitter Sweet Symphony|The Verve|2|Bittersweet Symphony
+🤐➕💃|Shut Up and Dance|Walk the Moon|2|
+👻🚫|Ghostbusters|Ray Parker Jr.|1|
+🤖🙇|Mr. Roboto|Styx|3|Mister Roboto
+👼👼|Angels|Robbie Williams|2|Angel
+🤝😈|Sympathy for the Devil|The Rolling Stones|2|
+😈⬇️🍑|The Devil Went Down to Georgia|The Charlie Daniels Band|2|Devil Went Down to Georgia
+🤕💔|Achy Breaky Heart|Billy Ray Cyrus|2|
+❤️🪟|Heart of Glass|Blondie|2|
+❤️🥇|Heart of Gold|Neil Young|3|
+🔙🔵👀|Behind Blue Eyes|The Who|3|
+🚪⏳👨|Enter Sandman|Metallica|2|
+😭👤🏞️|Cry Me a River|Justin Timberlake|2|
+🥶🧊|Cold as Ice|Foreigner|2|
+🥵🥶|Hot N Cold|Katy Perry|2|Hot and Cold
+😈🔔|Hells Bells|AC/DC|2|Hell's Bells
+⏰➡️⏰|Time After Time|Cyndi Lauper|2|
+🤪📅|Manic Monday|The Bangles|3|
+1️⃣❤️|One Love|Bob Marley|2|
+2️⃣🤴🤴|Two Princes|Spin Doctors|3|2 Princes
+7️⃣💍|7 Rings|Ariana Grande|2|Seven Rings
+8️⃣📅|Eight Days a Week|The Beatles|2|8 Days a Week
+9️⃣9️⃣😖|99 Problems|Jay-Z|2|Ninety Nine Problems
+🚫🧽|No Scrubs|TLC|2|
+🚫👩🚫😢|No Woman, No Cry|Bob Marley|2|
+🚫🗣️|Don't Speak|No Doubt|2|
+🚫😟😀|Don't Worry, Be Happy|Bobby McFerrin|1|
+🛑❤️|Stop! In the Name of Love|The Supremes|2|Stop in the Name of Love
+🧈|Butter|BTS|2|
+🧨|Dynamite|BTS|2|
+🧱🏠|Brick House|Commodores|2|
+👨🪞|Man in the Mirror|Michael Jackson|1|
+🚫☀️|Ain't No Sunshine|Bill Withers|2|
+🎤🌧️|Singin' in the Rain|Gene Kelly|1|Singing in the Rain
+🪨👉🌀|Rock You Like a Hurricane|Scorpions|2|
+🚫⛰️⬆️|Ain't No Mountain High Enough|Marvin Gaye and Tammi Terrell|2|
+🌉🌊😟|Bridge over Troubled Water|Simon & Garfunkel|2|
+🧬➡️🛣️|Life Is a Highway|Tom Cochrane|1|
+🛣️🔁|On the Road Again|Willie Nelson|2|
+🏄🇺🇸|Surfin' U.S.A.|The Beach Boys|2|Surfin USA;Surfing USA
+🃏|The Joker|Steve Miller Band|2|Joker
+🂡♠️|Ace of Spades|Motörhead|2|
+🔪👑|Killer Queen|Queen|2|
+👶1️⃣➕⏰|...Baby One More Time|Britney Spears|1|Baby One More Time;Hit Me Baby One More Time
+😍👩|Oh, Pretty Woman|Roy Orbison|1|Pretty Woman
+🦾👨|Iron Man|Black Sabbath|2|
+👨☀️|Mr. Brightside|The Killers|1|Mister Brightside
+👨🔵☁️|Mr. Blue Sky|Electric Light Orchestra|2|Mister Blue Sky
+👎🦴|Bad to the Bone|George Thorogood|2|
+💨🌊|Smoke on the Water|Deep Purple|1|
+🔴🥤|Red Solo Cup|Toby Keith|2|
+🔴🔴🍷|Red Red Wine|UB40|2|
+🍍🥥🍹|Escape (The Piña Colada Song)|Rupert Holmes|2|The Pina Colada Song;Pina Colada Song;Escape;Pina Colada
+🍹🏝️🏘️|Margaritaville|Jimmy Buffett|1|
+🍸🧃|Gin and Juice|Snoop Dogg|2|Gin & Juice
+🥃🎵|Tennessee Whiskey|Chris Stapleton|2|
+🐔🍳|Chicken Fried|Zac Brown Band|2|
+🚜🛣️🏠|Take Me Home, Country Roads|John Denver|1|Country Roads
+🧟‍♀️🧠|Zombie|The Cranberries|2|
+🌵🤠|Wanted Dead or Alive|Bon Jovi|3|
+🌊🏄‍♂️🎸|Wipe Out|The Surfaris|3|Wipeout
+🪩🔥|Disco Inferno|The Trammps|3|
+🐰🕳️|White Rabbit|Jefferson Airplane|3|
+🕷️🕸️|Spiderwebs|No Doubt|3|Spiderweb
+`.trim().split('\n').map(l => { const [emoji, name, artist, tier, al] = l.split('|'); return { emoji, name, artist, tier: +tier, aliases: al ? al.split(';') : [] }; });
+const BANDS = `
+John · Paul · George · Ringo|The Beatles|1|Beatles
+Freddie · Brian · Roger · John|Queen|1|
+Mick · Keith · Charlie · Ronnie|The Rolling Stones|1|Rolling Stones;Stones
+Robert · Jimmy · John Paul · Bonzo|Led Zeppelin|2|Zeppelin
+Bono · The Edge · Adam · Larry|U2|1|
+Kurt · Krist · Dave|Nirvana|1|
+James · Lars · Kirk · Robert|Metallica|2|
+Scary · Sporty · Baby · Ginger · Posh|Spice Girls|1|The Spice Girls
+Justin · JC · Chris · Joey · Lance|NSYNC|1|N Sync;*NSYNC
+Nick · Howie · AJ · Brian · Kevin|Backstreet Boys|1|The Backstreet Boys;BSB
+Harry · Niall · Liam · Louis · Zayn|One Direction|1|1D
+Beyoncé · Kelly · Michelle|Destiny's Child|1|Destinys Child
+Agnetha · Björn · Benny · Anni-Frid|ABBA|2|
+Stevie · Lindsey · Christine · John · Mick|Fleetwood Mac|2|
+Don · Glenn · Joe · Timothy|Eagles|3|The Eagles
+Roger · David · Richard · Nick|Pink Floyd|3|
+Roger · Pete · John · Keith|The Who|3|Who
+Axl · Slash · Duff · Izzy · Steven|Guns N' Roses|1|Guns and Roses;GNR;Guns N Roses
+Anthony · Flea · Chad · John|Red Hot Chili Peppers|2|Chili Peppers;RHCP
+Chris · Jonny · Guy · Will|Coldplay|2|
+Billie Joe · Mike · Tré|Green Day|2|
+Jackie · Tito · Jermaine · Marlon · Michael|The Jackson 5|1|Jackson 5;Jackson Five;The Jacksons;Jacksons
+Barry · Robin · Maurice|Bee Gees|2|The Bee Gees
+Kevin · Joe · Nick|Jonas Brothers|1|The Jonas Brothers;Jonas Bros
+RM · Jin · Suga · J-Hope · Jimin · V · Jungkook|BTS|2|Bangtan Boys
+Liam · Noel · Bonehead · Guigsy|Oasis|2|
+Angus · Malcolm · Brian · Cliff · Phil|AC/DC|2|ACDC
+Steven · Joe · Tom · Joey · Brad|Aerosmith|3|
+Eddie · Alex · David Lee · Michael|Van Halen|2|
+Sting · Andy · Stewart|The Police|2|Police
+Jim · Ray · Robby · John|The Doors|3|Doors
+Brian · Carl · Dennis · Mike · Al|The Beach Boys|2|Beach Boys
+Davy · Micky · Peter · Michael|The Monkees|3|Monkees
+Gene · Paul · Ace · Peter|KISS|2|
+Ozzy · Tony · Geezer · Bill|Black Sabbath|2|Sabbath
+Jon · Richie · Tico · David|Bon Jovi|2|
+T-Boz · Left Eye · Chilli|TLC|2|
+Mark · Tom · Travis|Blink-182|2|Blink 182;Blink
+Joey · Johnny · Dee Dee · Tommy|Ramones|2|The Ramones
+Quavo · Offset · Takeoff|Migos|2|
+Mike D · MCA · Ad-Rock|Beastie Boys|2|The Beastie Boys
+Dave · Taylor · Pat · Nate · Chris|Foo Fighters|3|The Foo Fighters
+Donnie · Jordan · Joey · Jonathan · Danny|New Kids on the Block|2|NKOTB;New Kids
+Diana · Mary · Florence|The Supremes|3|Supremes
+Steve · Neal · Jonathan · Ross|Journey|2|
+Geddy · Alex · Neil|Rush|2|
+Eddie · Mike · Stone · Jeff · Matt|Pearl Jam|2|
+Thom · Jonny · Colin · Ed · Philip|Radiohead|2|
+Brandon · Dave · Mark · Ronnie|The Killers|2|Killers
+Adam · Jesse · James · Mickey · Matt|Maroon 5|3|Maroon Five
+Dan · Wayne · Ben · Daniel|Imagine Dragons|3|
+Chester · Mike · Brad · Rob · Joe · Phoenix|Linkin Park|2|
+Tyler · Josh|Twenty One Pilots|2|21 Pilots
+Jack · Meg|The White Stripes|2|White Stripes
+André 3000 · Big Boi|Outkast|1|
+Thomas · Guy-Manuel|Daft Punk|3|
+Paul · Art|Simon & Garfunkel|1|Simon and Garfunkel
+Daryl · John|Hall & Oates|2|Hall and Oates;Daryl Hall and John Oates
+George · Andrew|Wham!|2|Wham
+Annie · Dave|Eurythmics|3|The Eurythmics
+Karen · Richard|The Carpenters|2|Carpenters
+Dr. Dre · Ice Cube · Eazy-E · MC Ren · DJ Yella|N.W.A|1|NWA
+Lauryn · Wyclef · Pras|Fugees|2|The Fugees
+will.i.am · apl.de.ap · Taboo · Fergie|The Black Eyed Peas|1|Black Eyed Peas
+Nathan · Wanya · Shawn · Michael|Boyz II Men|2|Boyz 2 Men;Boys II Men;Boys to Men
+Otis · Eddie · David · Paul · Melvin|The Temptations|3|Temptations
+Frankie · Bob · Tommy · Nick|The Four Seasons|3|Four Seasons;Frankie Valli and the Four Seasons
+David · Stephen · Graham · Neil|Crosby, Stills, Nash & Young|3|CSNY;Crosby Stills Nash and Young;Crosby Stills and Nash
+John · Tom · Stu · Doug|Creedence Clearwater Revival|2|CCR;Creedence
+Billy · Dusty · Frank|ZZ Top|2|
+Joe · Phil · Vivian · Sav · Rick|Def Leppard|3|
+Vince · Nikki · Tommy · Mick|Mötley Crüe|2|Motley Crue
+Peter · Phil · Mike · Tony · Steve|Genesis|3|
+Joe · Mick · Paul · Topper|The Clash|2|Clash
+Johnny Rotten · Sid Vicious · Steve · Paul|Sex Pistols|1|The Sex Pistols
+Dave · Martin · Andy|Depeche Mode|3|
+Simon · Nick · John · Roger · Andy|Duran Duran|2|
+Michael · Peter · Mike · Bill|R.E.M.|2|REM
+Morrissey · Johnny · Andy · Mike|The Smiths|2|Smiths
+Damon · Graham · Alex · Dave|Blur|3|
+Alex · Jamie · Nick · Matt|Arctic Monkeys|3|The Arctic Monkeys
+Julian · Nick · Albert · Nikolai · Fabrizio|The Strokes|3|Strokes
+Gwen · Tony · Tom · Adrian|No Doubt|1|
+Hayley · Taylor · Zac|Paramore|2|
+Patrick · Pete · Joe · Andy|Fall Out Boy|2|
+Gerard · Mikey · Ray · Frank|My Chemical Romance|2|MCR
+Natalie · Martie · Emily|The Chicks|2|Dixie Chicks;The Dixie Chicks;Chicks
+Gary · Jay · Joe Don|Rascal Flatts|3|
+Camila · Normani · Lauren · Ally · Dinah|Fifth Harmony|2|5th Harmony
+Perrie · Jade · Leigh-Anne · Jesy|Little Mix|2|
+Jisoo · Jennie · Rosé · Lisa|Blackpink|1|Black Pink
+Belinda · Jane · Charlotte · Kathy · Gina|The Go-Go's|3|Go-Gos;The Go Gos
+Susanna · Vicki · Debbi · Michael|The Bangles|3|Bangles
+John · Michelle · Cass · Denny|The Mamas & the Papas|2|The Mamas and the Papas;Mamas and Papas
+Gary · Robbie · Mark · Howard · Jason|Take That|2|
+Isaac · Taylor · Zac|Hanson|2|
+Este · Danielle · Alana|Haim|3|
+Chris · Kim · Ben · Matt|Soundgarden|3|
+Layne · Jerry · Mike · Sean|Alice in Chains|3|
+Zack · Tom · Tim · Brad|Rage Against the Machine|2|RATM;Rage
+Serj · Daron · Shavo · John|System of a Down|3|SOAD
+Bruce · Steve · Dave · Adrian · Janick · Nicko|Iron Maiden|3|
+Lemmy · Fast Eddie · Philthy Animal|Motörhead|2|Motorhead
+Ray · Dave · Pete · Mick|The Kinks|3|Kinks
+Eric · Jack · Ginger|Cream|2|
+Mark · David · John · Pick|Dire Straits|3|
+David · Tina · Chris · Jerry|Talking Heads|2|The Talking Heads
+Debbie · Chris · Clem · Jimmy|Blondie|2|
+Ann · Nancy|Heart|2|
+Roland · Curt|Tears for Fears|3|
+Neil · Chris|Pet Shop Boys|3|The Pet Shop Boys
+Luke · Michael · Calum · Ashton|5 Seconds of Summer|2|5SOS;Five Seconds of Summer
+Caleb · Nathan · Jared · Matthew|Kings of Leon|3|
+Dan · Patrick|The Black Keys|3|Black Keys
+Alex · Drew|The Chainsmokers|2|Chainsmokers
+Redfoo · Sky Blu|LMFAO|2|
+Tyler · Brian|Florida Georgia Line|3|FGL
+Kix · Ronnie|Brooks & Dunn|2|Brooks and Dunn
+Naomi · Wynonna|The Judds|2|Judds
+Don · Phil|The Everly Brothers|3|Everly Brothers
+Ronnie · Gary · Allen · Leon · Billy · Artimus|Lynyrd Skynyrd|3|Skynyrd
+Ric · Benjamin · Elliot · Greg · David|The Cars|3|Cars
+`.trim().split('\n').map(l => { const [members, name, tier, al] = l.split('|'); return { members, name, tier: +tier, aliases: al ? al.split(';') : [] }; });
+
+/* =========================================================================
+   DATA — more photo rounds (pictures saved in the images folder; free photos from Wikimedia Commons)
+   name | tier | also accepted | picture | credit | source page
+   ========================================================================= */
+const DOGS = photoRows(`
+Labrador Retriever|1|Lab;Labrador|images/dogs/labrador-retriever.jpg|IDS.photos from Tiverton, UK · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Labrador_on_Quantock_(2175262184).jpg
+German Shepherd|1|German Shepherd Dog;Alsatian|images/dogs/german-shepherd.jpg|gomagoti · CC BY-SA 2.5|https://commons.wikimedia.org/wiki/File:German_Shepherd_-_DSC_0346_(10096362833).jpg
+Golden Retriever|1|Golden|images/dogs/golden-retriever.jpg|Dukedestiny01.jpg: "Janneke Vreugdenhil" derivative work: An · Public domain|https://commons.wikimedia.org/wiki/File:Golden_Retriever_Dukedestiny01_drvd.jpg
+French Bulldog|1|Frenchie|images/dogs/french-bulldog.jpg|Ildar Sagdejev (Specious) · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2008-07-28_Dog_at_Frolick_Field.jpg
+Bulldog|1|English Bulldog;British Bulldog|images/dogs/bulldog.jpg|Av3553 at English Wikipedia. · GFDL|https://commons.wikimedia.org/wiki/File:Whitebulldog.jpg
+Poodle|1|Standard Poodle|images/dogs/poodle.jpg|Tim Wilson from Blaine, MN, USA · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Full_attention_(8067543690).jpg
+Beagle|1||images/dogs/beagle.jpg|Unknown author · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Beagle_600.jpg
+Rottweiler|1|Rottie|images/dogs/rottweiler.jpg|Dr. Manfred Herrmann Allgemeiner Deutscher Rottweiler-Klub ( · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Rottweiler_standing_facing_left.jpg
+Dachshund|1|Wiener dog;Sausage dog;Doxie|images/dogs/dachshund.jpg|Katemil94 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:%EB%8B%A5%EC%8A%A4%ED%9B%88%ED%8A%B8(%EB%8B%A8%EB%AA%A8%EC%A2%85)_(Dachshund_(Short)).jpg
+Yorkshire Terrier|1|Yorkie|images/dogs/yorkshire-terrier.jpg|Svenska Mässan from Sweden · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:(2_version)_Grupp_3,_YORKSHIRETERRIER,_NO_UCH_SE_UCH_Oxzar_Amazing_Bel%E2%80%99s_Toffy_(24310212305).jpg
+Boxer|1|Boxer|images/dogs/boxer.jpg|Mood210 · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Male_fawn_Boxer_undocked.jpg
+Siberian Husky|1|Husky|images/dogs/siberian-husky.jpg|xJaM (talk · contribs) · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Husky_L.jpg
+Great Dane|1||images/dogs/great-dane.jpg|Lilly M · CC BY-SA 2.5|https://commons.wikimedia.org/wiki/File:Dog_niemiecki_%C5%BC%C3%B3%C5%82ty_LM980.jpg
+Doberman|1|Doberman;Doberman Pinscher;Dobermann|images/dogs/dobermann.jpg|Miroslav Cacik · Copyrighted free use|https://commons.wikimedia.org/wiki/File:Dobermann_handling.jpg
+Shih Tzu|2||images/dogs/shih-tzu.jpg|Canino21 · Public domain|https://commons.wikimedia.org/wiki/File:Shihtzu_(cropped).jpg
+Chihuahua|1|Chihuahua|images/dogs/chihuahua.jpg|Bonnie van den Born, http://www.bonfoto.nl. The original upl · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Chihuahua1_bvdb.jpg
+Pug|1||images/dogs/pug.jpg|Mops_oct09.jpg: Dagur Brynjólfsson from Hafnarfjordur, Icela · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Mops_oct09_cropped2.jpg
+Border Collie|2|Collie|images/dogs/border-collie.jpg|Unknown author · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Border_Collie_600.jpg
+Australian Shepherd|2|Aussie|images/dogs/australian-shepherd.jpg|Trickdog-Fina · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Australian_Shepherd_red_bi.JPG
+Cavalier King Charles Spaniel|3|King Charles Spaniel;Cavalier|images/dogs/cavalier-king-charles-spaniel.jpg|Andreweatock · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:CarterBIS.Tiki.13.6.09.jpg
+Pembroke Welsh Corgi|1|Corgi;Welsh Corgi|images/dogs/pembroke-welsh-corgi.jpg|Dog breed facts · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Welsh_Pembroke_Corgi.jpg
+Bernese Mountain Dog|2|Berner|images/dogs/bernese-mountain.jpg|FriendlyToaster · CC BY 4.0|https://commons.wikimedia.org/wiki/File:3-BerneseMountainDogInGrass.jpg
+Pomeranian|2|Pomeranian;Pom;Pomeranian dog|images/dogs/pomeranian.jpg|Blackoranges · Public domain|https://commons.wikimedia.org/wiki/File:Pomeranian.JPG
+Boston Terrier|2||images/dogs/boston-terrier.jpg|Andreas Schlaugat · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Boston-terrier-carlos-de.JPG
+Shetland Sheepdog|3|Sheltie|images/dogs/shetland-sheepdog.jpg|Flickr user nickobec (Nick Cowie) · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Shetland_Sheepdog_sable.jpg
+Maltese|2|Maltese;Maltese dog|images/dogs/maltese.jpg|Sannse · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Maltese_600.jpg
+Cocker Spaniel|2|English Cocker Spaniel;American Cocker Spaniel;Spaniel|images/dogs/cocker-spaniel.jpg|Fcocker · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Gessa_d%27Aran_Copo_de_Nieve-_arancio_roano-_prop.Kalesa.jpg
+Bichon Frisé|3|Bichon;Bichon Frise|images/dogs/bichon-fris.jpg|Heike Andres · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Bichon_Fris%C3%A9_-_studdogbichon.jpg
+Basset Hound|1|Basset|images/dogs/basset-hound.jpg|Cali1008 · Public domain|https://commons.wikimedia.org/wiki/File:BassetHound_profil.jpg
+Bloodhound|2||images/dogs/bloodhound.jpg|User:Erland22 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Bloodhound_Erland22.jpg
+St. Bernard|1|Saint Bernard;St Bernard|images/dogs/st-bernard.jpg|Blanky · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Hummel_Vedor_vd_Robandahoeve.jpg
+Newfoundland|3|Newfoundland;Newfie;Newfoundland dog|images/dogs/newfoundland.jpg|Flickr user DanDee Shots · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Newfoundland_dog_Smoky.jpg
+Dalmatian|1|Dalmatian|images/dogs/dalmatian.jpg|Bradlien · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Sun_Dog_Dalmatian.jpg
+Akita|3|Akita;Akita Inu|images/dogs/akita.jpg|Biser Yanev · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Akita_Inu_dog.jpg
+Shiba Inu|2|Shiba|images/dogs/shiba-inu.jpg|Takashiba at English Wikipedia · Public domain|https://commons.wikimedia.org/wiki/File:Taka_Shiba.jpg
+Weimaraner|3||images/dogs/weimaraner.jpg|Rufus46 · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Weimaraner_Freika-2.jpg
+Vizsla|3|Hungarian Vizsla|images/dogs/vizsla.jpg|Pleple2000 · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Wy%C5%BCe%C5%82_w%C4%99gierski_g%C5%82adkow%C5%82osy_500.jpg
+Rhodesian Ridgeback|3|Ridgeback|images/dogs/rhodesian-ridgeback.jpg|Bonnie van den Born, http://www.bonfoto.nl · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Rhodesian_ridgeback.jpg
+Chow Chow|2|Chow|images/dogs/chow-chow.jpg|Томасина · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Chow-chow_in_Tallinn.JPG
+Shar Pei|2|Chinese Shar Pei;Sharpei|images/dogs/shar-pei.jpg|Yan Mis/&Den Rakov · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Adult_sharpei.jpg
+American Pit Bull Terrier|2|Pit Bull;Pitbull;Pittie|images/dogs/american-pit-bull-terrier.jpg|https://www.flickr.com/people/geoggirl/ · CC BY 2.0|https://commons.wikimedia.org/wiki/File:001_American_Pit_Bull_Terrier.jpg
+Jack Russell Terrier|2|Jack Russell|images/dogs/jack-russell-terrier.jpg|Plank · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Jack_Russell_Terrier_1.jpg
+Greyhound|2||images/dogs/greyhound.jpg|Neurodoc · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:GraceTheGreyhound.jpg
+Whippet|3||images/dogs/whippet.jpg|Canarian · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Whippet_2018_6.jpg
+Afghan Hound|3|Afghan|images/dogs/afghan-hound.jpg|Weaveravel · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Afghan_dog_-_cropped.jpg
+Samoyed|2|Samoyed;Sammy;Samoyed dog|images/dogs/samoyed.jpg|No machine-readable author provided. Pleple2000 assumed (bas · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Samojed00.jpg
+Alaskan Malamute|3|Malamute|images/dogs/alaskan-malamute.jpg|SCMW · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Alaskan_Malamute.jpg
+Old English Sheepdog|2|Sheepdog|images/dogs/old-english-sheepdog.jpg|AKS.9955 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Old_English_Sheepdog_(side).jpg
+Bull Terrier|2|English Bull Terrier|images/dogs/bull-terrier.jpg|Pixabay User TC-TORRES · CC0|https://commons.wikimedia.org/wiki/File:Bullterrier-3453301920.jpg
+West Highland White Terrier|3|Westie|images/dogs/west-highland-white-terrier.jpg|Christopher Walker from Krakow, Poland · CC BY 2.0|https://commons.wikimedia.org/wiki/File:West_Highland_White_Terrier_Krakow.jpg
+Miniature Schnauzer|2|Schnauzer|images/dogs/miniature-schnauzer.jpg|Canarian · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Miniature_Schnauzer_salt_%26_pepper_(cropped).jpg
+Papillon|3|Papillon;Papillon dog|images/dogs/papillon.jpg|Gvdmoort · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Outdoor_Continental_Toy_Spaniel_Papillon.jpeg
+Irish Wolfhound|3|Wolfhound|images/dogs/irish-wolfhound.jpg|Dux · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:(2)_Irish_Wolfhound_4.jpg
+Great Pyrenees|3|Pyrenean Mountain Dog;Pyr|images/dogs/great-pyrenees.jpg|HeartSpoon · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Great_Pyrenees_Mountain_Dog_2.png
+Basenji|3||images/dogs/basenji.jpg|fugzu · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Basenji_Profile_(loosercrop).jpg
+Xoloitzcuintle|3|Xolo;Mexican Hairless|images/dogs/xoloitzcuintle.jpg|Svenska Mässan from Sweden · CC BY 2.0|https://commons.wikimedia.org/wiki/File:BIR_Grupp_5-_MEXIKANSK_NAKENHUND,_Lokal_Hero%E2%80%99s_King_Og_Hart%E2%80%99s_Istas_(23607403303).jpg
+Chinese Crested|3|Chinese Crested;Chinese Crested Dog|images/dogs/chinese-crested.jpg|Tommy Gildseth · CC BY 3.0|https://commons.wikimedia.org/wiki/File:IndyStands.jpg
+Komondor|3||images/dogs/komondor.jpg|Nikki68 at Russian Wikipedia · CC BY 2.5|https://commons.wikimedia.org/wiki/File:Komondor_delvin.jpg
+Borzoi|3|Russian Wolfhound|images/dogs/borzoi.jpg|Pleple2000 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Chart_rosyjski_borzoj_rybnik-kamien_pl.jpg
+Scottish Terrier|3|Scottie|images/dogs/scottish-terrier.jpg|Elise Carroll · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Scottish_Terrier_Photo_of_Face.jpg
+`);
+const CATBREEDS = photoRows(`
+Persian|1|Persian;Persian cat|images/cats/persian.jpg|The original uploader was Lajoma at Finnish Wikipedia. · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Persialainen.jpg
+Maine Coon|1||images/cats/maine-coon.jpg|Unknown author · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:M%C3%A2le_Black_Silver_Blotched_Tabby.jpeg
+Siamese|1|Siamese;Siamese cat|images/cats/siamese.jpg|Meekahoo · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Siamese_cat_Vaillante.JPG
+Sphynx|1|Sphynx;Sphinx;Hairless cat;Sphynx cat|images/cats/sphynx.jpg|Dmitry Makeev · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Sphynx_-_cat._img_031.jpg
+Ragdoll|2||images/cats/ragdoll.jpg|Simone Johnsson · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Ragdoll_from_Gatil_Ragbelas.jpg
+Bengal|1|Bengal;Bengal cat|images/cats/bengal.jpg|User:Lightburst · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Paintedcats_Red_Star_standing.jpg
+British Shorthair|2||images/cats/british-shorthair.jpg|BritishEmpire · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Mystica_from_British_Empire_Cattery.jpg
+Scottish Fold|2||images/cats/scottish-fold.jpg|Heikki Siltala · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Scottish_Fold_-_CFF_cat_show_Heinola_2008-05-03_IMG_7882.JPG
+Abyssinian|3|Abyssinian;Abyssinian cat|images/cats/abyssinian.jpg|Karin Langner-Bahmann · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Gustav_chocolate.jpg
+Russian Blue|2||images/cats/russian-blue.jpg|Anna Utekhina http://kidsphoto.ru/ · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Russian_blue_kitten_(cropped).jpg
+Birman|3||images/cats/birman.jpg|Kristin Kokkersvold · Copyrighted free use|https://commons.wikimedia.org/wiki/File:Birmanstrofe.jpg
+Norwegian Forest Cat|3|Wegie|images/cats/norwegian-forest.jpg|Gangburgondes · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Dalaja-Doll-norv%C3%A9gien-ambre-blotched-tabby_avec-blanc_2008_(cropped).jpg
+Devon Rex|3||images/cats/devon-rex.jpg|Anna Belial · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Devon_Rex_Cassini.jpeg
+Cornish Rex|3||images/cats/cornish-rex.jpg|Tomi Tapio K from Helsinki, Finland · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Rex_staredown.jpg
+Exotic Shorthair|3|Exotic|images/cats/exotic-shorthair.jpg|Tcm1707 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Ginger_Exotic_Shorthair.jpg
+Savannah|2|Savannah;Savannah cat|images/cats/savannah.jpg|Jason Douglas · Public domain|https://commons.wikimedia.org/wiki/File:Savannah_Cat_portrait.jpg
+Burmese|3|Burmese;Burmese cat|images/cats/burmese.jpg|Heikkisiltala · CC BY 3.0|https://commons.wikimedia.org/wiki/File:British_burmese_-_Andel_Alois_at_Cat_show.JPG
+Oriental Shorthair|3|Oriental|images/cats/oriental-shorthair.jpg|Daly69 · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Fatale_de_la_l%C3%A9gende_d%27ali.jpg
+Turkish Angora|3|Angora|images/cats/turkish-angora.jpg|Ankarakediler · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Turkish_Angora_in_Ankara_Zoo_(AO%C3%87).JPG
+Turkish Van|3||images/cats/turkish-van.jpg|Matsu1024 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Turkish_Van_cat_transparent_(cropped).png
+American Shorthair|2||images/cats/american-shorthair.jpg|odin_aka_zero-one · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Jewelkatz_Romeo_Of_Stalker-Bars.jpg
+Manx|3|Manx;Manx cat|images/cats/manx.jpg|Hekl01999 · CC0|https://commons.wikimedia.org/wiki/File:Manx_cat_Latte.jpg
+Himalayan|3|Himalayan;Himalayan cat|images/cats/himalayan.jpg|Cindy See · CC BY-SA 2.0|https://commons.wikimedia.org/wiki/File:Sonny_Bunny.jpg
+Siberian|3|Siberian;Siberian cat|images/cats/siberian.jpg|Floofymarshmallow · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Samiha%27s_Siberian_cat_Moon_Pie.jpg
+Egyptian Mau|3|Mau|images/cats/egyptian-mau.jpg|Achet Aton · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:RoyalNefertt_Serket_of_AchetAton.jpg
+Bombay|3|Bombay;Bombay cat|images/cats/bombay.jpg|Pititebilette · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Bombay_femelle.JPG
+Tonkinese|3|Tonkinese;Tonkinese cat|images/cats/tonkinese.jpg|Luigi Leahy · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Tonkinese_Cat_-_Leo.jpg
+Ocicat|3||images/cats/ocicat.jpg|Heikki Siltala - catza.net · CC BY 3.0|https://commons.wikimedia.org/wiki/File:Topspot_La_Colombina_(Liina)_OCI_c_24_female_kitten_EX1.JPG
+`);
+const CARS = photoRows(`
+Ford Mustang|1|Mustang|images/cars/ford-mustang.jpg|Alexander Migl · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Ford_Mustang_VII_GT_Rutesheimer_Autoschau_2025_DSC_9234.jpg
+Ford F-150|1|Ford F-150;F-150;F150;Ford F150;Ford F-Series|images/cars/ford-f-series.jpg|Kevauto · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2018_Ford_F-150_XLT_Crew_Cab,_front_11.10.19.jpg
+Chevrolet Corvette|1|Corvette;Vette|images/cars/chevrolet-corvette.jpg|Calreyn88 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2021_Chevrolet_Corvette_C8.jpg
+Chevrolet Camaro|1|Camaro|images/cars/chevrolet-camaro.jpg|Kevauto · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2019_Chevrolet_Camaro_2SS_6.2L_front_3.16.19.jpg
+Dodge Challenger|2|Challenger|images/cars/dodge-challenger.jpg|Ermell · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Dodge_Challenger_SRT8_(2015)_Hirschaid-20220709-RM-120221_(cropped).jpg
+Jeep Wrangler|1|Wrangler;Jeep|images/cars/jeep-wrangler.jpg|Vauxford · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2018_Jeep_Wrangler_Sahara_Unlimited_Multijet_2.1_Front.jpg
+Tesla Model 3|2|Model 3|images/cars/tesla-model-3.jpg|Alexander-93 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Tesla_Model_3_(2023)_Autofr%C3%BChling_Ulm_IMG_9282.jpg
+Tesla Cybertruck|1|Cybertruck|images/cars/tesla-cybertruck.jpg|Mr.choppers · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:2024_Tesla_Cybertruck_Foundation_Series,_front_left_(Greenwich).jpg
+Toyota Prius|1|Prius|images/cars/toyota-prius.jpg|© M 93 · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Toyota_Prius_2.0_HEV_Limited_(V)_%E2%80%93_f_18112022.jpg
+Volkswagen Beetle|1|Beetle;VW Beetle;Bug|images/cars/volkswagen-beetle.jpg|Vwexport1300 · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:VW_K%C3%A4fer_Baujahr_1966.jpg
+Volkswagen Bus|2|VW Bus;Volkswagen Bus;VW Van;Microbus;Kombi;Volkswagen Type 2|images/cars/volkswagen-type-2.jpg|Raizy · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:0385_Porsche_Diesel_Bus_blau.jpg
+Mini Cooper|1|Mini Cooper;Mini|images/cars/mini.jpg|Alexander-93 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Mini_Hatch_(J01)_Ditzingen_Mobil_IMG_9772_(cropped).jpg
+Porsche 911|1|911|images/cars/porsche-911.jpg|Matti Blume · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Porsche_911_No_1000000,_70_Years_Porsche_Sports_Car,_Berlin_(1X7A3888).jpg
+Ferrari F40|3|F40|images/cars/ferrari-f40.jpg|Will ainsworth · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:F40_Ferrari_20090509.jpg
+Lamborghini Countach|2|Countach|images/cars/lamborghini-countach.jpg|Brian Snelson from Hockley, Essex, England · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Lamborghini_Countach_-_Flickr_-_exfordy_(2)_(cropped-2).jpg
+Lamborghini Aventador|3|Aventador|images/cars/lamborghini-aventador.jpg|Calreyn88 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Lamborghini_Aventador_S_(44554).jpg
+Bugatti Veyron|2|Veyron|images/cars/bugatti-veyron.jpg|M 93 · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Bugatti_Veyron_16.4_%E2%80%93_Frontansicht_(1),_5._April_2012,_D%C3%BCsseldorf.jpg
+DeLorean|1|DeLorean;DMC-12;DMC DeLorean|images/cars/dmc-delorean.jpg|Kevin Abato, www.grenexmedia.com · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Delorean_DMC-12_side.jpg
+Fiat 500|2|500|images/cars/fiat-500.jpg|IFCAR · Public domain|https://commons.wikimedia.org/wiki/File:1970_Fiat_500_L_--_2011_DC_1.jpg
+Citroën 2CV|3|2CV;Citroen 2CV|images/cars/citro-n-2cv.jpg|Alexander Migl · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Citroen_2CV_1X7A7979.jpg
+Land Rover Defender|2|Defender|images/cars/land-rover-defender.jpg|OSX · Public domain|https://commons.wikimedia.org/wiki/File:2015_Land_Rover_Defender_(L316_MY15)_90_3-door_wagon_(2015-10-24)_01.jpg
+Mercedes-Benz G-Class|2|G-Class;G Wagon;G-Wagen;Mercedes G Wagon|images/cars/mercedes-benz-g-class.jpg|Julian Herzog (Website) · CC BY 4.0|https://commons.wikimedia.org/wiki/File:Mercedes-Benz_W463_G_350_BlueTEC_01.jpg
+Hummer H1|2|Hummer|images/cars/hummer-h1.jpg|MercurySable99 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:94-00_AM_General_Hummer_soft_top.jpg
+Toyota Land Cruiser|3|Land Cruiser|images/cars/toyota-land-cruiser.jpg|Autosdeprimera · CC BY 3.0|https://commons.wikimedia.org/wiki/File:2021_Toyota_Land_Cruiser_300_3.4_ZX_(Colombia)_front_view_04.png
+Nissan GT-R|2|GT-R;GTR;Nissan GTR|images/cars/nissan-gt-r.jpg|OSX · Public domain|https://commons.wikimedia.org/wiki/File:2009-2010_Nissan_GT-R_(R35)_coupe_01.jpg
+Mazda MX-5|2|Miata;Mazda Miata;MX-5;MX5|images/cars/mazda-mx-5.jpg|根川大橋 (Negawa Ohashi) · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Mazda_Roadster_(MX-5)_by_Negawa_Bridge_(cropped).jpg
+Rolls-Royce Phantom|2|Phantom;Rolls Royce|images/cars/rolls-royce-phantom.jpg|Vauxford · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2019_Rolls-Royce_Phantom_V12_Automatic_6.75.jpg
+Aston Martin DB5|2|DB5|images/cars/aston-martin-db5.jpg|DeFacto · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Aston_Martin_DB5_(Skyfall).jpg
+Jaguar E-Type|3|E-Type;Jaguar XKE;XKE|images/cars/jaguar-e-type.jpg|DeFacto · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Jaguar_E-Type_Series_1_3.8_Litre_1961.jpg
+Ford Model T|1|Model T|images/cars/ford-model-t.jpg|ModelTMitch · Public domain|https://commons.wikimedia.org/wiki/File:1925_Ford_Model_T_touring.jpg
+Ford GT|3||images/cars/ford-gt.jpg|Jiří Sedláček · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Ford_GT_2018_and_Ford_GT_1968_at_Legendy_2019_in_Prague_(cropped).jpg
+AC Cobra|3|Shelby Cobra;Cobra|images/cars/ac-cobra.jpg|Stahlkocher · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:Shelby_AC_427_Cobra_vl_blue.jpg
+Chevrolet Bel Air|3|Bel Air|images/cars/chevrolet-bel-air.jpg|Chevrolet pre-1978 · Public domain|https://commons.wikimedia.org/wiki/File:57_Chevy_BelAir.jpg
+Cadillac Escalade|2|Escalade|images/cars/cadillac-escalade.jpg|BuickCentury04 · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2026_Cadillac_Escalade_ESV.jpg
+Toyota Supra|2|Supra|images/cars/toyota-supra.jpg|Gold Pony · CC BY 3.0|https://commons.wikimedia.org/wiki/File:2020_Toyota_GR_Supra_(United_States).png
+Smart Fortwo|2|Smart car;Smart|images/cars/smart-fortwo.jpg|Vauxford · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2016_Smart_Fortwo_Passion_Automatic_1.0_Front.jpg
+Pontiac Firebird|3|Firebird;Trans Am|images/cars/pontiac-firebird.jpg|americancar · Public domain|https://commons.wikimedia.org/wiki/File:TransAm1970.jpg
+Lotus Esprit|3|Esprit|images/cars/lotus-esprit.jpg|Mr.choppers · CC BY-SA 3.0|https://commons.wikimedia.org/wiki/File:1999_Lotus_Esprit_V8_type_918.jpg
+Honda Civic|2|Civic|images/cars/honda-civic.jpg|© M 93 · CC BY-SA 3.0 de|https://commons.wikimedia.org/wiki/File:Honda_Civic_e-HEV_Sport_(XI)_%E2%80%93_f_30062024.jpg
+Toyota Corolla|2|Corolla|images/cars/toyota-corolla.jpg|Alexander Migl · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Toyota_Corolla_Hybrid_(E210)_IMG_4338.jpg
+Volkswagen Golf|2|Golf;VW Golf|images/cars/volkswagen-golf.jpg|Vauxford · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2020_Volkswagen_Golf_Style_1.5_Front.jpg
+Range Rover|2||images/cars/range-rover.jpg|Vauxford · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:2022_Land_Rover_Range_Rover_SE_P440e_AWD_Automatic_3.0_Front.jpg
+Ford Bronco|2|Bronco|images/cars/ford-bronco.jpg|Alexander Migl · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:Ford_Bronco_(6th_generation)_Outer_Banks_1X7A0384.jpg
+Lamborghini Miura|3|Miura|images/cars/lamborghini-miura.jpg|Chelsea Jay · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:1971_Lamborghini_Miura_P400_SV.jpg
+McLaren F1|3||images/cars/mclaren-f1.jpg|Chelsea Jay · CC BY-SA 4.0|https://commons.wikimedia.org/wiki/File:1996_McLaren_F1_Chassis_No_63_6.1_Front.jpg
+Dodge Viper|2|Viper|images/cars/dodge-viper.jpg|Patrick Corcoran · CC BY 2.0 it|https://commons.wikimedia.org/wiki/File:%22_14_Fiat-Chrysler_SRT_Viper_GTS_(cropped).jpg
+Chevrolet Impala|3|Impala|images/cars/chevrolet-impala.jpg|Dennis Elzinga · CC BY 2.0|https://commons.wikimedia.org/wiki/File:Chevrolet_Impala_(14373209694)_(cropped).jpg
+`);
+// State flags whose name is written on them are Easy only.
+const STATE_FLAGS = photoRows(`
+Alabama|2||images/states/alabama.png|Steve Hall · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Alabama.svg
+Alaska|2||images/states/alaska.png|Benny Benson · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Alaska.svg
+Arizona|2||images/states/arizona.png|Original: Unknown author Vector: Madden · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Arizona.svg
+Arkansas|1||images/states/arkansas.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Arkansas.svg
+California|1||images/states/california.png|Original: Donald Graeme Kelley Vectorization: Devin Cook · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_California.svg
+Colorado|2||images/states/colorado.png|Original: Andrew Carlyle Carson Vector: Fleminra · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Colorado.svg
+Connecticut|3||images/states/connecticut.png|Jean-Pierre Demailly, xrmap authors, Commons users (SVG) · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Connecticut.svg
+Delaware|3||images/states/delaware.png|xrmap flag collection · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Delaware.svg
+Florida|3||images/states/florida.png|Template:Brendon Tiana · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Florida.svg
+Georgia|2||images/states/georgia.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_the_State_of_Georgia.svg
+Hawaii|2||images/states/hawaii.png|Dbenbenn · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Hawaii.svg
+Idaho|1||images/states/idaho.png|Paul B. Evans, based on a work by the Adjutant General of Id · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Idaho.svg
+Illinois|1||images/states/illinois.png|Denelson83 · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Illinois.svg
+Indiana|1||images/states/indiana.png|The Indiana state flag was designed by Paul Hadley in 1917.  · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Indiana.svg
+Iowa|1||images/states/iowa.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Iowa.svg
+Kansas|1||images/states/kansas.png|Xrmap · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Kansas.svg
+Kentucky|1||images/states/kentucky.png|Commonwealth of Kentucky · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Kentucky.svg
+Louisiana|2||images/states/louisiana.png|Curtis Vann, Jr. · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Louisiana.svg
+Maine|3||images/states/maine.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Maine.svg
+Maryland|2||images/states/maryland.png|Michael Wheeler · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Maryland.svg
+Massachusetts|3||images/states/massachusetts.png|State of Massachusetts · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Massachusetts.svg
+Michigan|3||images/states/michigan.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Michigan.svg
+Minnesota|2||images/states/minnesota.png|Original: Minnesota State Emblems Redesign Commission Vector · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Minnesota.svg
+Mississippi|2||images/states/mississippi.png|Rocky Vaughn, Sue Anna Joe, Dominique Pugh, Clay Moss, Kara  · Copyrighted free use|https://commons.wikimedia.org/wiki/File:Flag_of_Mississippi.svg
+Missouri|3||images/states/missouri.png|Marie Watkins Oliver · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Missouri.svg
+Montana|1||images/states/montana.png|N.a · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Montana.svg
+Nebraska|3||images/states/nebraska.png|Liamgabby79 · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Nebraska.svg
+Nevada|1||images/states/nevada.png|Caleb Moore · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Nevada.svg
+New Hampshire|3||images/states/new-hampshire.png|Xrmap flag collection · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_New_Hampshire.svg
+New Jersey|3||images/states/new-jersey.png|author of xrmap, with modifications by Denelson83 and ChrisR · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_New_Jersey.svg
+New Mexico|2||images/states/new-mexico.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_New_Mexico.svg
+New York|3||images/states/new-york.png|State of New York · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_New_York.svg
+North Carolina|2||images/states/north-carolina.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_North_Carolina.svg
+North Dakota|3||images/states/north-dakota.png|Unknown authorUnknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_North_Dakota.svg
+Ohio|2||images/states/ohio.png|John Eisenmann · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Ohio.svg
+Oklahoma|1||images/states/oklahoma.png|xrmap · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Oklahoma.svg
+Oregon|1||images/states/oregon.png|User:Denelson83 · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Oregon.svg
+Pennsylvania|3||images/states/pennsylvania.png|Simtropolitan, Jean-Pierre Demailly (old version) permission · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Pennsylvania.svg
+Rhode Island|2||images/states/rhode-island.png|Xrmap flag collection 2.7 · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Rhode_Island.svg
+South Carolina|2||images/states/south-carolina.png|Design by South Carolina General Assembly, SVG by Steve Hall · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_South_Carolina.svg
+South Dakota|1||images/states/south-dakota.png|xrmap · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_South_Dakota.svg
+Tennessee|2||images/states/tennessee.png|-xfi- · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Tennessee.svg
+Texas|2||images/states/texas.png|Paul B. Joiner · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
+Utah|2||images/states/utah.png|The State of Utah · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Utah.svg
+Vermont|3||images/states/vermont.png|User:SimtropolitanOriginal by User:Denelson83 · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Vermont.svg
+Virginia|1||images/states/virginia.png|LadyofHats with additional editing by 痛 and Patrickneil / Ch · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Virginia.svg
+Washington|3||images/states/washington.png|WA Secretary of State · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Washington.svg
+West Virginia|1||images/states/west-virginia.png|Militaryace, Denelson83 · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_West_Virginia.svg
+Wisconsin|1||images/states/wisconsin.png|Unknown author · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Wisconsin.svg
+Wyoming|2||images/states/wyoming.png|User:Dbenbenn · Public domain|https://commons.wikimedia.org/wiki/File:Flag_of_Wyoming.svg
+`);
+
+/* =========================================================================
+   DATA — drop-in picture rounds. Save a picture as images/<folder>/<file name>.jpg and it joins the game.
+   The file name is the title in lower case with dashes, e.g. "The Lion King" → the-lion-king.jpg
+   (images/disney/LIST.txt and images/movies/LIST.txt list every name).
+   ========================================================================= */
+const DROPINS = {
+  disney: `Snow White and the Seven Dwarfs|Snow White
+Pinocchio|
+Dumbo|
+Bambi|
+Cinderella|
+Alice in Wonderland|
+Peter Pan|
+Lady and the Tramp|
+Sleeping Beauty|
+101 Dalmatians|One Hundred and One Dalmatians;101 Dalmations
+The Jungle Book|Jungle Book
+The Aristocats|Aristocats
+Robin Hood|
+The Little Mermaid|Little Mermaid
+Beauty and the Beast|
+Aladdin|
+The Lion King|Lion King
+Pocahontas|
+The Hunchback of Notre Dame|Hunchback
+Hercules|
+Mulan|
+Tarzan|
+Lilo & Stitch|Lilo and Stitch
+The Princess and the Frog|Princess and the Frog
+Tangled|
+Wreck-It Ralph|Wreck It Ralph
+Frozen|
+Big Hero 6|
+Zootopia|
+Moana|
+Encanto|
+Toy Story|
+A Bug's Life|Bugs Life
+Monsters, Inc.|Monsters Inc
+Finding Nemo|Nemo
+The Incredibles|Incredibles
+Cars|
+Ratatouille|
+WALL-E|Wall E;Walle
+Up|
+Brave|
+Inside Out|
+Coco|
+Luca|
+Turning Red|
+Elemental|`,
+  movies: `Titanic|
+Jurassic Park|
+Star Wars|Star Wars: A New Hope;A New Hope
+The Godfather|Godfather
+Jaws|
+E.T. the Extra-Terrestrial|E.T.;ET
+Back to the Future|
+The Matrix|Matrix
+Forrest Gump|
+Pulp Fiction|
+The Dark Knight|Dark Knight
+Avatar|
+Avengers: Endgame|Endgame;Avengers Endgame
+Harry Potter and the Sorcerer's Stone|Harry Potter;Harry Potter and the Philosopher's Stone
+The Lord of the Rings: The Fellowship of the Ring|Lord of the Rings;Fellowship of the Ring;LOTR
+Pirates of the Caribbean|Pirates of the Caribbean: The Curse of the Black Pearl
+Shrek|
+Home Alone|
+Ghostbusters|
+Top Gun|
+Rocky|
+Grease|
+The Wizard of Oz|Wizard of Oz
+Casablanca|
+Psycho|
+The Shining|Shining
+Raiders of the Lost Ark|Indiana Jones
+Gladiator|
+Braveheart|
+Mean Girls|
+Barbie|
+Oppenheimer|
+Inception|
+Interstellar|
+The Silence of the Lambs|Silence of the Lambs
+Die Hard|
+Terminator 2: Judgment Day|Terminator 2;T2
+Alien|
+Ferris Bueller's Day Off|Ferris Bueller
+The Breakfast Club|Breakfast Club
+Dirty Dancing|
+Pretty Woman|
+Mrs. Doubtfire|Mrs Doubtfire
+Men in Black|MIB
+Independence Day|
+The Sixth Sense|Sixth Sense
+Black Panther|
+Spider-Man|Spiderman
+Iron Man|
+Joker|
+La La Land|
+Top Gun: Maverick|Maverick
+Jumanji|
+Elf|
+The Hangover|Hangover
+Twilight|
+The Hunger Games|Hunger Games
+Gone with the Wind|
+Rain Man|
+Toy Story 3|`,
+};
+const dropSlug = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/['’.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const DROP = Object.fromEntries(Object.entries(DROPINS).map(([k, txt]) => [k, txt.trim().split('\n').map(l => { const [title, al] = l.split('|'); return { title, aliases: al ? al.split(';') : [], src: `images/${k}/${dropSlug(title)}.jpg` }; })]));
 const CATS = [
   { id: 'flags',    name: 'Flags',               emoji: '🏳️', desc: 'Name the country from its flag.', geo: true },
   { id: 'outlines', name: 'Country Shapes',      emoji: '🗺️', desc: 'Name the country from its outline.', geo: true },
@@ -1294,8 +2524,43 @@ const CATS = [
   { id: 'teamlogos', name: 'Team Logos',         emoji: '🏈', desc: 'Name the team from the silhouette of its logo. Pick a league.',
     children: ['logos_nfl', 'logos_nba', 'logos_mlb', 'logos_nhl', 'logos_soccer', 'logos_all'] },
   { id: 'stadiums', name: 'Stadium Cities',      emoji: '🏟️', desc: 'Name the city each famous stadium calls home.' },
+  { id: 'stadiumpics', name: 'Guess the Stadium', emoji: '📸', desc: 'Name the stadium from a photo. Its home team counts too.', geo: true },
+  { id: 'skylines', name: 'City Skylines',       emoji: '🌆', desc: 'Name the city from its skyline.', geo: true },
+  { id: 'careers',  name: 'Career Paths',        emoji: '🔀', desc: "Name the player from the teams he's played for. Pick a sport.",
+    children: ['careers_nfl', 'careers_nba', 'careers_mlb', 'careers_nhl', 'careers_soccer', 'careers_all'] },
+  { id: 'sat',      name: 'Cities from Space',   emoji: '🛰️', desc: 'Name the city from a satellite view. No labels, no mercy.', geo: true },
+  { id: 'colleges', name: 'College Towns',       emoji: '🎓', desc: 'Name the Division I college in each town.', geo: true },
+  { id: 'pixel',    name: 'Pixelated',           emoji: '👾', desc: 'The picture starts as big blocks and sharpens as the clock runs. Answer early for more points.',
+    children: ['pix_flags', 'pix_states', 'pix_breeds', 'pix_cars', 'pix_skylines', 'pix_logos', 'pix_disney', 'pix_movies', 'pix_mix'] },
+  { id: 'states',   name: 'State Flags',         emoji: '🇺🇸', desc: 'Name the U.S. state from its flag.', geo: true },
+  { id: 'breeds',   name: 'Dog & Cat Breeds',    emoji: '🐶', desc: 'Name the breed from a photo.', children: ['breeds_dogs', 'breeds_cats', 'breeds_all'] },
+  { id: 'cars',     name: 'Name the Car',        emoji: '🚗', desc: 'Name the make and model from a photo.', geo: true },
+  { id: 'music',    name: 'Music',               emoji: '🎵', desc: 'Songs spelled out in emoji, and bands by their members.',
+    children: ['emoji', 'bands'] },
+  { id: 'spanish',  name: 'Spanish',             emoji: '🇪🇸', desc: 'Translate words between English and Spanish.', geo: true },
   { id: 'brands',   name: 'Company Logos',       emoji: '🏢', desc: 'Name the company or brand from its logo.', geo: true },
   { id: 'mixed',    name: 'Mixed Bag',           emoji: '🎲', desc: 'A bit of everything, shuffled.', geo: true, logo: true },
+
+  { id: 'careers_nfl',    parent: 'careers', clg: 'nfl',    geo: true, name: 'NFL',    emoji: '🏈', desc: 'Quarterbacks, receivers and journeymen.' },
+  { id: 'careers_nba',    parent: 'careers', clg: 'nba',    geo: true, name: 'NBA',    emoji: '🏀', desc: 'Superstars who moved around.' },
+  { id: 'careers_mlb',    parent: 'careers', clg: 'mlb',    geo: true, name: 'MLB',    emoji: '⚾', desc: 'Sluggers and aces.' },
+  { id: 'careers_nhl',    parent: 'careers', clg: 'nhl',    geo: true, name: 'NHL',    emoji: '🏒', desc: 'Legends on the move.' },
+  { id: 'careers_soccer', parent: 'careers', clg: 'soccer', geo: true, name: 'Soccer', emoji: '⚽', desc: 'Club by club across Europe and beyond.' },
+  { id: 'careers_all',    parent: 'careers', clg: 'all',    geo: true, name: 'All Sports', emoji: '🏆', desc: 'Every sport, shuffled together.' },
+  { id: 'breeds_dogs', parent: 'breeds', geo: true, name: 'Dogs', emoji: '🐕', desc: '60 breeds, from Labradors to Komondors.' },
+  { id: 'breeds_cats', parent: 'breeds', geo: true, name: 'Cats', emoji: '🐈', desc: '28 breeds, from Persians to Sphynxes.' },
+  { id: 'breeds_all',  parent: 'breeds', geo: true, name: 'Dogs and Cats', emoji: '🐾', desc: 'Both, shuffled together.' },
+  { id: 'pix_flags',    parent: 'pixel', pix: true, geo: true, name: 'Pixelated Flags',    emoji: '🏳️', desc: 'Country flags, blocky at first.', src: 'flags' },
+  { id: 'pix_states',   parent: 'pixel', pix: true, geo: true, name: 'Pixelated State Flags', emoji: '🇺🇸', desc: 'U.S. state flags, blocky at first.', src: 'states' },
+  { id: 'pix_breeds',   parent: 'pixel', pix: true, geo: true, name: 'Pixelated Pets',     emoji: '🐾', desc: 'Dog and cat breeds, blocky at first.', src: 'breeds_all' },
+  { id: 'pix_cars',     parent: 'pixel', pix: true, geo: true, name: 'Pixelated Cars',     emoji: '🚗', desc: 'Cars, blocky at first.', src: 'cars' },
+  { id: 'pix_skylines', parent: 'pixel', pix: true, geo: true, name: 'Pixelated Skylines', emoji: '🌆', desc: 'City skylines, blocky at first.', src: 'skylines' },
+  { id: 'pix_logos',    parent: 'pixel', pix: true, geo: true, name: 'Pixelated Logos',    emoji: '🏢', desc: 'Company logos, blocky at first.', src: 'brands' },
+  { id: 'pix_disney',   parent: 'pixel', pix: true, drop: 'disney', name: 'Disney & Pixar Movies', emoji: '🏰', desc: 'Name the movie from its pixelated characters or cover.' },
+  { id: 'pix_movies',   parent: 'pixel', pix: true, drop: 'movies', name: 'Movie Covers', emoji: '🎬', desc: 'Name the movie from its pixelated cover.' },
+  { id: 'pix_mix',      parent: 'pixel', pix: true, geo: true, name: 'Pixel Mix', emoji: '🎲', desc: 'Every pixelated round, shuffled.' },
+  { id: 'emoji', parent: 'music', geo: true, name: 'Emoji Songs',   emoji: '😎', desc: 'Work out the song title from the emoji. The artist is your clue.' },
+  { id: 'bands', parent: 'music', geo: true, name: 'Name the Band', emoji: '🎸', desc: "Name the band or group from its members' first names." },
 
   { id: 'hist_ancient',  parent: 'history', name: 'Ancient World',        emoji: '🏛️', desc: 'Egypt, Greece, Rome and beyond.' },
   { id: 'hist_medieval', parent: 'history', name: 'Knights to Explorers', emoji: '⚔️', desc: 'Middle Ages, Renaissance and the age of discovery.' },
@@ -1312,20 +2577,34 @@ const CATS = [
   { id: 'logos_all',    parent: 'teamlogos', lg: 'all',    logo: true, name: 'All Sports', emoji: '🏆', desc: 'Every league, shuffled together.' },
 
   { id: 'kids', name: 'Kids Zone', emoji: '🧒', desc: 'Quizzes for younger players, with longer timers and a hint on every question.',
-    children: ['k_disney', 'k_movies', 'k_gk', 'k_animals', 'k_flags', 'k_mix'] },
+    children: ['k_disney', 'k_movies', 'k_gk', 'k_animals', 'k_flags', 'k_spanish', 'k_mix'] },
   { id: 'k_disney',  parent: 'kids', kids: true, name: 'Disney & Pixar',    emoji: '🏰', desc: 'Name the character.' },
   { id: 'k_movies',  parent: 'kids', kids: true, name: 'Movies & Cartoons', emoji: '🎬', desc: 'Shrek, Bluey, Mario, superheroes and more.' },
   { id: 'k_gk',      parent: 'kids', kids: true, name: 'Super-Easy Trivia', emoji: '⭐', desc: 'Colours, numbers, days and everyday things.' },
   { id: 'k_animals', parent: 'kids', kids: true, name: 'Animals',           emoji: '🦁', desc: 'Sounds, babies and amazing creatures.' },
   { id: 'k_flags',   parent: 'kids', kids: true, name: 'Easy Flags',        emoji: '🏳️', desc: 'Only the most famous flags.' },
+  { id: 'k_spanish', parent: 'kids', kids: true, name: 'Spanish Words',     emoji: '🇪🇸', desc: 'Colours, numbers, animals and first words.' },
   { id: 'k_mix',     parent: 'kids', kids: true, name: 'Kids Mix',          emoji: '🎈', desc: 'A bit of everything for kids.' },
 ];
+// Quizzes built on real team and company logos are switched off for the public launch.
+// Set this to true to bring back Team Logos, Company Logos and Pixelated Logos (and logos in Career Paths).
+const SHOW_LOGO_QUIZZES = false;
+const LOGO_QUIZZES = ['teamlogos', 'brands', 'pix_logos'];   // Career Paths shows team names instead when this is off
+if (!SHOW_LOGO_QUIZZES) {
+  for (let i = CATS.length - 1; i >= 0; i--) {
+    if (LOGO_QUIZZES.includes(CATS[i].id) || LOGO_QUIZZES.includes(CATS[i].parent)) CATS.splice(i, 1);
+  }
+  const left = new Set(CATS.map(c => c.id));
+  CATS.forEach(c => { if (c.children) c.children = c.children.filter(id => left.has(id)); });
+}
 const CAT = Object.fromEntries(CATS.map(c => [c.id, c]));
 const HOME = CATS.filter(c => !c.parent && c.id !== 'kids');
 const BANK = { gk: GK, politics: POLITICS, hist_ancient: HIST_ANCIENT, hist_medieval: HIST_MEDIEVAL, hist_wars: HIST_WARS, hist_us: HIST_US, hist_modern: HIST_MODERN,
   hist_all: [...HIST_ANCIENT, ...HIST_MEDIEVAL, ...HIST_WARS, ...HIST_US, ...HIST_MODERN], k_disney: K_DISNEY, k_movies: K_MOVIES, k_gk: K_GK, k_animals: K_ANIMALS };
-const MIXES = { mixed: ['flags', 'capitals', 'politics', 'gk', 'outlines', 'hist_all', 'stadiums', 'brands', 'logos_all'],
+const MIXES = { mixed: ['flags', 'capitals', 'politics', 'gk', 'outlines', 'hist_all', 'stadiums', 'brands', 'logos_all', 'stadiumpics', 'skylines', 'careers_all', 'sat', 'colleges', 'emoji', 'bands', 'states', 'cars', 'breeds_all'],
+  pix_mix: ['pix_flags', 'pix_states', 'pix_breeds', 'pix_cars', 'pix_skylines', 'pix_logos', 'pix_disney', 'pix_movies'],
   k_mix: ['k_disney', 'k_movies', 'k_gk', 'k_animals', 'k_flags'] };
+if (!SHOW_LOGO_QUIZZES) { MIXES.mixed = MIXES.mixed.filter(id => CAT[id]); MIXES.pix_mix = MIXES.pix_mix.filter(id => CAT[id]); CAT.mixed.logo = false; }
 const COLORS = ['#ff5a3c', '#0fa89a', '#7c5cff', '#e9a520'];
 const DIFFS = [{ v: 1, n: 'Easy', s: 'famous ones' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'every country' }];
 const FLAG_URL = iso => `https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/${iso}.svg`;
@@ -1438,13 +2717,6 @@ function outlineSVG(feature, iso) {
    Building a game's question list
    ========================================================================= */
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
-const take = (arr, n) => { const out = []; for (let i = 0; i < n; i++) out.push(arr[i % arr.length]); return out; };
-function countryPool(filter, diff, n) {
-  const base = COUNTRIES.filter(filter);
-  let pool = shuffle(base.filter(c => c.tier <= diff));
-  if (pool.length < n) pool = pool.concat(shuffle(base.filter(c => c.tier > diff)));
-  return take(pool, n);
-}
 const nameAnswers = c => [c.name, ...c.aliases];
 function flagQ(c) {
   const twins = FLAG_TWINS[c.iso] || [];
@@ -1464,47 +2736,181 @@ function capitalQ(c) {
 function textQ(cat, row) {
   return { cat, kind: 'text', tag: CAT[cat].name, prompt: row[0], answers: row.slice(1), answerLabel: row[1], distractors: [] };
 }
-function tierPool(base, diff, n) {
-  let pool = shuffle(base.filter(c => c.tier <= diff));
-  if (pool.length < n) pool = pool.concat(shuffle(base.filter(c => c.tier > diff)));
-  return take(pool, n);
-}
-function teamQs(lg, n, sil) {
+// --- No repeats -----------------------------------------------------------
+// Every question has an identity. A game never contains the same one twice, and across games the
+// questions you haven't seen (or saw longest ago) are dealt first.
+const qid = q => q.id || q.kind + ':' + (q.img || q.iso || q.prompt);
+let seen = store.get('seen', {}), seenTick = Object.values(seen).reduce((m, v) => Math.max(m, v), 0);
+function markSeen(q) { seen[qid(q)] = ++seenTick; store.set('seen', seen); }
+const freshFirst = qs => shuffle(qs).sort((a, b) => (seen[qid(a)] || 0) - (seen[qid(b)] || 0));
+// Chosen difficulty first; harder ones only top up if the game needs more questions than that level has.
+const byTier = (qs, diff) => [...freshFirst(qs.filter(q => q.tier <= diff)), ...freshFirst(qs.filter(q => q.tier > diff)).sort((a, b) => a.tier - b.tier)];
+
+function teamQs(lg, sil) {
   const pool = lg === 'all' ? TEAMS : TEAMS.filter(t => t.lg === lg);
   const locs = {}; pool.forEach(t => { if (t.loc) locs[norm(t.loc)] = (locs[norm(t.loc)] || 0) + 1; });
   const names = t => [t.name, ...t.aliases];
-  return take(shuffle(pool), n).map(t => ({ cat: 'logos', kind: 'logo', img: TEAM_LOGO(t), sil, thumb: 'tl', tag: 'Team logos · ' + LEAGUES[t.lg], prompt: 'Which team is this?',
+  return pool.map(t => ({ cat: 'logos', kind: 'logo', img: TEAM_LOGO(t), sil, thumb: 'tl', tag: 'Team logos · ' + LEAGUES[t.lg], prompt: 'Which team is this?',
     answers: [...names(t), ...(t.loc && locs[norm(t.loc)] === 1 ? [t.loc] : [])], answerLabel: t.name,
     distractors: pool.filter(o => o !== t).flatMap(names) }));
 }
 function brandQ(b) {
-  return { cat: 'brands', kind: 'logo', img: BRAND_LOGO(b), mono: true, thumb: 'mono', tag: 'Company logos', prompt: 'Which company or brand is this?',
+  return { cat: 'brands', kind: 'logo', img: BRAND_LOGO(b), mono: true, thumb: 'mono', tier: b.tier, tag: 'Company logos', prompt: 'Which company or brand is this?',
     answers: [b.name, ...b.aliases], answerLabel: b.name, distractors: BRANDS.filter(o => o !== b).map(o => o.name) };
 }
-function buildFor(cat, cfg, n, shapes) {
-  if (n <= 0) return [];
-  const diff = cfg.diff;
-  if (BANK[cat]) return take(shuffle(BANK[cat]), n).map(r => textQ(cat, r));
-  if (CAT[cat].lg) return teamQs(CAT[cat].lg, n, !!cfg.sil);
-  switch (cat) {
-    case 'flags': return countryPool(() => true, diff, n).map(flagQ);
-    case 'k_flags': return countryPool(() => true, 1, n).map(flagQ);
-    case 'outlines': return countryPool(c => shapes && shapes[c.iso], diff, n).map(c => outlineQ(c, shapes));
-    case 'capitals': return countryPool(c => c.cap && c.iso !== 'ps', diff, n).map(capitalQ);
-    case 'brands': return tierPool(BRANDS, diff, n).map(brandQ);
-    case 'stadiums': return take(shuffle(STADIUMS), n).map(r => ({ cat, kind: 'text', tag: 'Stadium cities', prompt: `Which city is home to ${r[0]}?`, answers: r.slice(1), answerLabel: r[1], distractors: [] }));
+// "Lambeau Field" also answers to "Lambeau"
+const shortVenue = n => n.replace(/\s+(stadium|field|park|arena|ground)$/i, '');
+function venueQ(v) {
+  return { cat: 'stadiumpics', kind: 'photo', img: v.img, credit: v.credit, page: v.page, thumb: 'ph', tier: v.tier, tag: 'Guess the stadium', prompt: 'Which stadium is this?',
+    answers: [v.name, shortVenue(v.name), ...v.aliases], answerLabel: v.name, distractors: VENUES.filter(o => o !== v).flatMap(o => [o.name, shortVenue(o.name)]) };
+}
+function skylineQ(c) {
+  return { cat: 'skylines', kind: 'photo', img: c.img, credit: c.credit, page: c.page, thumb: 'ph', tier: c.tier, tag: 'City skylines', prompt: 'Which city is this?',
+    answers: [c.name, ...c.aliases], answerLabel: c.name, distractors: SKYLINES.filter(o => o !== c).map(o => o.name) };
+}
+const ES_ARTICLES = ['el', 'la', 'los', 'las', 'un', 'una'];
+function wordQ(w, cat) {
+  const toEs = Math.random() < 0.5, base = { cat, kind: 'text', id: 'es:' + w.en, tier: w.tier, tag: 'Spanish', distractors: [] };
+  if (toEs) { const es = [w.es, ...w.esAlt];
+    return { ...base, prompt: `How do you say "${w.en}" in Spanish?`, answers: [...es, ...es.flatMap(x => ES_ARTICLES.map(a => a + ' ' + x))], answerLabel: w.es }; }
+  const en = [w.en, ...w.enAlt];
+  return { ...base, prompt: `What does "${w.es}" mean in English?`, answers: [...en, ...en.map(x => x.replace(/^to /, ''))], answerLabel: w.en };
+}
+const lastName = n => n.replace(/,? Jr\.?$/, '').split(' ').pop();
+function photoQ(r, list, cat, tag, prompt) {
+  return { cat, kind: 'photo', img: r.img, credit: r.credit, page: r.page, thumb: 'ph', tier: r.tier, tag, prompt,
+    answers: [r.name, ...r.aliases], answerLabel: r.name, distractors: list.filter(o => o !== r).flatMap(o => [o.name, ...o.aliases]), pool: () => list.filter(o => o !== r).map(o => o.name) };
+}
+// A pixelated copy of any picture question (the clock and the picture sharpen together).
+function pixQ(b, label) {
+  const src = b.img || (b.iso && FLAG_URL(b.iso));
+  return { ...b, kind: 'pix', src, img: src, thumb: 'ph', flat: b.kind === 'flag' || b.mono || b.cat === 'states', id: 'pix:' + qid(b), tag: 'Pixelated · ' + label, pool: () => mcPool(b) };
+}
+let DROP_OK = null;   // which drop-in pictures have actually been added (checked once per visit)
+function checkDropins() {
+  if (DROP_OK) return Promise.resolve(DROP_OK);
+  const all = Object.values(DROP).flat();
+  return Promise.all(all.map(d => new Promise(r => { const im = new Image(); im.onload = () => r(d.src); im.onerror = () => r(null); im.src = d.src; })))
+    .then(ok => (DROP_OK = new Set(ok.filter(Boolean))));
+}
+function dropQs(k, cat) {
+  const list = DROP[k].filter(d => DROP_OK && DROP_OK.has(d.src)), label = CAT[cat].name;
+  return list.map(d => ({ cat, kind: 'pix', src: d.src, img: d.src, thumb: 'ph', id: 'drop:' + d.src, tier: 1, tag: 'Pixelated · ' + label, prompt: 'Which movie is this?',
+    answers: [d.title, ...d.aliases], answerLabel: d.title, distractors: DROP[k].filter(o => o !== d).map(o => o.title), pool: () => DROP[k].filter(o => o !== d).map(o => o.title) }));
+}
+function careerQ(p) {
+  const same = CAREERS.filter(o => o.lg === p.lg && o !== p);
+  return { cat: 'careers', kind: 'career', id: 'career:' + p.name, tier: p.tier, tag: 'Career paths · ' + LEAGUES[p.lg], prompt: 'Whose career is this?', note: p.note,
+    // Logos only where the logo quizzes are switched on; otherwise the path is team names and years.
+    imgs: SHOW_LOGO_QUIZZES ? p.path.map(k => `https://a.espncdn.com/i/teamlogos/${p.lg}/500/${k}.png`) : [],
+    stops: p.path.map((k, i) => ({ team: (TEAM_BY_KEY[p.lg + ':' + k] || {}).name || CLUB_NAMES[k] || '', years: p.years[i] || '' })),
+    answers: [p.name, lastName(p.name), ...p.aliases], answerLabel: p.name, distractors: CAREERS.filter(o => o !== p).map(o => o.name), pool: () => same.map(o => o.name) };
+}
+function collegeQ(c) {
+  return { cat: 'colleges', kind: 'text', id: 'college:' + c.city, tier: c.tier, tag: 'College towns', prompt: `Which Division I college is in ${c.city}?`,
+    answers: [c.name, ...c.aliases], answerLabel: c.name, distractors: [], pool: () => COLLEGES.filter(o => o !== c && !o.name.includes(' or ')).map(o => o.name) };
+}
+function satQ(c) {
+  const imgs = satTiles(c);
+  return { cat: 'sat', kind: 'sat', id: 'sat:' + c.name, imgs, img: imgs[5], thumb: 'ph', tier: c.tier, tag: 'Cities from space', prompt: 'Which city is this?',
+    creditHtml: 'Imagery: <a href="https://s2maps.eu" target="_blank" rel="noopener">Sentinel-2 cloudless</a> by EOX (contains modified Copernicus Sentinel data 2016) · CC BY 4.0',
+    answers: [c.name, ...c.aliases], answerLabel: c.name, distractors: SAT.filter(o => o !== c).map(o => o.name), pool: () => SAT.filter(o => o !== c).map(o => o.name) };
+}
+function emojiQ(e) {
+  return { cat: 'emoji', kind: 'emoji', id: 'emoji:' + e.name, emoji: e.emoji, artist: e.artist, tier: e.tier, tag: 'Emoji songs', prompt: 'Which song is this?',
+    answers: [e.name, ...e.aliases], answerLabel: e.name, distractors: [], pool: () => EMOJI_SONGS.filter(o => o !== e).map(o => o.name) };
+}
+function bandQ(b) {
+  return { cat: 'bands', kind: 'members', id: 'band:' + b.name, members: b.members, tier: b.tier, tag: 'Name the band', prompt: 'Which band or group is this?',
+    answers: [b.name, ...b.aliases], answerLabel: b.name, distractors: BANDS.filter(o => o !== b).map(o => o.name), pool: () => BANDS.filter(o => o !== b).map(o => o.name) };
+}
+
+// --- Multiple-choice rescue ------------------------------------------------
+// In the last 5 seconds four choices appear. Wrong choices come from the same kind of question.
+function numberPool(a) {
+  const n = +a, year = n >= 1000 && n <= 2100, s = new Set();
+  const deltas = year ? [1, 2, 3, 4, 5, 7, 10, 12, 15, 20, 25] : n <= 12 ? [1, 2, 3, 4] : [1, 2, Math.ceil(n * .1), Math.ceil(n * .2), Math.ceil(n * .5), 10];
+  for (const d of deltas) { s.add(n + d); if (n - d >= (year ? 1 : 0)) s.add(n - d); }
+  s.delete(n); return shuffle([...s]).map(String);
+}
+const BANK_INDEX = {};
+function bankPool(q) {
+  if (/^\d+$/.test(q.answerLabel)) return numberPool(q.answerLabel);
+  const kid = q.cat.startsWith('k_'), grp = kid ? 'kid' : 'adult';
+  if (!BANK_INDEX[grp]) BANK_INDEX[grp] = Object.entries(BANK).filter(([k]) => k.startsWith('k_') === kid && k !== 'hist_all')
+    .flatMap(([k, rows]) => rows.filter(r => !/^\d+$/.test(r[1])).map(r => ({ w: r[0].toLowerCase().split(/\s+/), label: r[1], cat: k })));
+  // Best matches first: questions that start the same way ("Which planet…") tend to share a kind of answer.
+  const w = q.prompt.toLowerCase().split(/\s+/), c = BANK_INDEX[grp];
+  const here = e => e.cat === q.cat, k2 = c.filter(e => e.w[0] === w[0] && e.w[1] === w[1]), k1 = c.filter(e => e.w[0] === w[0]);
+  return [...shuffle(k2.filter(here)), ...shuffle(k2), ...shuffle(k1.filter(here)), ...shuffle(c.filter(here)), ...shuffle(k1), ...shuffle(c)].map(e => e.label);
+}
+function mcPool(q) {
+  if (q.pool) return shuffle(q.pool());
+  const near = (list, t) => shuffle(list.filter(o => o.tier <= Math.max(2, t)));
+  if (q.kind === 'flag' || q.kind === 'outline') return near(COUNTRIES, BY_ISO[q.iso].tier).map(c => c.name);
+  if (q.kind === 'capital') return near(COUNTRIES.filter(c => c.cap), BY_ISO[q.iso].tier).map(c => c.cap);
+  if (q.cat === 'logos') { const t = TEAMS.find(t => TEAM_LOGO(t) === q.img); return shuffle(TEAMS.filter(o => o.lg === t.lg)).map(o => o.name); }
+  if (q.cat === 'brands') return near(BRANDS, q.tier).map(o => o.name);
+  if (q.cat === 'stadiumpics') return shuffle(VENUES).map(o => o.name);
+  if (q.cat === 'skylines') return shuffle(SKYLINES).map(o => o.name);
+  if (q.cat === 'stadiums') return shuffle([...new Set(STADIUMS.map(r => r[1]))]);
+  if (q.id && q.id.startsWith('es:')) { const toEs = q.prompt.startsWith('How'), kid = q.cat === 'k_spanish'; return shuffle(WORDS.filter(w => kid ? w.kid : w.tier <= Math.max(2, q.tier))).map(w => toEs ? w.es : w.en); }
+  return bankPool(q);
+}
+function choicesFor(q) {
+  const taken = new Set([norm(q.answerLabel)]), out = [];
+  for (const c of mcPool(q)) { const n = norm(c); if (!n || taken.has(n) || judge(c, q.answers, [])) continue; taken.add(n); out.push(c); if (out.length === 3) break; }
+  return out.length === 3 ? shuffle([q.answerLabel, ...out]) : null;
+}
+
+// Every available question for a category, best candidates first. The game takes as many as it needs.
+function buildFor(cat, cfg, shapes) {
+  const diff = cfg.diff, C = (f, mk, d = diff) => byTier(COUNTRIES.filter(f).map(c => ({ ...mk(c), tier: c.tier })), d);
+  let qs = [];
+  if (BANK[cat]) qs = freshFirst(BANK[cat].map(r => textQ(cat, r)));
+  else if (CAT[cat].drop) qs = freshFirst(dropQs(CAT[cat].drop, cat));
+  else if (CAT[cat].src) qs = buildFor(CAT[cat].src, cfg, shapes).map(b => pixQ(b, CAT[CAT[cat].src].name));
+  else if (CAT[cat].lg) qs = freshFirst(teamQs(CAT[cat].lg, !!cfg.sil));
+  else if (CAT[cat].clg) qs = byTier(CAREERS.filter(p => CAT[cat].clg === 'all' || p.lg === CAT[cat].clg).map(careerQ), diff);
+  else switch (cat) {
+    case 'flags': qs = C(() => true, flagQ); break;
+    case 'k_flags': qs = C(() => true, flagQ, 1); break;
+    case 'outlines': qs = C(c => shapes && shapes[c.iso], c => outlineQ(c, shapes)); break;
+    case 'capitals': qs = C(c => c.cap && c.iso !== 'ps', capitalQ); break;
+    case 'brands': qs = byTier(BRANDS.map(brandQ), diff); break;
+    case 'sat': qs = byTier(SAT.map(satQ), diff); break;
+    case 'colleges': qs = byTier(COLLEGES.map(collegeQ), diff); break;
+    case 'emoji': qs = byTier(EMOJI_SONGS.map(emojiQ), diff); break;
+    case 'bands': qs = byTier(BANDS.map(bandQ), diff); break;
+    case 'states': qs = byTier(STATE_FLAGS.map(r => photoQ(r, STATE_FLAGS, 'states', 'State flags', 'Which U.S. state does this flag belong to?')), diff); break;
+    case 'cars': qs = byTier(CARS.map(r => photoQ(r, CARS, 'cars', 'Name the car', 'Which car is this?')), diff); break;
+    case 'breeds_dogs': qs = byTier(DOGS.map(r => photoQ(r, DOGS, 'breeds', 'Dog breeds', 'Which dog breed is this?')), diff); break;
+    case 'breeds_cats': qs = byTier(CATBREEDS.map(r => photoQ(r, CATBREEDS, 'breeds', 'Cat breeds', 'Which cat breed is this?')), diff); break;
+    case 'breeds_all': qs = byTier([...DOGS.map(r => photoQ(r, DOGS, 'breeds', 'Dog breeds', 'Which dog breed is this?')), ...CATBREEDS.map(r => photoQ(r, CATBREEDS, 'breeds', 'Cat breeds', 'Which cat breed is this?'))], diff); break;
+    case 'stadiumpics': qs = byTier(VENUES.map(venueQ), diff); break;
+    case 'skylines': qs = byTier(SKYLINES.map(skylineQ), diff); break;
+    case 'spanish': qs = byTier(WORDS.map(w => wordQ(w, cat)), diff); break;
+    case 'k_spanish': qs = freshFirst(WORDS.filter(w => w.kid).map(w => wordQ(w, cat))); break;
+    case 'stadiums': qs = freshFirst(STADIUMS.map(r => ({ cat, kind: 'text', tag: 'Stadium cities', prompt: `Which city is home to ${r[0]}?`, answers: r.slice(1), answerLabel: r[1], distractors: [] }))); break;
   }
-  return [];
+  const used = new Set();
+  return qs.filter(q => !used.has(qid(q)) && used.add(qid(q)));
 }
 function buildQuestions(cfg, shapes) {
-  const n = cfg.rounds * cfg.players.length;
-  const mix = MIXES[cfg.cat];
-  if (!mix) return buildFor(cfg.cat, cfg, n, shapes);
-  const cats = mix.filter(c => c !== 'outlines' || shapes);
-  const slots = shuffle(take(shuffle(cats), n));
-  const pools = Object.fromEntries(cats.map(c => [c, buildFor(c, cfg, slots.filter(s => s === c).length, shapes)]));
-  return slots.map(s => pools[s].pop());
+  const n = cfg.rounds * cfg.players.length, mix = MIXES[cfg.cat];
+  if (!mix) return buildFor(cfg.cat, cfg, shapes).slice(0, n);
+  // Mixes deal one question from each category in turn, skipping anything already in the game.
+  const pools = shuffle(mix.filter(c => c !== 'outlines' || shapes)).map(c => buildFor(c, cfg, shapes));
+  const out = [], used = new Set();
+  for (let i = 0; out.length < n && pools.some(p => p.length); i++) {
+    const p = pools[i % pools.length]; let q;
+    while ((q = p.shift()) && used.has(qid(q)));
+    if (q) { used.add(qid(q)); out.push(q); }
+  }
+  return shuffle(out);
 }
+// How many different questions a category can offer (so the setup screen can warn before a game is cut short).
+function poolSize(cat) { return MIXES[cat] || cat === 'outlines' ? Infinity : buildFor(cat, cfg, null).length; }
 // Kids get a nudge: the first letter and how long the answer is.
 function hintFor(q) {
   const a = q.answerLabel.trim();
@@ -1542,7 +2948,9 @@ const sfx = {
 const app = document.getElementById('app');
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 let screen = 'home';
-let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, diff: 1, sil: 1 }, store.get('cfg', {}));
+let cfg = Object.assign({ cat: 'flags', group: 'kids', count: 1, names: ['Player 1', 'Player 2', 'Player 3', 'Player 4'], rounds: 10, time: 15, ktime: 30, diff: 1, sil: 1, pix: 2 }, store.get('cfg', {}))
+if (!CAT[cfg.cat]) cfg.cat = 'flags';
+if (!CAT[cfg.group]) cfg.group = 'kids';;
 if (!CAT[cfg.cat] || CAT[cfg.cat].children) cfg.cat = 'flags';
 if (!CAT[cfg.group] || !CAT[cfg.group].children) cfg.group = 'kids';
 let game = null;   // { cfg, questions, idx, players:[{name,color,score,correct}], log:[] }
@@ -1583,6 +2991,11 @@ function renderHome() {
       <span class="arrow">→</span></button>
     <div class="grid">${HOME.map(c => catCard(c, bests)).join('')}</div>`;
 }
+function dropHelp(c) {
+  const all = DROP[c.drop], have = DROP_OK ? all.filter(d => DROP_OK.has(d.src)).length : 0;
+  return `<div class="${have ? 'note' : 'err'}" style="margin-bottom:18px">${have ? `${have} of ${all.length} movie pictures added.` : '<b>No pictures added yet.</b>'}
+    To add one, save it into the <b>images/${c.drop}</b> folder using the file name listed in <b>images/${c.drop}/LIST.txt</b>.</div>`;
+}
 function renderGroup() {
   const g = CAT[cfg.group], bests = store.get('best', {});
   app.innerHTML = topBar() + `
@@ -1593,6 +3006,7 @@ function renderGroup() {
 function pickCat(id) {
   if (CAT[id].children) { cfg.group = id; screen = 'group'; } else { cfg.cat = id; screen = 'setup'; }
   store.set('cfg', cfg); render();
+  if (id === 'pixel' || (CAT[id].parent === 'pixel' && !DROP_OK)) checkDropins().then(() => { if (screen === 'setup' || screen === 'group') render(); });
 }
 function backFromSetup() {
   saveNames(); const p = CAT[cfg.cat].parent;
@@ -1607,23 +3021,26 @@ function seg(key, opts) {
 function setCfg(k, v) { saveNames(); cfg[k] = v; store.set('cfg', cfg); renderSetup(); }
 function saveNames() { document.querySelectorAll('[data-pn]').forEach(i => { cfg.names[+i.dataset.pn] = i.value.trim() || `Player ${+i.dataset.pn + 1}`; }); store.set('cfg', cfg); }
 function renderSetup() {
-  const c = CAT[cfg.cat];
+  const c = CAT[cfg.cat], size = poolSize(cfg.cat);
   app.innerHTML = topBar() + `
     <h1>${c.emoji} ${c.name}</h1><p class="sub">${c.desc}</p>
     <div class="card">
       <div class="field"><span class="label">Players</span>${seg('count', [1, 2, 3, 4].map(v => ({ v, n: v })))}</div>
       <div class="field"><span class="label">Names</span><div class="players">${Array.from({ length: cfg.count }, (_, i) =>
         `<label class="pname"><span class="dot" style="background:${COLORS[i]}"></span><input data-pn="${i}" value="${esc(cfg.names[i])}" maxlength="16" onfocus="this.select()" aria-label="Player ${i + 1} name"></label>`).join('')}</div></div>
-      <div class="field"><span class="label">Questions each</span>${seg('rounds', [5, 10, 15, 20].map(v => ({ v, n: v })))}</div>
+      <div class="field"><span class="label">Questions each</span>${seg('rounds', [5, 10, 15, 20].map(v => ({ v, n: v })))}
+        ${size < cfg.rounds * cfg.count ? `<div class="hint" style="margin-top:8px">This quiz has ${size} different questions, so you'll get <b>${Math.floor(size / cfg.count)} each</b>. Nothing repeats within a game.</div>` : ''}</div>
       <div class="field"><span class="label">Seconds per question</span>${c.kids ? seg('ktime', [20, 30, 45, 60].map(v => ({ v, n: v + 's' }))) : seg('time', [10, 15, 20, 30].map(v => ({ v, n: v + 's' })))}</div>
-      ${c.geo ? `<div class="field"><span class="label">Difficulty${cfg.cat === 'mixed' ? ' (for flags, maps and company logos)' : ''}</span>${seg('diff', cfg.cat === 'brands' ? [{ v: 1, n: 'Easy', s: 'household names' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'all of them' }] : DIFFS)}</div>` : ''}
+      ${c.geo ? `<div class="field"><span class="label">Difficulty${cfg.cat === 'mixed' ? ' (for the picture rounds)' : ''}</span>${seg('diff', ['flags', 'outlines', 'capitals', 'mixed'].includes(cfg.cat) ? DIFFS : [{ v: 1, n: 'Easy', s: 'the famous ones' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'everything' }])}</div>` : ''}
+      ${c.pix ? `<div class="field"><span class="label">Starting pixelation</span>${seg('pix', [{ v: 1, n: 'Light', s: 'easier' }, { v: 2, n: 'Medium', s: 'balanced' }, { v: 3, n: 'Heavy', s: 'harder' }])}</div>` : ''}
+      ${c.drop ? dropHelp(c) : ''}
       ${c.logo ? `<div class="field"><span class="label">Team logos shown as</span>${seg('sil', [{ v: 1, n: 'Silhouette', s: 'harder' }, { v: 0, n: 'Full colour', s: 'easier' }])}</div>` : ''}
       <div class="row" style="justify-content:space-between;margin-top:8px">
         <button class="btn ghost" onclick="backFromSetup()">← Back</button>
         <button class="btn" onclick="startGame()">Start game →</button>
       </div>
     </div>
-    <p class="hint" style="margin-top:16px">Faster answers score more: <b>100</b> points for a correct answer plus up to <b>100</b> bonus for speed. ${MAX_TRIES} tries per question.${c.kids ? ' Every question shows a hint with the first letter.' : ''}</p>`;
+    <p class="hint" style="margin-top:16px">Faster answers score more: <b>100</b> points for a correct answer plus up to <b>100</b> bonus for speed. ${MAX_TRIES} tries per question. In the last 5 seconds, four choices appear: a correct pick scores <b>50</b>.${c.kids ? ' Every question shows a hint with the first letter.' : ''}</p>`;
 }
 
 /* ---------- Start ---------- */
@@ -1644,11 +3061,20 @@ async function startGame() {
     }
   }
   if (screen !== 'loading') return; // they went home while the map was loading
+  if (CAT[cfg.cat].pix) await checkDropins();
+  if (screen !== 'loading') return;
   const questions = buildQuestions({ ...cfg, players }, shapes);
-  questions.forEach(q => { const src = q.img || (q.iso && FLAG_URL(q.iso)); if (src) { const im = new Image(); im.src = src; } }); // warm the picture cache
-  game = { cfg: { ...cfg, time: CAT[cfg.cat].kids ? cfg.ktime : cfg.time }, players, questions, idx: 0, log: [] };
+  // Not enough different questions for the game that was asked for? Shorten it rather than repeat any.
+  const rounds = Math.min(cfg.rounds, Math.floor(questions.length / players.length));
+  if (rounds < 1) { screen = 'setup'; render(); return; }
+  questions.length = rounds * players.length;
+  game = { cfg: { ...cfg, rounds, time: CAT[cfg.cat].kids ? cfg.ktime : cfg.time }, players, questions, idx: 0, log: [],
+    note: rounds < cfg.rounds ? `This quiz has ${questions.length} different questions to go around, so it's ${rounds}${players.length > 1 ? ' each' : ''} instead of ${cfg.rounds}. Nothing repeats.` : '' };
+  preload(0); preload(1);
   beginTurn();
 }
+// Fetch pictures a question ahead (photo sites refuse a burst of dozens at once).
+function preload(i) { const q = game && game.questions[i]; if (!q) return; (q.imgs || [q.img || (q.iso && FLAG_URL(q.iso))]).forEach(src => { if (src) { const im = new Image(); im.src = src; } }); }
 function beginTurn() {
   if (game.players.length > 1) { screen = 'handoff'; render(); }
   else { screen = 'question'; render(); }
@@ -1679,7 +3105,13 @@ function ready() { if (performance.now() < lockUntil) return; screen = 'question
 function promptHTML(q) {
   if (q.kind === 'flag') return `<img class="flag" id="qimg" src="${FLAG_URL(q.iso)}" alt="A country's flag">`;
   if (q.kind === 'outline') return q.svg;
+  if (q.kind === 'photo') return `<img class="photo" id="qimg" src="${q.img}" alt="A photo to identify"><div class="credit" id="credit"></div>`;
   if (q.kind === 'logo') return `<img class="qlogo${q.sil ? ' sil' : ''}${q.mono ? ' mono' : ''}" id="qimg" src="${q.img}" alt="A logo">`;
+  if (q.kind === 'career') return `<div class="path">${q.stops.map((st, i) => `${i ? '<span class="arr">→</span>' : ''}<div class="stop${q.imgs.length ? '' : ' txt'}">${q.imgs.length ? `<img src="${q.imgs[i]}" alt="">` : ''}<b>${esc(st.team)}</b><span>${esc(st.years)}</span></div>`).join('')}</div>${q.note ? `<div class="credit">${esc(q.note)}</div>` : ''}`;
+  if (q.kind === 'sat') return `<div class="sat">${q.imgs.map(u => `<img src="${u}" alt="">`).join('')}</div><div class="credit" id="credit"></div>`;
+  if (q.kind === 'emoji') return `<div class="emoji">${q.emoji}</div><div class="khint" style="margin:0 0 8px">by <b>${esc(q.artist)}</b></div>`;
+  if (q.kind === 'pix') return `<div class="pixbox"><canvas id="pixc" width="640" height="420"></canvas><img id="pixsrc" class="pixsrc" src="${q.src}" alt=""></div><div class="credit" id="credit"></div>`;
+  if (q.kind === 'members') return `<div class="members">${esc(q.members)}</div>`;
   if (q.kind === 'capital') return `<img class="minif" id="qimg" src="${FLAG_URL(q.iso)}" alt="">`;
   return '';
 }
@@ -1696,6 +3128,7 @@ function renderQuestion() {
     </div>
     <div class="timer" id="timer"><i id="bar"></i></div>
     <div class="stage">
+      ${game.note && game.idx === 0 ? `<div class="note">${esc(game.note)}</div>` : ''}
       <div class="qtag">${q.tag}</div>
       ${promptHTML(q)}
       <div class="qtext">${esc(q.prompt)}</div>
@@ -1712,10 +3145,48 @@ function renderQuestion() {
       </div>
     </div>`;
   const input = document.getElementById('ans'); input.focus();
-  const img = document.getElementById('qimg');
-  // Start the clock once the picture has loaded, so a slow connection doesn't eat your time.
-  const go = () => { if (screen === 'question' && !game.cur.started) { game.cur.started = true; startTimer(); } };
-  if (img && !img.complete) { img.addEventListener('load', go); img.addEventListener('error', go); setTimeout(go, 4000); } else go();
+  // Start the clock once the pictures have loaded, so a slow connection doesn't eat your time.
+  const cur = game.cur;
+  const go = () => { if (screen === 'question' && game && game.cur === cur && !cur.started) { cur.started = true; startTimer(); } };
+  const imgs = [...document.querySelectorAll('.stage img')].filter(im => !im.complete);
+  let pending = imgs.length; const one = () => { if (--pending <= 0) go(); };
+  if (pending) {
+    imgs.forEach(im => { im.addEventListener('load', one);
+      im.addEventListener('error', () => { if (im.dataset.retried) return one(); im.dataset.retried = 1; const src = im.src; setTimeout(() => { if (game && game.cur === cur) im.src = src; }, 1500); }); }); // one retry each
+    setTimeout(go, 8000);
+  } else go();
+  const ps = document.getElementById('pixsrc');
+  if (ps) { if (ps.complete && ps.naturalWidth) pixInit(ps); else ps.addEventListener('load', () => { if (game && game.cur === cur) pixInit(ps); }); }
+  preload(game.idx + 1);
+}
+// --- Pixelation ---------------------------------------------------------------
+// The picture is drawn into a tiny canvas and blown back up without smoothing. Blocks across
+// grow from the starting level to a sharp picture at 90% of the clock.
+const PIX_START = { 1: 22, 2: 12, 3: 7 };
+function pixInit(im) {
+  const c = document.getElementById('pixc'); if (!c || !game) return;
+  const ar = (im.naturalWidth && im.naturalHeight) ? im.naturalWidth / im.naturalHeight : 4 / 3;
+  c.width = 720; c.height = Math.round(Math.min(480, Math.max(260, 720 / ar)));
+  game.cur.pix = { im, c, last: -1 };
+  drawPix(game.cur.started ? 1 - timeLeft() / T.dur : 0);
+}
+function drawPix(elapsed) {
+  const P = game.cur.pix; if (!P) return;
+  const { im, c } = P, ctx = c.getContext('2d'), q = game.questions[game.idx];
+  const ar = (im.naturalWidth && im.naturalHeight) ? im.naturalWidth / im.naturalHeight : 4 / 3;
+  let dw = c.width, dh = dw / ar; if (dh > c.height) { dh = c.height; dw = dh * ar; }
+  const dx = (c.width - dw) / 2, dy = (c.height - dh) / 2;
+  const start = PIX_START[game.cfg.pix] || 12, sharp = 170;
+  const blocks = elapsed === null ? sharp : Math.round(start * (sharp / start) ** (Math.min(1, elapsed / 0.9) ** 1.7));
+  if (blocks === P.last) return; P.last = blocks;
+  ctx.clearRect(0, 0, c.width, c.height);
+  if (blocks >= sharp) { ctx.imageSmoothingEnabled = true; if (q.flat) { ctx.fillStyle = '#fff'; ctx.fillRect(dx, dy, dw, dh); } ctx.drawImage(im, dx, dy, dw, dh); return; }
+  const bw = blocks, bh = Math.max(1, Math.round(blocks * dh / dw));
+  const off = P.off || (P.off = document.createElement('canvas')); off.width = bw; off.height = bh;
+  const o = off.getContext('2d'); o.imageSmoothingEnabled = true;
+  if (q.flat) { o.fillStyle = '#fff'; o.fillRect(0, 0, bw, bh); }
+  o.drawImage(im, 0, 0, bw, bh);
+  ctx.imageSmoothingEnabled = false; ctx.drawImage(off, 0, 0, bw, bh, dx, dy, dw, dh);
 }
 function startTimer() {
   stopTimer();
@@ -1733,6 +3204,8 @@ function tick() {
   if (timer) { timer.classList.toggle('warn', frac < .5 && sec > 5); timer.classList.toggle('urgent', sec <= 5); }
   if (sec !== T.lastSec) { if (sec <= 5 && sec > 0 && T.lastSec !== null) sfx.tick(); T.lastSec = sec; }
   if (left <= 0) { finish(false, 'time'); return; }
+  if (left <= 5000 && !game.cur.mc) showChoices();
+  if (game.cur.pix) drawPix(1 - frac);
   T.raf = requestAnimationFrame(tick);
   // backup in case animation frames pause (hidden tab)
   clearTimeout(T.to); T.to = setTimeout(() => { if (T.running) tick(); }, 250);
@@ -1752,17 +3225,29 @@ function submitAnswer() {
   document.querySelectorAll('#tries span').forEach((s, i) => s.classList.toggle('used', i < game.cur.tries));
   document.getElementById('wrongs').textContent = game.cur.wrongs.join(', ');
 }
+function showChoices() {
+  const cur = game.cur; cur.mc = true;
+  const box = document.getElementById('ansForm'); if (!box || cur.done) return;
+  cur.choices = choicesFor(game.questions[game.idx]); if (!cur.choices) return;
+  box.insertAdjacentHTML('afterend', `<div class="mc" id="mc"><div class="mchead">Stuck? Pick one for <b>50</b> points</div>${cur.choices.map((c, i) => `<button type="button" onclick="pickChoice(${i})">${esc(c)}</button>`).join('')}</div>`);
+}
+function pickChoice(i) {
+  const cur = game.cur; if (cur.done || !cur.choices) return;
+  const c = cur.choices[i];
+  if (c === game.questions[game.idx].answerLabel) { cur.guess = c; cur.viaMC = true; finish(true); }
+  else { cur.wrongs.push(c); finish(false, 'mc'); }
+}
 function giveUp() { if (game && !game.cur.done) finish(false, 'pass'); }
 function finish(ok, why) {
   if (game.cur.done) return;
   game.cur.done = true;
   const left = timeLeft(); stopTimer();
   const q = game.questions[game.idx], p = curPlayer();
-  const pts = ok ? 100 + Math.round(100 * left / T.dur) : 0;
+  const pts = !ok ? 0 : game.cur.viaMC ? 50 : 100 + Math.round(100 * left / T.dur);
   if (ok) { p.score += pts; p.correct++; sfx.right(); } else if (why === 'time') sfx.timeup(); else sfx.wrong();
   game.log.push({ q, player: p, ok, pts, wrongs: game.cur.wrongs.slice(), secs: (T.dur - left) / 1000 });
   const extraFlag = q.kind === 'outline' ? `<img class="minif" style="margin:0" src="${FLAG_URL(q.iso)}" alt="">` : '';
-  const head = ok ? 'Correct!' : why === 'time' ? "Time's up!" : why === 'pass' ? 'Passed.' : 'Out of tries.';
+  const head = ok ? 'Correct!' : why === 'time' ? "Time's up!" : why === 'pass' ? 'Passed.' : why === 'mc' ? 'Not that one.' : 'Out of tries.';
   const last = game.idx + 1 >= game.questions.length;
   document.getElementById('area').innerHTML = `
     <div class="reveal ${ok ? 'ok' : 'no'}">
@@ -1773,6 +3258,9 @@ function finish(ok, why) {
     </div>
     <div class="hint" style="margin-top:10px;text-align:right">press <span class="kbd">Enter</span></div>`;
   const secs = document.getElementById('secs'); if (secs) secs.classList.remove('urgent');
+  markSeen(q);
+  const cr = document.getElementById('credit'); if (cr && q.creditHtml) cr.innerHTML = q.creditHtml; else if (cr && q.credit) cr.innerHTML = `Photo: ${esc(q.credit)} · <a href="${esc(q.page)}" target="_blank" rel="noopener">Wikimedia Commons</a>`;
+  if (game.cur.pix) drawPix(null);
   const lg = document.querySelector('.qlogo.sil'); if (lg) { lg.classList.remove('sil'); lg.classList.add('shown'); } // reveal the real logo
   lockUntil = performance.now() + 500;
 }
@@ -1820,18 +3308,42 @@ function renderResults() {
       </div>`).join('')}</div>
     <div class="row">
       <button class="btn" onclick="playAgain()">Play again</button>
+      <button class="btn ghost" id="sharebtn" onclick="shareScore()">Share my score</button>
       <button class="btn ghost" onclick="game=null;screen='setup';render()">Change settings</button>
       <button class="btn ghost" onclick="game=null;screen='home';render()">New category</button>
     </div>
     ${missed.length ? `<details class="review" ${solo ? 'open' : ''}><summary>Answers you missed (${missed.length})</summary>
       ${missed.map(l => `<div class="rv">${l.q.img ? `<img class="${l.q.thumb}" src="${l.q.img}" alt="">` : l.q.iso ? `<img src="${FLAG_URL(l.q.iso)}" alt="">` : ''}
-        <span class="q">${l.q.kind === 'flag' ? 'Flag' : l.q.kind === 'outline' ? 'Shape' : l.q.kind === 'logo' ? 'Logo' : esc(l.q.prompt)}${solo ? '' : ` <span class="hint">· ${esc(l.player.name)}</span>`}
+        <span class="q">${l.q.kind === 'flag' ? 'Flag' : l.q.kind === 'outline' ? 'Shape' : l.q.kind === 'logo' ? 'Logo' : l.q.kind === 'photo' ? 'Photo' : l.q.kind === 'sat' ? 'Satellite view' : l.q.kind === 'career' ? 'Career path' : l.q.kind === 'emoji' ? l.q.emoji : l.q.kind === 'pix' ? 'Pixelated' : l.q.kind === 'members' ? esc(l.q.members) : esc(l.q.prompt)}${solo ? '' : ` <span class="hint">· ${esc(l.player.name)}</span>`}
         ${l.wrongs.length ? `<div class="g">${l.wrongs.map(esc).join(', ')}</div>` : ''}</span>
         <span class="a">${esc(l.q.answerLabel)}</span></div>`).join('')}</details>` : ''}`;
   if (solo ? me.correct >= game.questions.length * .7 : true) { confetti(); sfx.win(); }
   lockUntil = performance.now() + 900;
 }
 function playAgain() { if (performance.now() < lockUntil) return; game = null; startGame(); }
+
+/* ---------- Share ---------- */
+const SHARE_URL = 'https://quiz.emeraldcityapps.com';
+function shareText() {
+  const c = CAT[game.cfg.cat], ranked = game.players.slice().sort((a, b) => b.score - a.score);
+  if (game.players.length === 1) {
+    const me = game.players[0];
+    return `I scored ${me.score} points on Quiz Night (${c.name}): ${me.correct}/${game.cfg.rounds} right. Can you beat me?`;
+  }
+  const tie = ranked[1] && ranked[0].score === ranked[1].score;
+  return tie ? `It was a tie on Quiz Night (${c.name})! Think you can do better?`
+             : `${ranked[0].name} won our Quiz Night game (${c.name}) with ${ranked[0].score} points. Think you can do better?`;
+}
+async function shareScore() {
+  const btn = document.getElementById('sharebtn'), text = shareText();
+  if (navigator.share) {
+    try { await navigator.share({ title: 'Quiz Night', text, url: SHARE_URL }); return; }
+    catch (e) { if (e && e.name === 'AbortError') return; }
+  }
+  try { await navigator.clipboard.writeText(text + ' ' + SHARE_URL); if (btn) btn.textContent = 'Copied to clipboard'; }
+  catch { if (btn) btn.textContent = "Couldn't copy. Try again"; }
+  if (btn) setTimeout(() => { btn.textContent = 'Share my score'; }, 2500);
+}
 
 /* ---------- Keyboard ---------- */
 document.addEventListener('keydown', e => {

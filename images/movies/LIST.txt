@@ -1,0 +1,63 @@
+Save each picture in this folder with exactly this file name (left), then refresh the game.
+Pictures can be any size; a square or poster shape works best. Only .jpg files are picked up.
+
+titanic.jpg   ←   Titanic
+jurassic-park.jpg   ←   Jurassic Park
+star-wars.jpg   ←   Star Wars
+the-godfather.jpg   ←   The Godfather
+jaws.jpg   ←   Jaws
+et-the-extra-terrestrial.jpg   ←   E.T. the Extra-Terrestrial
+back-to-the-future.jpg   ←   Back to the Future
+the-matrix.jpg   ←   The Matrix
+forrest-gump.jpg   ←   Forrest Gump
+pulp-fiction.jpg   ←   Pulp Fiction
+the-dark-knight.jpg   ←   The Dark Knight
+avatar.jpg   ←   Avatar
+avengers-endgame.jpg   ←   Avengers: Endgame
+harry-potter-and-the-sorcerers-stone.jpg   ←   Harry Potter and the Sorcerer's Stone
+the-lord-of-the-rings-the-fellowship-of-the-ring.jpg   ←   The Lord of the Rings: The Fellowship of the Ring
+pirates-of-the-caribbean.jpg   ←   Pirates of the Caribbean
+shrek.jpg   ←   Shrek
+home-alone.jpg   ←   Home Alone
+ghostbusters.jpg   ←   Ghostbusters
+top-gun.jpg   ←   Top Gun
+rocky.jpg   ←   Rocky
+grease.jpg   ←   Grease
+the-wizard-of-oz.jpg   ←   The Wizard of Oz
+casablanca.jpg   ←   Casablanca
+psycho.jpg   ←   Psycho
+the-shining.jpg   ←   The Shining
+raiders-of-the-lost-ark.jpg   ←   Raiders of the Lost Ark
+gladiator.jpg   ←   Gladiator
+braveheart.jpg   ←   Braveheart
+mean-girls.jpg   ←   Mean Girls
+barbie.jpg   ←   Barbie
+oppenheimer.jpg   ←   Oppenheimer
+inception.jpg   ←   Inception
+interstellar.jpg   ←   Interstellar
+the-silence-of-the-lambs.jpg   ←   The Silence of the Lambs
+die-hard.jpg   ←   Die Hard
+terminator-2-judgment-day.jpg   ←   Terminator 2: Judgment Day
+alien.jpg   ←   Alien
+ferris-buellers-day-off.jpg   ←   Ferris Bueller's Day Off
+the-breakfast-club.jpg   ←   The Breakfast Club
+dirty-dancing.jpg   ←   Dirty Dancing
+pretty-woman.jpg   ←   Pretty Woman
+mrs-doubtfire.jpg   ←   Mrs. Doubtfire
+men-in-black.jpg   ←   Men in Black
+independence-day.jpg   ←   Independence Day
+the-sixth-sense.jpg   ←   The Sixth Sense
+black-panther.jpg   ←   Black Panther
+spider-man.jpg   ←   Spider-Man
+iron-man.jpg   ←   Iron Man
+joker.jpg   ←   Joker
+la-la-land.jpg   ←   La La Land
+top-gun-maverick.jpg   ←   Top Gun: Maverick
+jumanji.jpg   ←   Jumanji
+elf.jpg   ←   Elf
+the-hangover.jpg   ←   The Hangover
+twilight.jpg   ←   Twilight
+the-hunger-games.jpg   ←   The Hunger Games
+gone-with-the-wind.jpg   ←   Gone with the Wind
+rain-man.jpg   ←   Rain Man
+toy-story-3.jpg   ←   Toy Story 3

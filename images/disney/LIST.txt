@@ -1,0 +1,49 @@
+Save each picture in this folder with exactly this file name (left), then refresh the game.
+Pictures can be any size; a square or poster shape works best. Only .jpg files are picked up.
+
+snow-white-and-the-seven-dwarfs.jpg   ←   Snow White and the Seven Dwarfs
+pinocchio.jpg   ←   Pinocchio
+dumbo.jpg   ←   Dumbo
+bambi.jpg   ←   Bambi
+cinderella.jpg   ←   Cinderella
+alice-in-wonderland.jpg   ←   Alice in Wonderland
+peter-pan.jpg   ←   Peter Pan
+lady-and-the-tramp.jpg   ←   Lady and the Tramp
+sleeping-beauty.jpg   ←   Sleeping Beauty
+101-dalmatians.jpg   ←   101 Dalmatians
+the-jungle-book.jpg   ←   The Jungle Book
+the-aristocats.jpg   ←   The Aristocats
+robin-hood.jpg   ←   Robin Hood
+the-little-mermaid.jpg   ←   The Little Mermaid
+beauty-and-the-beast.jpg   ←   Beauty and the Beast
+aladdin.jpg   ←   Aladdin
+the-lion-king.jpg   ←   The Lion King
+pocahontas.jpg   ←   Pocahontas
+the-hunchback-of-notre-dame.jpg   ←   The Hunchback of Notre Dame
+hercules.jpg   ←   Hercules
+mulan.jpg   ←   Mulan
+tarzan.jpg   ←   Tarzan
+lilo-and-stitch.jpg   ←   Lilo & Stitch
+the-princess-and-the-frog.jpg   ←   The Princess and the Frog
+tangled.jpg   ←   Tangled
+wreck-it-ralph.jpg   ←   Wreck-It Ralph
+frozen.jpg   ←   Frozen
+big-hero-6.jpg   ←   Big Hero 6
+zootopia.jpg   ←   Zootopia
+moana.jpg   ←   Moana
+encanto.jpg   ←   Encanto
+toy-story.jpg   ←   Toy Story
+a-bugs-life.jpg   ←   A Bug's Life
+monsters-inc.jpg   ←   Monsters, Inc.
+finding-nemo.jpg   ←   Finding Nemo
+the-incredibles.jpg   ←   The Incredibles
+cars.jpg   ←   Cars
+ratatouille.jpg   ←   Ratatouille
+wall-e.jpg   ←   WALL-E
+up.jpg   ←   Up
+brave.jpg   ←   Brave
+inside-out.jpg   ←   Inside Out
+coco.jpg   ←   Coco
+luca.jpg   ←   Luca
+turning-red.jpg   ←   Turning Red
+elemental.jpg   ←   Elemental
