@@ -3006,7 +3006,7 @@ function renderGroup() {
 function pickCat(id) {
   if (CAT[id].children) { cfg.group = id; screen = 'group'; } else { cfg.cat = id; screen = 'setup'; }
   store.set('cfg', cfg); render();
-  if (id === 'pixel' || (CAT[id].parent === 'pixel' && !DROP_OK)) checkDropins().then(() => { if (screen === 'setup' || screen === 'group') render(); });
+  if ((CAT[id].drop || id === 'pix_mix') && !DROP_OK) checkDropins().then(() => { if (screen === 'setup' || screen === 'group') render(); });
 }
 function backFromSetup() {
   saveNames(); const p = CAT[cfg.cat].parent;
@@ -3061,7 +3061,7 @@ async function startGame() {
     }
   }
   if (screen !== 'loading') return; // they went home while the map was loading
-  if (CAT[cfg.cat].pix) await checkDropins();
+  if (CAT[cfg.cat].drop || cfg.cat === 'pix_mix') await checkDropins();
   if (screen !== 'loading') return;
   const questions = buildQuestions({ ...cfg, players }, shapes);
   // Not enough different questions for the game that was asked for? Shorten it rather than repeat any.
