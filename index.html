@@ -2540,6 +2540,8 @@ Toy Story 3|`,
 };
 const dropSlug = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/['’.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const DROP = Object.fromEntries(Object.entries(DROPINS).map(([k, txt]) => [k, txt.trim().split('\n').map(l => { const [title, al] = l.split('|'); return { title, aliases: al ? al.split(';') : [], src: `images/${k}/${dropSlug(title)}.jpg` }; })]));
+// Which drop-in pictures exist (updated whenever pictures are added and published). Rounds with none are hidden.
+const DROP_HAVE = {'disney':  [], 'movies':  []};
 /* =========================================================================
    DATA — Country in 4 Photos:  country | tier | 4 pictures | what each shows | credits  (free photos, Wikimedia Commons)
    ========================================================================= */
@@ -2852,7 +2854,7 @@ const CATS = [
   { id: 'hqs',      name: 'Company HQs',         emoji: '💼', desc: 'Name the city where all three companies have their headquarters.', geo: true },
   { id: 'actors',   name: 'Actor from 4 Titles', emoji: '🎭', desc: 'Name the person who starred in all four movies or shows.', geo: true },
   { id: 'top10',    name: 'Top 10',              emoji: '🔟', desc: 'Name as many of the ten as you can. Three wrong guesses and you\'re out.', geo: true, top10: true },
-  { id: 'pixel',    name: 'Pixelated',           emoji: '👾', desc: 'The picture starts as big blocks and sharpens as the clock runs. Answer early for more points.',
+  { id: 'pixel',    name: 'Pixelated',           emoji: '👾', desc: 'Name what is in a blocky, pixelated picture. You choose how heavy the pixelation is.',
     children: ['pix_flags', 'pix_states', 'pix_breeds', 'pix_cars', 'pix_skylines', 'pix_logos', 'pix_disney', 'pix_movies', 'pix_mix'] },
   { id: 'states',   name: 'State Flags',         emoji: '🇺🇸', desc: 'Name the U.S. state from its flag.', geo: true },
   { id: 'breeds',   name: 'Dog & Cat Breeds',    emoji: '🐶', desc: 'Name the breed from a photo.', children: ['breeds_dogs', 'breeds_cats', 'breeds_all'] },
@@ -2919,6 +2921,8 @@ if (!SHOW_LOGO_QUIZZES) {
   const left = new Set(CATS.map(c => c.id));
   CATS.forEach(c => { if (c.children) c.children = c.children.filter(id => left.has(id)); });
 }
+for (let i = CATS.length - 1; i >= 0; i--) if (CATS[i].drop && !DROP_HAVE[CATS[i].drop].length) CATS.splice(i, 1);
+{ const ids = new Set(CATS.map(c => c.id)); CATS.forEach(c => { if (c.children) c.children = c.children.filter(id => ids.has(id)); }); }
 const CAT = Object.fromEntries(CATS.map(c => [c.id, c]));
 const HOME = CATS.filter(c => !c.parent && c.id !== 'kids');
 const BANK = { gk: GK, politics: POLITICS, hist_ancient: HIST_ANCIENT, hist_medieval: HIST_MEDIEVAL, hist_wars: HIST_WARS, hist_us: HIST_US, hist_modern: HIST_MODERN,
@@ -2926,7 +2930,8 @@ const BANK = { gk: GK, politics: POLITICS, hist_ancient: HIST_ANCIENT, hist_medi
 const MIXES = { mixed: ['flags', 'capitals', 'politics', 'gk', 'outlines', 'hist_all', 'stadiums', 'brands', 'logos_all', 'stadiumpics', 'skylines', 'careers_all', 'sat', 'colleges', 'emoji', 'bands', 'states', 'cars', 'breeds_all', 'quad', 'meals', 'hqs', 'actors'],
   pix_mix: ['pix_flags', 'pix_states', 'pix_breeds', 'pix_cars', 'pix_skylines', 'pix_logos', 'pix_disney', 'pix_movies'],
   k_mix: ['k_disney', 'k_movies', 'k_gk', 'k_animals', 'k_flags'] };
-if (!SHOW_LOGO_QUIZZES) { MIXES.mixed = MIXES.mixed.filter(id => CAT[id]); MIXES.pix_mix = MIXES.pix_mix.filter(id => CAT[id]); CAT.mixed.logo = false; }
+for (const k in MIXES) MIXES[k] = MIXES[k].filter(id => CAT[id]);
+if (!SHOW_LOGO_QUIZZES) CAT.mixed.logo = false;
 const COLORS = ['#ff5a3c', '#0fa89a', '#7c5cff', '#e9a520'];
 const DIFFS = [{ v: 1, n: 'Easy', s: 'famous ones' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'every country' }];
 const FLAG_URL = iso => `https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/${iso}.svg`;
@@ -3137,13 +3142,8 @@ function pixQ(b, label) {
   const src = b.img || (b.iso && FLAG_URL(b.iso));
   return { ...b, kind: 'pix', src, img: src, thumb: 'ph', flat: b.kind === 'flag' || b.mono || b.cat === 'states', id: 'pix:' + qid(b), tag: 'Pixelated · ' + label, pool: () => mcPool(b) };
 }
-let DROP_OK = null;   // which drop-in pictures have actually been added (checked once per visit)
-function checkDropins() {
-  if (DROP_OK) return Promise.resolve(DROP_OK);
-  const all = Object.values(DROP).flat();
-  return Promise.all(all.map(d => new Promise(r => { const im = new Image(); im.onload = () => r(d.src); im.onerror = () => r(null); im.src = d.src; })))
-    .then(ok => (DROP_OK = new Set(ok.filter(Boolean))));
-}
+const DROP_OK = new Set(Object.entries(DROP_HAVE).flatMap(([k, files]) => files.map(f => `images/${k}/${f}`)));
+function checkDropins() { return Promise.resolve(DROP_OK); }
 function dropQs(k, cat) {
   const list = DROP[k].filter(d => DROP_OK && DROP_OK.has(d.src)), label = CAT[cat].name;
   return list.map(d => ({ cat, kind: 'pix', src: d.src, img: d.src, thumb: 'ph', id: 'drop:' + d.src, tier: 1, tag: 'Pixelated · ' + label, prompt: 'Which movie is this?',
@@ -3324,6 +3324,7 @@ function goHome() {
   stopTimer(); game = null; screen = 'home'; render();
 }
 function render() {
+  window.scrollTo(0, 0);
   if (screen !== 'results') document.querySelectorAll('.confetti').forEach(e => e.remove());
   const inKids = screen === 'home' ? false : screen === 'group' ? cfg.group === 'kids' : !!CAT[(game ? game.cfg : cfg).cat].kids;
   document.documentElement.classList.toggle('kidsmode', inKids);
@@ -3391,7 +3392,7 @@ function renderSetup() {
       ${c.geo ? `<div class="field"><span class="label">Difficulty${cfg.cat === 'mixed' ? ' (for the picture rounds)' : ''}</span>${seg('diff', ['flags', 'outlines', 'capitals', 'mixed'].includes(cfg.cat) ? DIFFS : [{ v: 1, n: 'Easy', s: 'the famous ones' }, { v: 2, n: 'Medium', s: '+ well known' }, { v: 3, n: 'Hard', s: 'everything' }])}</div>` : ''}
       <div class="field"><span class="label">Multiple choice</span>${seg('mc', [{ v: 0, n: 'Off', s: 'typing only' }, { v: 1, n: 'Last 5 seconds', s: 'a rescue' }, { v: 2, n: 'Always', s: 'no typing' }])}${c.top10 ? '<div class="hint" style="margin-top:8px">Top 10 is always typed.</div>' : ''}</div>
       ${cfg.count > 1 ? `<div class="field"><span class="label">Turns</span>${seg('turns', [{ v: 0, n: 'Alternate', s: 'take turns each question' }, { v: 1, n: 'Full rounds', s: 'one player at a time' }])}</div>` : ''}
-      ${c.pix ? `<div class="field"><span class="label">Starting pixelation</span>${seg('pix', [{ v: 1, n: 'Light', s: 'easier' }, { v: 2, n: 'Medium', s: 'balanced' }, { v: 3, n: 'Heavy', s: 'harder' }])}</div>` : ''}
+      ${c.pix ? `<div class="field"><span class="label">Pixelation</span>${seg('pix', [{ v: 1, n: 'Light', s: 'easier' }, { v: 2, n: 'Medium', s: 'balanced' }, { v: 3, n: 'Heavy', s: 'harder' }])}</div>` : ''}
       ${c.drop ? dropHelp(c) : ''}
       ${c.logo ? `<div class="field"><span class="label">Team logos shown as</span>${seg('sil', [{ v: 1, n: 'Silhouette', s: 'harder' }, { v: 0, n: 'Full colour', s: 'easier' }])}</div>` : ''}
       <div class="row" style="justify-content:space-between;margin-top:8px">
@@ -3512,7 +3513,7 @@ function renderQuestion() {
       </div>
     </div>`;
   const input = document.getElementById('ans');
-  if (!(game.cfg.mc === 2 && q.kind !== 'top10' && showChoices(true))) input.focus();
+  if (!(game.cfg.mc === 2 && q.kind !== 'top10' && showChoices(true))) input.focus({ preventScroll: true });
   // Start the clock once the pictures have loaded, so a slow connection doesn't eat your time.
   const cur = game.cur;
   const go = () => { if (screen === 'question' && game && game.cur === cur && !cur.started) { cur.started = true; startTimer(); } };
@@ -3528,9 +3529,9 @@ function renderQuestion() {
   preload(game.idx + 1);
 }
 // --- Pixelation ---------------------------------------------------------------
-// The picture is drawn into a tiny canvas and blown back up without smoothing. Blocks across
-// grow from the starting level to a sharp picture at 90% of the clock.
-const PIX_START = { 1: 22, 2: 12, 3: 7 };
+// The picture is drawn into a tiny canvas and blown back up without smoothing. It stays at the
+// chosen level (blocks across) for the whole question and only turns sharp once it's answered.
+const PIX_LEVEL = { 1: 40, 2: 24, 3: 14 };
 function pixInit(im) {
   const c = document.getElementById('pixc'); if (!c || !game) return;
   const ar = (im.naturalWidth && im.naturalHeight) ? im.naturalWidth / im.naturalHeight : 4 / 3;
@@ -3544,8 +3545,7 @@ function drawPix(elapsed) {
   const ar = (im.naturalWidth && im.naturalHeight) ? im.naturalWidth / im.naturalHeight : 4 / 3;
   let dw = c.width, dh = dw / ar; if (dh > c.height) { dh = c.height; dw = dh * ar; }
   const dx = (c.width - dw) / 2, dy = (c.height - dh) / 2;
-  const start = PIX_START[game.cfg.pix] || 12, sharp = 170;
-  const blocks = elapsed === null ? sharp : Math.round(start * (sharp / start) ** (Math.min(1, elapsed / 0.9) ** 1.7));
+  const sharp = 170, blocks = elapsed === null ? sharp : PIX_LEVEL[game.cfg.pix] || 24;
   if (blocks === P.last) return; P.last = blocks;
   ctx.clearRect(0, 0, c.width, c.height);
   if (blocks >= sharp) { ctx.imageSmoothingEnabled = true; if (q.flat) { ctx.fillStyle = '#fff'; ctx.fillRect(dx, dy, dw, dh); } ctx.drawImage(im, dx, dy, dw, dh); return; }
